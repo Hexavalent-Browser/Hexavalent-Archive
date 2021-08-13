@@ -1,5 +1,5 @@
 # We are going to target Linux
-target_os = "windows"
+target_os = "win"
 
 # We are going to target x86_64
 target_cpu = "x64"
@@ -22,9 +22,6 @@ enable_widevine = true
 
 # Faster builds at the cost of no debug symbols
 symbol_level = 0
-
-# Disable field trials (Yes, true = disabled)
-fieldtrial_testing_like_official_build = true
 
 # Disable remote control apis
 enable_remoting = false
