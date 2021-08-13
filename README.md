@@ -1,6 +1,6 @@
 # Hexavalent
 
-# A Chromium downstream project
+A Chromium downstream project
 
 # Why was this made?
 
