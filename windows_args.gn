@@ -1,0 +1,33 @@
+# We are going to target Linux
+target_os = "windows"
+
+# We are going to target x86_64
+target_cpu = "x64"
+
+# Official build implies CFI and other production settings
+is_official_build = true
+
+# We do not want shared libraries
+is_component_build = false
+
+# This is not a debug build, we want a release build
+is_debug = false
+
+# Enable proprietary codecs
+ffmpeg_branding = "Chrome"
+proprietary_codecs = true
+
+# Allow the usage of Widevine DRM
+enable_widevine = true
+
+# Faster builds at the cost of no debug symbols
+symbol_level = 0
+
+# Disable field trials (Yes, true = disabled)
+fieldtrial_testing_like_official_build = true
+
+# Disable remote control apis
+enable_remoting = false
+
+# Reporting is unused
+enable_reporting = false
