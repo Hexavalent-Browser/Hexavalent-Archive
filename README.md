@@ -17,3 +17,8 @@
 - Be easy to maintain, clean, quick and efficent.
 - Fast updates - no more than 4 days lag time ideally.
 - Leverage the Windows hypervisor platform on Windows.
+
+# Credits
+
+ - The GrapheneOS project's Vanadium patchset.
+   https://github.com/GrapheneOS/Vanadium
