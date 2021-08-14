@@ -14,8 +14,8 @@ A Chromium downstream project
 - Use Clang/LLVM to compile Chromium as upstream intends.
 - Use official builds only.
 - Compile with modern security features that upstream provides.
-- Be easy to maintain, clean, quick and efficent.
-- Fast updates - no more than 4 days lag time ideally.
+- Be easy to maintain, clean, quick and efficient.
+- Fast updates — no more than 4 days lag time ideally.
 - Leverage the Windows hypervisor platform on Windows.
 
 # Credits
