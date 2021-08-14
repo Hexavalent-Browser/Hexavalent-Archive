@@ -1,7 +1,7 @@
-From 84110219795be9e50306a75e8f4757f5860f16ac Mon Sep 17 00:00:00 2001
+From 33b0c0bf4e9a6d1b98c9836bcf31d4c5f96afbc6 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 27 Nov 2020 03:56:29 -0500
-Subject: [PATCH 48/81] disable component updater pings by default
+Subject: [PATCH 29/40] Vanadium: disable component updater pings by default
 
 ---
  .../component_updater_command_line_config_policy.h              | 2 +-
@@ -21,4 +21,5 @@ index 17606fe0c867b..11be0a70cb57b 100644
  
    // If non-zero, time interval in seconds until the first component
 -- 
-2.32.0
+2.30.2.windows.1
+

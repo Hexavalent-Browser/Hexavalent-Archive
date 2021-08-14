@@ -1,7 +1,7 @@
-From 34b0cebfb3c2bc2dad9e7284e2de04e56145288d Mon Sep 17 00:00:00 2001
+From a76fe2a2ceea097974f0871f4b0ad3787f18d9b4 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 23 May 2021 15:07:21 -0400
-Subject: [PATCH 75/81] enable opportunistic HTTPS by default
+Subject: [PATCH 37/40] Vanadium: enable opportunistic HTTPS by default
 
 ---
  components/omnibox/common/omnibox_features.cc | 2 +-
@@ -21,4 +21,5 @@ index 54ae01fca1cf2..5127f611bda5f 100644
  // while trying an HTTPS URL. The parameter is treated as a TimeDelta, so the
  // unit must be included in the value as well (e.g. 3s for 3 seconds).
 -- 
-2.32.0
+2.30.2.windows.1
+

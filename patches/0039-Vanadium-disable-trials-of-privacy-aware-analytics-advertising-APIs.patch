@@ -1,8 +1,8 @@
-From 02bb8230fcf20e91f92d93d8895b0e925bc73620 Mon Sep 17 00:00:00 2001
+From 34399ec84bf4bbb1c93ecea90b863509c8bc1cb3 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 4 Aug 2021 03:29:04 -0400
-Subject: [PATCH 80/81] disable trials of privacy-aware analytics/advertising
- APIs
+Subject: [PATCH 39/40] Vanadium: disable trials of privacy-aware
+ analytics/advertising APIs
 
 ---
  chrome/common/chrome_features.cc                    | 2 +-
@@ -10,7 +10,7 @@ Subject: [PATCH 80/81] disable trials of privacy-aware analytics/advertising
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/common/chrome_features.cc b/chrome/common/chrome_features.cc
-index bbce13ff65e91..58dab33d6723b 100644
+index 501bce9096f88..622bbcdf69a06 100644
 --- a/chrome/common/chrome_features.cc
 +++ b/chrome/common/chrome_features.cc
 @@ -771,7 +771,7 @@ const base::Feature kPrivacyAdvisor{"PrivacyAdvisor",
@@ -45,4 +45,5 @@ index f6094c3d70091..6df947ac2311a 100644
  }
  
 -- 
-2.32.0
+2.30.2.windows.1
+

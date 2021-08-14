@@ -1,7 +1,7 @@
-From 64cbb658ffdc05d87c1ae561abb90009c01ef28c Mon Sep 17 00:00:00 2001
+From 483e508498af84a9d9bd45b5666f6ace3ae220c1 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 20 Oct 2017 21:20:50 -0400
-Subject: [PATCH 49/81] mark non-secure origins as dangerous
+Subject: [PATCH 30/40] Vanadium: mark non-secure origins as dangerous
 
 ---
  components/security_state/core/security_state.cc | 2 +-
@@ -21,4 +21,5 @@ index a5170153fda5e..884d8af95f06a 100644
      return NONE;
    }
 -- 
-2.32.0
+2.30.2.windows.1
+

@@ -1,17 +1,17 @@
-From 81676aa7b84754567ca47fef0cf08afd97688b48 Mon Sep 17 00:00:00 2001
+From b4c093d07146f2b27df4682ebe56fa91145040e0 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 16 Jun 2019 21:57:26 -0400
-Subject: [PATCH 31/81] disable background sync by default
+Subject: [PATCH 14/40] Vanadium: disable background sync by default
 
 ---
  .../content_settings/core/browser/content_settings_registry.cc  | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/content_settings/core/browser/content_settings_registry.cc b/components/content_settings/core/browser/content_settings_registry.cc
-index 382b4c38270cb..2eb3c17dd10b8 100644
+index a9dc3e5bebed8..3d4dad64b74cc 100644
 --- a/components/content_settings/core/browser/content_settings_registry.cc
 +++ b/components/content_settings/core/browser/content_settings_registry.cc
-@@ -293,7 +293,7 @@ void ContentSettingsRegistry::Init() {
+@@ -304,7 +304,7 @@ void ContentSettingsRegistry::Init() {
             ContentSettingsInfo::EXCEPTIONS_ON_SECURE_ORIGINS_ONLY);
  
    Register(ContentSettingsType::BACKGROUND_SYNC, "background-sync",
@@ -21,4 +21,5 @@ index 382b4c38270cb..2eb3c17dd10b8 100644
             ValidSettings(CONTENT_SETTING_ALLOW, CONTENT_SETTING_BLOCK),
             WebsiteSettingsInfo::SINGLE_ORIGIN_ONLY_SCOPE,
 -- 
-2.32.0
+2.30.2.windows.1
+

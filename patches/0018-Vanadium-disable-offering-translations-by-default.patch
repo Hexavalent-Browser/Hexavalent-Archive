@@ -1,7 +1,7 @@
-From d767cf7c1628f7297e3d765066fd0bca88f4d8bc Mon Sep 17 00:00:00 2001
+From de46bb8d5f0d91ffe0b7c68d096cf90b8bb2658a Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 03:58:01 -0400
-Subject: [PATCH 35/81] disable offering translations by default
+Subject: [PATCH 18/40] Vanadium: disable offering translations by default
 
 ---
  chrome/browser/ui/browser_ui_prefs.cc | 2 +-
@@ -21,4 +21,5 @@ index 50432efa24075..7dc0eb5f864c1 100644
    registry->RegisterStringPref(prefs::kCloudPrintEmail, std::string());
    registry->RegisterBooleanPref(prefs::kCloudPrintProxyEnabled, true);
 -- 
-2.32.0
+2.30.2.windows.1
+

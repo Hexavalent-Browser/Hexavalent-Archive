@@ -1,7 +1,7 @@
-From 81e0e92c715be506fd20d17282d7d3050d58fe48 Mon Sep 17 00:00:00 2001
+From 1bce5cc76327c14331fe571144086077df41685b Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 21 May 2020 14:07:54 -0400
-Subject: [PATCH 06/81] disable broken warning for auto var init
+Subject: [PATCH 04/40] Vanadium: disable broken warning for auto var init
 
 ---
  build/config/compiler/BUILD.gn | 2 +-
@@ -21,4 +21,5 @@ index 9a66c70932a53..81f56dcbb0726 100644
  
      # Linker warnings.
 -- 
-2.32.0
+2.30.2.windows.1
+

@@ -1,7 +1,8 @@
-From 909faca86403fe76878d7c11dad947d53844e0e2 Mon Sep 17 00:00:00 2001
+From f3ae38d4984a84328cc79d1342efd7e9b4fe7774 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 8 Mar 2018 22:43:12 -0500
-Subject: [PATCH 25/81] disable article suggestions feature by default
+Subject: [PATCH 10/40] Vanadium: disable article suggestions feature by
+ default
 
 ---
  components/feed/core/shared_prefs/pref_names.cc | 4 ++--
@@ -37,4 +38,5 @@ index 226d09dcb96a3..50234b43c032c 100644
  const base::Feature kRemoteSuggestionsEmulateM58FetchingSchedule{
      "RemoteSuggestionsEmulateM58FetchingSchedule",
 -- 
-2.32.0
+2.30.2.windows.1
+
