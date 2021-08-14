@@ -1,4 +1,4 @@
-# We are going to target Linux
+# We are going to target Windows
 target_os = "win"
 
 # We are going to target x86_64
