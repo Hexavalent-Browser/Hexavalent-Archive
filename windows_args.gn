@@ -22,9 +22,14 @@ enable_widevine = true
 
 # Faster builds at the cost of no debug symbols
 symbol_level = 0
+blink_symbol_level = 0
+enable_resource_allowlist_generation = false
 
 # Disable remote control apis
 enable_remoting = false
 
-# Reporting is unused
-enable_reporting = false
+# Reporting is unused? (needs investigation) 
+#enable_reporting = false
+
+# Native Client is dead
+enable_nacl = false
