@@ -1,7 +1,7 @@
-From adac6053b74da159996bdeb235bc8adc35276b1a Mon Sep 17 00:00:00 2001
+From 38aa93ae18f6644aa998d8300c827c928d27fc85 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 23 Nov 2016 08:31:44 -0500
-Subject: [PATCH 07/40] Vanadium: disable network prediction by default
+Subject: [PATCH 07/41] Vanadium: disable network prediction by default
 
 ---
  chrome/browser/net/prediction_options.h | 2 +-
@@ -21,5 +21,5 @@ index 2ae6a1093090d..7fc83de1aa0fa 100644
  
  enum class NetworkPredictionStatus {
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

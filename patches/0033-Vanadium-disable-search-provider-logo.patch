@@ -1,7 +1,7 @@
-From 8ba005b25d8757f06bdf1db4345a8d45a55d62cf Mon Sep 17 00:00:00 2001
+From e98fd74663be78ca1810530a737373522da267bd Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Mon, 17 Jun 2019 12:03:52 -0400
-Subject: [PATCH 33/40] Vanadium: disable search provider logo
+Subject: [PATCH 33/41] Vanadium: disable search provider logo
 
 ---
  .../template_url_service_factory_android.cc   | 31 +------------------
@@ -50,5 +50,5 @@ index 67302ccc56dd1..bc5c2516368d0 100644
 +  return false;
  }
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

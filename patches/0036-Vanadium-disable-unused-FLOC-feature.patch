@@ -1,7 +1,7 @@
-From 0ed1c6681c62f1fca412ec95dc6a9d8494a75819 Mon Sep 17 00:00:00 2001
+From 42d94a321b42aa75e697c72d0a502c622b73d5af Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sat, 17 Apr 2021 12:27:00 -0400
-Subject: [PATCH 36/40] Vanadium: disable unused FLOC feature
+Subject: [PATCH 36/41] Vanadium: disable unused FLOC feature
 
 ---
  components/federated_learning/features/features.cc | 2 +-
@@ -21,5 +21,5 @@ index 9647df0c4691b..199fe3a0dc3db 100644
      &kFederatedLearningOfCohorts, "update_interval",
      base::TimeDelta::FromDays(7)};
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

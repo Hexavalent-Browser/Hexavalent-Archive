@@ -1,7 +1,7 @@
-From ea3fede5698c3b7db5e90a8ca558482ae9f26b04 Mon Sep 17 00:00:00 2001
+From a6efd4356bc0effc6342395f05aef39aeb4bee50 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Mon, 17 Jun 2019 13:14:22 -0400
-Subject: [PATCH 32/40] Vanadium: always use local new tab page
+Subject: [PATCH 32/41] Vanadium: always use local new tab page
 
 ---
  chrome/browser/search/search.cc | 2 +-
@@ -21,5 +21,5 @@ index a624563aedd48..a2d3d9a742478 100644
  }
  
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

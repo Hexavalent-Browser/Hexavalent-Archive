@@ -1,7 +1,7 @@
-From 911d2e9401f879577b5c453072b70bf659e7c27a Mon Sep 17 00:00:00 2001
+From 80e1f25757846ecd3020bda8d4d9680a2c4dae09 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 8 Apr 2020 20:48:17 -0400
-Subject: [PATCH 03/40] Vanadium: enable -ftrivial-auto-var-init=zero
+Subject: [PATCH 03/41] Vanadium: enable -ftrivial-auto-var-init=zero
 
 ---
  build/config/compiler/BUILD.gn | 4 ++++
@@ -23,5 +23,5 @@ index a16bdcb67a0f9..9a66c70932a53 100644
      if (fatal_linker_warnings && !is_apple && current_os != "aix") {
        ldflags += [ "-Wl,--fatal-warnings" ]
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

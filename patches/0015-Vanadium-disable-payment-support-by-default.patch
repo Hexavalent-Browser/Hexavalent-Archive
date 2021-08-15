@@ -1,7 +1,7 @@
-From 3413db9d96b26cf367628bb332b70cf605f69c7a Mon Sep 17 00:00:00 2001
+From 6829f2cebf4cf62c43a439a35086606db22865ea Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 18 Jun 2019 22:28:53 -0400
-Subject: [PATCH 15/40] Vanadium: disable payment support by default
+Subject: [PATCH 15/41] Vanadium: disable payment support by default
 
 ---
  components/payments/core/payment_prefs.cc | 2 +-
@@ -21,5 +21,5 @@ index 9590d9494ed10..787ff68af12aa 100644
  }
  
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

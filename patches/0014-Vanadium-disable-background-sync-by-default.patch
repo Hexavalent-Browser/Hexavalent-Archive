@@ -1,7 +1,7 @@
-From b4c093d07146f2b27df4682ebe56fa91145040e0 Mon Sep 17 00:00:00 2001
+From 5afab0ca4c7cf7480918b3bf78a43ac131b90bf4 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 16 Jun 2019 21:57:26 -0400
-Subject: [PATCH 14/40] Vanadium: disable background sync by default
+Subject: [PATCH 14/41] Vanadium: disable background sync by default
 
 ---
  .../content_settings/core/browser/content_settings_registry.cc  | 2 +-
@@ -21,5 +21,5 @@ index a9dc3e5bebed8..3d4dad64b74cc 100644
             ValidSettings(CONTENT_SETTING_ALLOW, CONTENT_SETTING_BLOCK),
             WebsiteSettingsInfo::SINGLE_ORIGIN_ONLY_SCOPE,
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

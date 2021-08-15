@@ -1,7 +1,7 @@
-From 34399ec84bf4bbb1c93ecea90b863509c8bc1cb3 Mon Sep 17 00:00:00 2001
+From 66b27dc1fa74b7337fa9aedc37b756ed1fbeee3b Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 4 Aug 2021 03:29:04 -0400
-Subject: [PATCH 39/40] Vanadium: disable trials of privacy-aware
+Subject: [PATCH 39/41] Vanadium: disable trials of privacy-aware
  analytics/advertising APIs
 
 ---
@@ -45,5 +45,5 @@ index f6094c3d70091..6df947ac2311a 100644
  }
  
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

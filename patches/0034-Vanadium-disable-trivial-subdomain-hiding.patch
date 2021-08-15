@@ -1,7 +1,7 @@
-From ce072f0ed8f6baacf408e70aba84241be6919d2d Mon Sep 17 00:00:00 2001
+From 61898a5115f5ee6f9b7879802cfd42e37dbaeee0 Mon Sep 17 00:00:00 2001
 From: JTL <jtl@teamclassified.ca>
 Date: Sat, 21 Dec 2019 04:04:24 +0000
-Subject: [PATCH 34/40] Vanadium: disable trivial subdomain hiding
+Subject: [PATCH 34/41] Vanadium: disable trivial subdomain hiding
 
 ---
  components/url_formatter/url_formatter.cc | 3 +--
@@ -22,5 +22,5 @@ index f8f57f2d85ef6..5f16720165d7f 100644
                             HostComponentTransform(trim_trivial_subdomains),
                             &url_string, &new_parsed->host, adjustments);
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

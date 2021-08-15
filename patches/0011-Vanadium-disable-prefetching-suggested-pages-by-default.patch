@@ -1,7 +1,7 @@
-From 09ded9b956def66d781cd82b3a0bed697419ba68 Mon Sep 17 00:00:00 2001
+From 27e8e31388a6b5dc81e4dd46bae7de7b6cdc2a59 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 04:10:21 -0400
-Subject: [PATCH 11/40] Vanadium: disable prefetching suggested pages by
+Subject: [PATCH 11/41] Vanadium: disable prefetching suggested pages by
  default
 
 ---
@@ -22,5 +22,5 @@ index 1d53df4c69cfc..9aef05f0f3f06 100644
  const base::Feature kOfflinePagesCTV2Feature{"OfflinePagesCTV2",
                                               base::FEATURE_DISABLED_BY_DEFAULT};
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

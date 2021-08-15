@@ -1,0 +1,27 @@
+From 2f15439d93f45785fc700c6ec28309e989e994cd Mon Sep 17 00:00:00 2001
+From: Michael Gilbert <mgilbert@debian.org>
+Date: Sun, 15 Aug 2021 05:08:49 +0100
+Subject: [PATCH 41/41] Debian: disable the google api key warning when those
+ aren't found
+
+---
+ chrome/browser/ui/startup/startup_browser_creator_impl.cc | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/chrome/browser/ui/startup/startup_browser_creator_impl.cc b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
+index 8af47d108ece8..df272f4865d58 100644
+--- a/chrome/browser/ui/startup/startup_browser_creator_impl.cc
++++ b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
+@@ -647,9 +647,6 @@ void StartupBrowserCreatorImpl::AddInfoBarsIfNecessary(
+     }
+ #endif
+ 
+-    if (!google_apis::HasAPIKeyConfigured())
+-      GoogleApiKeysInfoBarDelegate::Create(infobar_manager);
+-
+     if (ObsoleteSystem::IsObsoleteNowOrSoon()) {
+       PrefService* local_state = g_browser_process->local_state();
+       if (!local_state ||
+-- 
+2.31.1.windows.1
+

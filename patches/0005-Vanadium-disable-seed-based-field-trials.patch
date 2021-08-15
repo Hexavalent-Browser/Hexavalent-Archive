@@ -1,7 +1,7 @@
-From 97a2f4e5ff302b1d99e8fb6cf1fdc957e962333b Mon Sep 17 00:00:00 2001
+From 6146d362ad172ff042a42ee51cd82c6a8601253c Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 25 Dec 2018 16:19:51 -0500
-Subject: [PATCH 05/40] Vanadium: disable seed-based field trials
+Subject: [PATCH 05/41] Vanadium: disable seed-based field trials
 
 ---
  components/variations/service/variations_field_trial_creator.cc | 2 ++
@@ -23,5 +23,5 @@ index 30611ab65dd09..36ffeadfbb230 100644
  
    platform_field_trials->SetupFeatureControllingFieldTrials(
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

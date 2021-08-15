@@ -1,7 +1,7 @@
-From c48c9e76eca8fb4868f98d840be16be86ea1035b Mon Sep 17 00:00:00 2001
+From c2f1f69014f0c3ca94dae69385adb1860961d554 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 12 Mar 2020 13:01:02 -0400
-Subject: [PATCH 22/40] Vanadium: disable unused safe browsing option by
+Subject: [PATCH 22/41] Vanadium: disable unused safe browsing option by
  default
 
 Safe Browsing is currently a no-op due to the lack of Play Services, and
@@ -26,5 +26,5 @@ index 36b5c820ea7c7..6e08016c114f0 100644
    registry->RegisterBooleanPref(prefs::kSafeBrowsingEnhanced, false);
    registry->RegisterBooleanPref(prefs::kSafeBrowsingProceedAnywayDisabled,
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

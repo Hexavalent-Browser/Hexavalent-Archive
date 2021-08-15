@@ -1,7 +1,7 @@
-From 64f2ce7d73dd3518725371c49fa3b6e8ddda37c0 Mon Sep 17 00:00:00 2001
+From 6d5d5044512aa8ba23e718c2e5dbec34b9bf6155 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 1 Dec 2020 00:56:57 -0500
-Subject: [PATCH 28/40] Vanadium: disable autofill server communication by
+Subject: [PATCH 28/41] Vanadium: disable autofill server communication by
  default
 
 ---
@@ -22,5 +22,5 @@ index f9f478b47d0c5..c5163cd8b208f 100644
  // Controls attaching the autofill type predictions to their respective
  // element in the DOM.
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

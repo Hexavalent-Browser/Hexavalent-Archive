@@ -1,7 +1,7 @@
-From c6ff8936bd2045b7af824da99890419599979b15 Mon Sep 17 00:00:00 2001
+From e196509aa9ac462cd452cc31f4fbbbb81987e643 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 4 Jul 2019 18:11:27 -0400
-Subject: [PATCH 16/40] Vanadium: disable media router media remoting by
+Subject: [PATCH 16/41] Vanadium: disable media router media remoting by
  default
 
 ---
@@ -22,5 +22,5 @@ index 7ee045c66e37b..b54fe22887986 100644
        media_router::prefs::kMediaRouterTabMirroringSources);
  #endif
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

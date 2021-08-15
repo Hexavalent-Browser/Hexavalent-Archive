@@ -1,7 +1,7 @@
-From 7914d2912487aa6f5c1baf38c64f04c9c5932069 Mon Sep 17 00:00:00 2001
+From 0f1d2e44f899bd537cc2acd50846f136074027b8 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 28 May 2021 09:08:01 -0400
-Subject: [PATCH 38/40] Vanadium: disable mobile identity consistency by
+Subject: [PATCH 38/41] Vanadium: disable mobile identity consistency by
  default
 
 ---
@@ -22,5 +22,5 @@ index 1e706d0d9928b..a4ef7051c81ff 100644
  // of MICE on Android.
  const base::Feature kMobileIdentityConsistencyVar{
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

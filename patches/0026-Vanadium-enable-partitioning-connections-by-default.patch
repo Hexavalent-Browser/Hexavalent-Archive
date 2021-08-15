@@ -1,7 +1,7 @@
-From 9ffc110fd5b17890a821d947856d5c60b880b8e9 Mon Sep 17 00:00:00 2001
+From 325e36e828092082a858ece11cd93b88a7afca14 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Mon, 8 Mar 2021 16:53:47 -0500
-Subject: [PATCH 26/40] Vanadium: enable partitioning connections by default
+Subject: [PATCH 26/41] Vanadium: enable partitioning connections by default
 
 ---
  net/base/features.cc | 12 ++++++------
@@ -46,5 +46,5 @@ index 04c8532475652..858ee3da2c30f 100644
  const base::Feature kExpectCTPruning{"ExpectCTPruning",
                                       base::FEATURE_ENABLED_BY_DEFAULT};
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

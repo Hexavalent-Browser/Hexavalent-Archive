@@ -1,7 +1,7 @@
-From 3cc502f6e09a8ca1f099db9c5c1d8aae03950b2f Mon Sep 17 00:00:00 2001
+From b6f95d828cfe2f46642e913d1b08a08d9aa78287 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 05:22:11 -0400
-Subject: [PATCH 21/40] Vanadium: disable safe browsing reporting opt-in by
+Subject: [PATCH 21/41] Vanadium: disable safe browsing reporting opt-in by
  default
 
 ---
@@ -22,5 +22,5 @@ index 25d3c524502be..36b5c820ea7c7 100644
        prefs::kSafeBrowsingEnabled, true,
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 

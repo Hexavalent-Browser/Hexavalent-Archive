@@ -1,7 +1,7 @@
-From 78808ee575b533ea2e2fec5877a93b935442837b Mon Sep 17 00:00:00 2001
+From 9a770045716ec5514746a4dfb984c940aed8b2fe Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 16 Jun 2019 15:57:29 -0400
-Subject: [PATCH 12/40] Vanadium: disable sensors access by default
+Subject: [PATCH 12/41] Vanadium: disable sensors access by default
 
 ---
  .../content_settings/core/browser/content_settings_registry.cc  | 2 +-
@@ -21,5 +21,5 @@ index 6abf923af4285..a9dc3e5bebed8 100644
             ValidSettings(CONTENT_SETTING_ALLOW, CONTENT_SETTING_BLOCK),
             WebsiteSettingsInfo::SINGLE_ORIGIN_ONLY_SCOPE,
 -- 
-2.30.2.windows.1
+2.31.1.windows.1
 
