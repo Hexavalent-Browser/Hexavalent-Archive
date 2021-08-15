@@ -2,6 +2,12 @@
 
 A Chromium downstream project
 
+NOTE: 
+
+- THIS IS A WORK IN PROGRESS PROJECT.
+- THE CURRENT CODEBASE DOES NOT AT ALL REFLECT THE INTENDED GOAL OF IT IN ITS CURRENT STATE. 
+- KEEP IT LOWKEY.
+
 # Why was this made?
 
 - Linux distributions can be a mess. They don't package it properly.
