@@ -1,0 +1,25 @@
+From 3d8ac982f4d937f38296c7cd6db4ca4da1f47c88 Mon Sep 17 00:00:00 2001
+From: flawedworld <flawedworld@flawed.world>
+Date: Sat, 14 Aug 2021 19:47:24 +0100
+Subject: [PATCH 35/37] Hexavalent: set webrtc to private but usable default
+
+---
+ chrome/browser/ui/browser_ui_prefs.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
+index 7bbd3ba5f9057..91dc40abe7e3b 100644
+--- a/chrome/browser/ui/browser_ui_prefs.cc
++++ b/chrome/browser/ui/browser_ui_prefs.cc
+@@ -93,7 +93,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
+                                 false);
+ #endif
+   registry->RegisterStringPref(prefs::kWebRTCIPHandlingPolicy,
+-                               blink::kWebRTCIPHandlingDefault);
++                               blink::kWebRTCIPHandlingDefaultPublicInterfaceOnly);
+   registry->RegisterStringPref(prefs::kWebRTCUDPPortRange, std::string());
+   registry->RegisterBooleanPref(prefs::kWebRtcEventLogCollectionAllowed, false);
+   registry->RegisterListPref(prefs::kWebRtcLocalIpsAllowedUrls);
+-- 
+2.30.1 (Apple Git-130)
+

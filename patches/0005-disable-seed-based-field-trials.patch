@@ -1,0 +1,27 @@
+From b5f2dd85af55a25a4dead92c24e555ccb5354680 Mon Sep 17 00:00:00 2001
+From: Daniel Micay <danielmicay@gmail.com>
+Date: Tue, 25 Dec 2018 16:19:51 -0500
+Subject: [PATCH 05/37] disable seed-based field trials
+
+---
+ components/variations/service/variations_field_trial_creator.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/components/variations/service/variations_field_trial_creator.cc b/components/variations/service/variations_field_trial_creator.cc
+index 34182a0ba9149..1ef1a37276d67 100644
+--- a/components/variations/service/variations_field_trial_creator.cc
++++ b/components/variations/service/variations_field_trial_creator.cc
+@@ -274,8 +274,10 @@ bool VariationsFieldTrialCreator::SetupFieldTrials(
+ #endif  // BUILDFLAG(FIELDTRIAL_TESTING_ENABLED)
+   bool used_seed = false;
+   if (!used_testing_config) {
++#if defined(FIELDTRIAL_SEED_ENABLED)
+     used_seed = CreateTrialsFromSeed(low_entropy_provider.get(),
+                                      feature_list.get(), safe_seed_manager);
++#endif
+   }
+ 
+   platform_field_trials->SetupFeatureControllingFieldTrials(
+-- 
+2.30.1 (Apple Git-130)
+

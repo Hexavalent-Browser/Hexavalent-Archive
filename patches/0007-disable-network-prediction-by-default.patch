@@ -1,0 +1,25 @@
+From 95d2641154e8e74329f53b31589628a9881d50e1 Mon Sep 17 00:00:00 2001
+From: Daniel Micay <danielmicay@gmail.com>
+Date: Wed, 23 Nov 2016 08:31:44 -0500
+Subject: [PATCH 07/37] disable network prediction by default
+
+---
+ chrome/browser/net/prediction_options.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chrome/browser/net/prediction_options.h b/chrome/browser/net/prediction_options.h
+index 2ae6a1093090d..7fc83de1aa0fa 100644
+--- a/chrome/browser/net/prediction_options.h
++++ b/chrome/browser/net/prediction_options.h
+@@ -22,7 +22,7 @@ enum NetworkPredictionOptions {
+   NETWORK_PREDICTION_ALWAYS,
+   NETWORK_PREDICTION_WIFI_ONLY,
+   NETWORK_PREDICTION_NEVER,
+-  NETWORK_PREDICTION_DEFAULT = NETWORK_PREDICTION_WIFI_ONLY,
++  NETWORK_PREDICTION_DEFAULT = NETWORK_PREDICTION_NEVER,
+ };
+ 
+ enum class NetworkPredictionStatus {
+-- 
+2.30.1 (Apple Git-130)
+
