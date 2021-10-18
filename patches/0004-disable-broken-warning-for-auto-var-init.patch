@@ -1,0 +1,25 @@
+From c67579c74be974413f19fca318d055da51aa6985 Mon Sep 17 00:00:00 2001
+From: Daniel Micay <danielmicay@gmail.com>
+Date: Thu, 21 May 2020 14:07:54 -0400
+Subject: [PATCH 04/37] disable broken warning for auto var init
+
+---
+ build/config/compiler/BUILD.gn | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
+index 25f3ffbeff64d..7c4192ae293d6 100644
+--- a/build/config/compiler/BUILD.gn
++++ b/build/config/compiler/BUILD.gn
+@@ -354,7 +354,7 @@ config("compiler") {
+     }
+ 
+     if (is_clang) {
+-      cflags += [ "-ftrivial-auto-var-init=zero", "-enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang" ]
++      cflags += [ "-ftrivial-auto-var-init=zero", "-enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang", "-Wno-unused-command-line-argument" ]
+     }
+ 
+     # Linker warnings.
+-- 
+2.30.1 (Apple Git-130)
+

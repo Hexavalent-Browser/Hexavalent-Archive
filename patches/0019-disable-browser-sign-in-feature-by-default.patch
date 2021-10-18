@@ -1,0 +1,39 @@
+From e5e124d28a598e2939ee80c4e8d75d9a3d937d11 Mon Sep 17 00:00:00 2001
+From: Daniel Micay <danielmicay@gmail.com>
+Date: Fri, 12 Jul 2019 04:23:18 -0400
+Subject: [PATCH 19/37] disable browser sign in feature by default
+
+---
+ chrome/browser/signin/account_consistency_mode_manager.cc       | 2 +-
+ .../signin/internal/identity_manager/primary_account_manager.cc | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/chrome/browser/signin/account_consistency_mode_manager.cc b/chrome/browser/signin/account_consistency_mode_manager.cc
+index b967496c7e181..4a8ee779baf5b 100644
+--- a/chrome/browser/signin/account_consistency_mode_manager.cc
++++ b/chrome/browser/signin/account_consistency_mode_manager.cc
+@@ -127,7 +127,7 @@ void AccountConsistencyModeManager::RegisterProfilePrefs(
+ #if BUILDFLAG(ENABLE_DICE_SUPPORT)
+   registry->RegisterBooleanPref(kDiceMigrationCompletePref, false);
+ #endif
+-  registry->RegisterBooleanPref(prefs::kSigninAllowedOnNextStartup, true);
++  registry->RegisterBooleanPref(prefs::kSigninAllowedOnNextStartup, false);
+ }
+ 
+ // static
+diff --git a/components/signin/internal/identity_manager/primary_account_manager.cc b/components/signin/internal/identity_manager/primary_account_manager.cc
+index 8e380c5b5a919..826d640099636 100644
+--- a/components/signin/internal/identity_manager/primary_account_manager.cc
++++ b/components/signin/internal/identity_manager/primary_account_manager.cc
+@@ -55,7 +55,7 @@ void PrimaryAccountManager::RegisterProfilePrefs(PrefRegistrySimple* registry) {
+   registry->RegisterBooleanPref(prefs::kGoogleServicesConsentedToSync, false);
+   registry->RegisterBooleanPref(prefs::kAutologinEnabled, true);
+   registry->RegisterListPref(prefs::kReverseAutologinRejectedEmailList);
+-  registry->RegisterBooleanPref(prefs::kSigninAllowed, true);
++  registry->RegisterBooleanPref(prefs::kSigninAllowed, false);
+   registry->RegisterBooleanPref(prefs::kSigninAllowedByPolicy, true);
+   registry->RegisterBooleanPref(prefs::kSignedInWithCredentialProvider, false);
+ }
+-- 
+2.30.1 (Apple Git-130)
+
