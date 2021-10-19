@@ -1,7 +1,7 @@
 From f56f478b22b135cba39f0e3b5140581811151700 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 3 Mar 2021 13:42:41 -0500
-Subject: [PATCH 24/37] enable user agent freeze by default
+Subject: [PATCH 24/38] enable user agent freeze by default
 
 ---
  third_party/blink/common/features.cc | 2 +-

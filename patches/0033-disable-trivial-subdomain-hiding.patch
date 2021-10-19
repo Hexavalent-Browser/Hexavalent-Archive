@@ -1,7 +1,7 @@
 From 7b8ef671d82af6e5dde9e80bee60d3c2aed5d932 Mon Sep 17 00:00:00 2001
 From: JTL <jtl@teamclassified.ca>
 Date: Sat, 21 Dec 2019 04:04:24 +0000
-Subject: [PATCH 33/37] disable trivial subdomain hiding
+Subject: [PATCH 33/38] disable trivial subdomain hiding
 
 ---
  components/url_formatter/url_formatter.cc | 3 +--

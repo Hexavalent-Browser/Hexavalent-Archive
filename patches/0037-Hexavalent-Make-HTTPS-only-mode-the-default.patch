@@ -1,7 +1,7 @@
 From 2bc349ffe05859d9ce1a1302ade24e26ef668fa5 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Mon, 18 Oct 2021 17:18:52 -0400
-Subject: [PATCH 37/37] Hexavalent: Make HTTPS-only mode the default
+Subject: [PATCH 37/38] Hexavalent: Make HTTPS-only mode the default
 
 ---
  chrome/browser/ui/browser_ui_prefs.cc | 2 +-
