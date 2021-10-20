@@ -1,4 +1,4 @@
-From ae50720ca3e4a5f5cd98c2c47d22ff6c950d81f7 Mon Sep 17 00:00:00 2001
+From be6fca3200e29a5775540670a32e6a6bc491da15 Mon Sep 17 00:00:00 2001
 From: Michael Gilbert <mgilbert@debian.org>
 Date: Sun, 15 Aug 2021 05:08:49 +0100
 Subject: [PATCH 36/38] Debian: disable the google api key warning when those
@@ -9,10 +9,10 @@ Subject: [PATCH 36/38] Debian: disable the google api key warning when those
  1 file changed, 3 deletions(-)
 
 diff --git a/chrome/browser/ui/startup/startup_browser_creator_impl.cc b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-index 6b7b6d500ca65..1e0057f3167dc 100644
+index 30ea00322c28f..a9dde3fa30e0e 100644
 --- a/chrome/browser/ui/startup/startup_browser_creator_impl.cc
 +++ b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-@@ -666,9 +666,6 @@ void StartupBrowserCreatorImpl::AddInfoBarsIfNecessary(
+@@ -695,9 +695,6 @@ void StartupBrowserCreatorImpl::AddInfoBarsIfNecessary(
      }
  #endif
  
