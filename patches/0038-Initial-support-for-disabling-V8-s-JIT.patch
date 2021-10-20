@@ -1,10 +1,12 @@
-From decfda3a844d0964ed40e4183b699785c6ab9257 Mon Sep 17 00:00:00 2001
+From dfaa41bc5359d32c2f78706210ae85b44d301408 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Tue, 19 Oct 2021 07:36:10 -0400
 Subject: [PATCH 38/38] Initial support for disabling V8's JIT
 
+This adds a flag in `chrome://flags` for toggling the V8 JIT
+compiler; it is default disabled.
 ---
- chrome/browser/about_flags.cc              | 5 +++++
+ chrome/browser/about_flags.cc              | 4 ++++
  chrome/browser/flag-metadata.json          | 7 +++++++
  chrome/browser/flag-never-expire-list.json | 1 +
  chrome/browser/flag_descriptions.cc        | 5 +++++
@@ -12,13 +14,13 @@ Subject: [PATCH 38/38] Initial support for disabling V8's JIT
  gin/gin_features.cc                        | 3 +++
  gin/gin_features.h                         | 1 +
  gin/v8_initializer.cc                      | 4 ++++
- 8 files changed, 29 insertions(+)
+ 8 files changed, 28 insertions(+)
 
 diff --git a/chrome/browser/about_flags.cc b/chrome/browser/about_flags.cc
-index e50714dc9f4f8..369f5341a40b0 100644
+index 0b850b717a0d9..72bd13d3f88c2 100644
 --- a/chrome/browser/about_flags.cc
 +++ b/chrome/browser/about_flags.cc
-@@ -152,6 +152,7 @@
+@@ -158,6 +158,7 @@
  #include "device/gamepad/public/cpp/gamepad_features.h"
  #include "device/vr/buildflags/buildflags.h"
  #include "extensions/buildflags/buildflags.h"
@@ -26,22 +28,21 @@ index e50714dc9f4f8..369f5341a40b0 100644
  #include "gpu/config/gpu_finch_features.h"
  #include "gpu/config/gpu_switches.h"
  #include "media/audio/audio_features.h"
-@@ -5063,6 +5064,10 @@ const FeatureEntry kFeatureEntries[] = {
-      FEATURE_VALUE_TYPE(
-          lookalikes::features::kDetectTargetEmbeddingLookalikes)},
- 
+@@ -3010,6 +3011,9 @@ const FeatureEntry kFeatureEntries[] = {
+     {"enable-webassembly-tiering", flag_descriptions::kEnableWasmTieringName,
+      flag_descriptions::kEnableWasmTieringDescription, kOsAll,
+      FEATURE_VALUE_TYPE(features::kWebAssemblyTiering)},
 +    {"disable-v8-jit", flag_descriptions::kV8NoJITName,
-+     flag_descriptions::kV8NoJITDescription, kOsDesktop,
++     flag_descriptions::kV8NoJITDescription, kOsAll,
 +     FEATURE_VALUE_TYPE(features::kV8NoJIT)},
-+
-     {"disable-process-reuse", flag_descriptions::kDisableProcessReuse,
-      flag_descriptions::kDisableProcessReuseDescription, kOsDesktop,
-      FEATURE_VALUE_TYPE(features::kDisableProcessReuse)},
+     {"enable-future-v8-vm-features", flag_descriptions::kV8VmFutureName,
+      flag_descriptions::kV8VmFutureDescription, kOsAll,
+      FEATURE_VALUE_TYPE(features::kV8VmFuture)},
 diff --git a/chrome/browser/flag-metadata.json b/chrome/browser/flag-metadata.json
-index a670bf1f6a828..ba928eb518bd7 100644
+index 6ba52dc9c383f..694deeee8b1a0 100644
 --- a/chrome/browser/flag-metadata.json
 +++ b/chrome/browser/flag-metadata.json
-@@ -1134,6 +1134,13 @@
+@@ -1172,6 +1172,13 @@
      // issues.
      "expiry_milestone": -1
    },
@@ -49,14 +50,14 @@ index a670bf1f6a828..ba928eb518bd7 100644
 +    "name": "disable-v8-jit",
 +    "owners": [ "cliffmaceyak@gmail.com" ],
 +    // This flag does not expire because it allows users to disable the
-+    // V8 Just-In-Time compiler.
++    // V8 JIT compiler.
 +    "expiry_milestone": -1
 +  },
    {
      "name": "disable-virtual-keyboard",
      "owners": [ "myy", "essential-inputs-team@google.com" ],
 diff --git a/chrome/browser/flag-never-expire-list.json b/chrome/browser/flag-never-expire-list.json
-index 51f2b6772866c..b20893f0efd7c 100644
+index 1129a8a5bde8f..d59220ea26de6 100644
 --- a/chrome/browser/flag-never-expire-list.json
 +++ b/chrome/browser/flag-never-expire-list.json
 @@ -27,6 +27,7 @@
@@ -68,10 +69,10 @@ index 51f2b6772866c..b20893f0efd7c 100644
    "disable-webrtc-hw-encoding",
    "disallow-doc-written-script-loads",
 diff --git a/chrome/browser/flag_descriptions.cc b/chrome/browser/flag_descriptions.cc
-index d41f7a9563b5a..bcdf7841afa8d 100644
+index b3ce62e01301c..3c30629cfe5e2 100644
 --- a/chrome/browser/flag_descriptions.cc
 +++ b/chrome/browser/flag_descriptions.cc
-@@ -2636,6 +2636,11 @@ const char kUseSearchClickForRightClickDescription[] =
+@@ -2688,6 +2688,11 @@ const char kUseSearchClickForRightClickDescription[] =
      "webpages and apps to consume alt+click. When disabled the legacy "
      "behavior of remapping alt+click to right click will remain unchanged.";
  
@@ -84,10 +85,10 @@ index d41f7a9563b5a..bcdf7841afa8d 100644
  const char kV8VmFutureDescription[] =
      "This enables upcoming and experimental V8 VM features. "
 diff --git a/chrome/browser/flag_descriptions.h b/chrome/browser/flag_descriptions.h
-index 1078cced42c52..ac5ee4b24e300 100644
+index e781cc1ba38bf..a2d2b280bee59 100644
 --- a/chrome/browser/flag_descriptions.h
 +++ b/chrome/browser/flag_descriptions.h
-@@ -1496,6 +1496,9 @@ extern const char kUseFirstPartySetDescription[];
+@@ -1531,6 +1531,9 @@ extern const char kUseFirstPartySetDescription[];
  extern const char kUseSearchClickForRightClickName[];
  extern const char kUseSearchClickForRightClickDescription[];
  
@@ -98,46 +99,44 @@ index 1078cced42c52..ac5ee4b24e300 100644
  extern const char kV8VmFutureDescription[];
  
 diff --git a/gin/gin_features.cc b/gin/gin_features.cc
-index 55c519e5a142b..1eac910dba79f 100644
+index ef1bebc28d6ba..65135fb87a8c2 100644
 --- a/gin/gin_features.cc
 +++ b/gin/gin_features.cc
-@@ -47,6 +47,9 @@ const base::Feature kV8NoReclaimUnmodifiedWrappers{
- const base::Feature kV8LocalHeaps{"V8LocalHeaps",
-                                   base::FEATURE_ENABLED_BY_DEFAULT};
+@@ -93,4 +93,7 @@ const base::Feature kV8ArrayBufferCageReservationExperiment{
+ const base::Feature kV8SlowHistograms{"V8SlowHistograms",
+                                       base::FEATURE_DISABLED_BY_DEFAULT};
  
-+// Disables the V8 Just-in-Time compiler
++// Disables the V8 JIT compiler
 +const base::Feature kV8NoJIT{"V8NoJIT", base::FEATURE_DISABLED_BY_DEFAULT};
 +
- // Enables TurboFan's direct heap access.
- const base::Feature kV8TurboDirectHeapAccess{"V8TurboDirectHeapAccess",
-                                              base::FEATURE_ENABLED_BY_DEFAULT};
+ }  // namespace features
 diff --git a/gin/gin_features.h b/gin/gin_features.h
-index 2eb9e36d580c1..e7fdcbf55661f 100644
+index 16d0610ceaacc..69424709ebf39 100644
 --- a/gin/gin_features.h
 +++ b/gin/gin_features.h
 @@ -18,6 +18,7 @@ GIN_EXPORT extern const base::Feature kV8FlushBytecode;
+ GIN_EXPORT extern const base::Feature kV8FlushBaselineCode;
  GIN_EXPORT extern const base::Feature kV8FlushEmbeddedBlobICache;
  GIN_EXPORT extern const base::Feature kV8LazyFeedbackAllocation;
- GIN_EXPORT extern const base::Feature kV8LocalHeaps;
 +GIN_EXPORT extern const base::Feature kV8NoJIT;
  GIN_EXPORT extern const base::Feature kV8NoReclaimUnmodifiedWrappers;
  GIN_EXPORT extern const base::Feature kV8OffThreadFinalization;
  GIN_EXPORT extern const base::Feature kV8OptimizeJavascript;
 diff --git a/gin/v8_initializer.cc b/gin/v8_initializer.cc
-index 6e7261ff6e7ea..8bdde491a709d 100644
+index 8177563df293a..759553f3db918 100644
 --- a/gin/v8_initializer.cc
 +++ b/gin/v8_initializer.cc
-@@ -325,6 +325,10 @@ void V8Initializer::Initialize(IsolateHolder::ScriptMode mode) {
-     SetV8Flags("--no-local-heaps --no-turbo-direct-heap-access");
+@@ -367,6 +367,10 @@ void V8Initializer::Initialize(IsolateHolder::ScriptMode mode) {
+     SetV8Flags("--no-short-builtin-calls");
    }
  
 +  if (base::FeatureList::IsEnabled(features::kV8NoJIT)) {
 +    SetV8Flags("--jitless");
 +  }
 +
-   if (!base::FeatureList::IsEnabled(features::kV8TurboDirectHeapAccess)) {
-     // The --turbo-direct-heap-access flag is enabled by default, so we need to
-     // explicitly disable it if kV8TurboDirectHeapAccess is disabled.
+   SetV8FlagsIfOverridden(features::kV8SlowHistograms, "--slow-histograms",
+                          "--no-slow-histograms");
+ 
 -- 
 2.30.1 (Apple Git-130)
 

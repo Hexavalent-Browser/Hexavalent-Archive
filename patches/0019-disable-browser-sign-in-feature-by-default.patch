@@ -1,4 +1,4 @@
-From e5e124d28a598e2939ee80c4e8d75d9a3d937d11 Mon Sep 17 00:00:00 2001
+From f3add8f3a8eed59887c821fd7d66bb3774388bbb Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 04:23:18 -0400
 Subject: [PATCH 19/38] disable browser sign in feature by default
@@ -22,7 +22,7 @@ index b967496c7e181..4a8ee779baf5b 100644
  
  // static
 diff --git a/components/signin/internal/identity_manager/primary_account_manager.cc b/components/signin/internal/identity_manager/primary_account_manager.cc
-index 8e380c5b5a919..826d640099636 100644
+index b476a904a1b1b..5eb20771f8092 100644
 --- a/components/signin/internal/identity_manager/primary_account_manager.cc
 +++ b/components/signin/internal/identity_manager/primary_account_manager.cc
 @@ -55,7 +55,7 @@ void PrimaryAccountManager::RegisterProfilePrefs(PrefRegistrySimple* registry) {
@@ -31,9 +31,9 @@ index 8e380c5b5a919..826d640099636 100644
    registry->RegisterListPref(prefs::kReverseAutologinRejectedEmailList);
 -  registry->RegisterBooleanPref(prefs::kSigninAllowed, true);
 +  registry->RegisterBooleanPref(prefs::kSigninAllowed, false);
-   registry->RegisterBooleanPref(prefs::kSigninAllowedByPolicy, true);
    registry->RegisterBooleanPref(prefs::kSignedInWithCredentialProvider, false);
  }
+ 
 -- 
 2.30.1 (Apple Git-130)
 

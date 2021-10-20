@@ -1,4 +1,4 @@
-From 4acf4f6e7073619d55597ff385b18446261641ac Mon Sep 17 00:00:00 2001
+From 5bf48e98cf29f82008830def673319c34b0a6e2e Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 4 Aug 2021 03:29:04 -0400
 Subject: [PATCH 34/38] disable trials of privacy-aware analytics/advertising
@@ -10,18 +10,18 @@ Subject: [PATCH 34/38] disable trials of privacy-aware analytics/advertising
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/common/chrome_features.cc b/chrome/common/chrome_features.cc
-index fd74a49b0b9d1..274123ea9b4ca 100644
+index aac450f4fee76..33a42b3a605db 100644
 --- a/chrome/common/chrome_features.cc
 +++ b/chrome/common/chrome_features.cc
-@@ -782,7 +782,7 @@ const base::Feature kPrivacyReview{"PrivacyReview",
+@@ -789,7 +789,7 @@ const base::Feature kPrivacyReview{"PrivacyReview",
  
- // Enables the privacy sandbox settings page.
- const base::Feature kPrivacySandboxSettings{"PrivacySandboxSettings",
--                                            base::FEATURE_ENABLED_BY_DEFAULT};
-+                                            base::FEATURE_DISABLED_BY_DEFAULT};
- const base::FeatureParam<std::string> kPrivacySandboxSettingsURL{
-     &kPrivacySandboxSettings, "website-url", "https://www.privacysandbox.com"};
- 
+ // Enables additional control set 2 on the privacy sandbox settings page.
+ const base::Feature kPrivacySandboxSettings2{"PrivacySandboxSettings2",
+-                                             base::FEATURE_ENABLED_BY_DEFAULT};
++                                             base::FEATURE_DISABLED_BY_DEFAULT};
+ const base::FeatureParam<std::string> kPrivacySandboxSettings2FlocURL{
+     &kPrivacySandboxSettings2, "floc-website-url",
+     "https://privacysandbox.com/proposals/floc"};
 diff --git a/components/privacy_sandbox/privacy_sandbox_prefs.cc b/components/privacy_sandbox/privacy_sandbox_prefs.cc
 index f6094c3d70091..6df947ac2311a 100644
 --- a/components/privacy_sandbox/privacy_sandbox_prefs.cc

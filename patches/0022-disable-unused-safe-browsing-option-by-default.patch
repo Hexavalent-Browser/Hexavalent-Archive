@@ -1,4 +1,4 @@
-From 16b8b86b6826ab8d28ad55b0d333bf7501d443ec Mon Sep 17 00:00:00 2001
+From 7b1434832648d3acc12684eff2d178b8155785f4 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 12 Mar 2020 13:01:02 -0400
 Subject: [PATCH 22/38] disable unused safe browsing option by default
@@ -12,7 +12,7 @@ that privacy is preserved.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/safe_browsing/core/common/safe_browsing_prefs.cc b/components/safe_browsing/core/common/safe_browsing_prefs.cc
-index 34106a97f2eb9..170924a29ec0c 100644
+index cccc3f266fd61..d7fdf16095d5c 100644
 --- a/components/safe_browsing/core/common/safe_browsing_prefs.cc
 +++ b/components/safe_browsing/core/common/safe_browsing_prefs.cc
 @@ -192,7 +192,7 @@ void RegisterProfilePrefs(PrefRegistrySimple* registry) {
