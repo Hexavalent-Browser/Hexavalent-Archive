@@ -1,7 +1,7 @@
 From 2ff0f7ea22b5e7a584a4f16c7ab9fbcebc86d21a Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Mon, 17 Jun 2019 11:29:21 -0400
-Subject: [PATCH 31/38] stub out the battery status API
+Subject: [PATCH 31/39] stub out the battery status API
 
 Pretend that the device is always plugged in and fully charged.
 ---
