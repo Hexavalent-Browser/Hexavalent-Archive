@@ -1,7 +1,7 @@
 From 349f806706fa3b1e54a3d75fbe8bd7ca1f34e3e4 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 26 Dec 2018 10:20:24 -0500
-Subject: [PATCH 01/38] switch to -fstack-protector-strong
+Subject: [PATCH 01/39] switch to -fstack-protector-strong
 
 ---
  build/config/compiler/BUILD.gn | 6 +-----

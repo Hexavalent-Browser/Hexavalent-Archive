@@ -1,7 +1,7 @@
 From 761871f28d0fee5407031071b9b37126f5b86468 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 21 May 2020 14:07:54 -0400
-Subject: [PATCH 04/38] disable broken warning for auto var init
+Subject: [PATCH 04/39] disable broken warning for auto var init
 
 ---
  build/config/compiler/BUILD.gn | 2 +-
