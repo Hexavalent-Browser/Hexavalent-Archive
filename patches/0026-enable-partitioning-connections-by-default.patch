@@ -1,4 +1,4 @@
-From b886ec670ffbf20bb047d1622bf93fe05d3e7648 Mon Sep 17 00:00:00 2001
+From aeded66b59ceea08b19dc4c8c4dc0c26e0787017 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Mon, 8 Mar 2021 16:53:47 -0500
 Subject: [PATCH 26/39] enable partitioning connections by default
@@ -8,7 +8,7 @@ Subject: [PATCH 26/39] enable partitioning connections by default
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/net/base/features.cc b/net/base/features.cc
-index 5526634e8b5af..2e0639950e3a5 100644
+index 39240192c87ea..fb45fb3c7a040 100644
 --- a/net/base/features.cc
 +++ b/net/base/features.cc
 @@ -99,27 +99,27 @@ const base::Feature kSplitCacheByNetworkIsolationKey{

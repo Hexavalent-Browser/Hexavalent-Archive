@@ -1,4 +1,4 @@
-From 5b2b229b09082596e3f3a49a01dc90e925e44ab1 Mon Sep 17 00:00:00 2001
+From d92bf0de0aef5ba30996ed7ef47d17237afb9a73 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 16 Jun 2019 15:57:29 -0400
 Subject: [PATCH 12/39] disable sensors access by default
@@ -8,7 +8,7 @@ Subject: [PATCH 12/39] disable sensors access by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/content_settings/core/browser/content_settings_registry.cc b/components/content_settings/core/browser/content_settings_registry.cc
-index 585b86afeeacd..d7272c314dfec 100644
+index beeb57851306b..9a92553a1d7d5 100644
 --- a/components/content_settings/core/browser/content_settings_registry.cc
 +++ b/components/content_settings/core/browser/content_settings_registry.cc
 @@ -403,7 +403,7 @@ void ContentSettingsRegistry::Init() {
