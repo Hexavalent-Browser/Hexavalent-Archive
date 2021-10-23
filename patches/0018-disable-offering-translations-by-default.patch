@@ -1,7 +1,7 @@
-From 0e7a6192321fdc3aa5234b6fec0a024618e10a8c Mon Sep 17 00:00:00 2001
+From 27e2e8fbbbcea310340ef9bfbee290902db6f6a9 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 03:58:01 -0400
-Subject: [PATCH 18/39] disable offering translations by default
+Subject: [PATCH 18/40] disable offering translations by default
 
 ---
  chrome/browser/ui/browser_ui_prefs.cc | 2 +-

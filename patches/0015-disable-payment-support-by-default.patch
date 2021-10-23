@@ -1,7 +1,7 @@
-From f38824cb7a95ba6cf153a934896367b877042bae Mon Sep 17 00:00:00 2001
+From 0065881b700f1524ae0e68341c348aba701cc1df Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 18 Jun 2019 22:28:53 -0400
-Subject: [PATCH 15/39] disable payment support by default
+Subject: [PATCH 15/40] disable payment support by default
 
 ---
  components/payments/core/payment_prefs.cc | 2 +-

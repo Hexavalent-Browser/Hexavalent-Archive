@@ -1,7 +1,7 @@
-From f6494068a72483eb1128b9a1c87d4d8cc5c95102 Mon Sep 17 00:00:00 2001
+From f388b842fc1e6957c241e8246dc9b5ea45f7340b Mon Sep 17 00:00:00 2001
 From: flawedworld <flawedworld@flawed.world>
 Date: Sat, 14 Aug 2021 19:47:24 +0100
-Subject: [PATCH 35/39] Hexavalent: set webrtc to private but usable default
+Subject: [PATCH 35/40] Hexavalent: set webrtc to private but usable default
 
 ---
  chrome/browser/ui/browser_ui_prefs.cc | 2 +-

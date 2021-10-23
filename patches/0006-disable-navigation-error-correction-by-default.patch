@@ -1,7 +1,7 @@
-From 9125ac1730354dd1c0dfcf2c884a904afb7f6685 Mon Sep 17 00:00:00 2001
+From 486e62a7ee623141b16fd485e6573f714b6910f6 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 23 Nov 2016 08:29:58 -0500
-Subject: [PATCH 06/39] disable navigation error correction by default
+Subject: [PATCH 06/40] disable navigation error correction by default
 
 ---
  chrome/browser/net/profile_network_context_service.cc | 2 +-

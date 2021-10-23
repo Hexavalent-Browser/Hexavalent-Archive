@@ -1,7 +1,7 @@
-From c01c48c0dd4fdd16432c7732a5d5610e7c6687fe Mon Sep 17 00:00:00 2001
+From 4ed8fd7865829abd9dfe5d16f3654d1b2fe2659d Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 04:10:21 -0400
-Subject: [PATCH 11/39] disable prefetching suggested pages by default
+Subject: [PATCH 11/40] disable prefetching suggested pages by default
 
 ---
  components/offline_pages/core/offline_page_feature.cc | 2 +-
