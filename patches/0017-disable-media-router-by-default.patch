@@ -1,7 +1,7 @@
-From 5653af4d50d84d13835ef83b153a97a3881fa524 Mon Sep 17 00:00:00 2001
+From cd9991413129530a7258d7645ee5061bfdbae93c Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 4 Jul 2019 19:08:52 -0400
-Subject: [PATCH 17/40] disable media router by default
+Subject: [PATCH 17/41] disable media router by default
 
 ---
  chrome/browser/media/router/media_router_feature.cc | 2 +-

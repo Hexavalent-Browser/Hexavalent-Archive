@@ -1,19 +1,19 @@
-From bdf20251a5c24d3a71168293eb892d1b11a46cc2 Mon Sep 17 00:00:00 2001
+From 2a290c0546ff5e4ffada0cde10efc362f572140d Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Sat, 23 Oct 2021 08:15:14 -0400
-Subject: [PATCH 40/40] Enable the V8 Virtual Memory Cage by Default
+Subject: [PATCH 40/41] Enable the V8 virtual memory cage by default
 
-# The goal of the V8 heap sandbox is to prevent an attacker with the
-# ability to corrupt V8 objects from constructing an arbitrary memory
-# read/write primitive. This is achieved through two fundamental
-# mechanisms: the virtual memory cage, discussed in this document,
-# and the external pointer table.
+The goal of the V8 heap sandbox is to prevent an attacker with the
+ability to corrupt V8 objects from constructing an arbitrary memory
+read/write primitive. This is achieved through two fundamental
+mechanisms: the virtual memory cage, discussed in this document,
+and the external pointer table.
 
-Upstream is in the process of testing enabling this.
+Upstream is in the process of testing this via trials.
 
 See:
-*    https://twitter.com/5aelo/status/1450862485070827533
-*    https://chromium-review.googlesource.com/c/chromium/src/+/3220290
+* https://twitter.com/5aelo/status/1450862485070827533
+* https://crrev.com/c/3220290
 ---
  gin/gin_features.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
