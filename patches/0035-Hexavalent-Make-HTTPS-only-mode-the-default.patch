@@ -1,7 +1,7 @@
-From d9a173b1dc6c1e3cd4164516223b84d0cdbe9c31 Mon Sep 17 00:00:00 2001
+From 4ffd6827aa4db56a9b9d42aec4fd78cb369786e8 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Mon, 18 Oct 2021 17:18:52 -0400
-Subject: [PATCH 37/38] Hexavalent: Make HTTPS-only mode the default
+Subject: [PATCH 35/36] Hexavalent: Make HTTPS-only mode the default
 
 ---
  chrome/browser/ui/browser_ui_prefs.cc | 2 +-
@@ -20,5 +20,5 @@ index 91dc40abe7e3b..7b8875e960c36 100644
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  }
 -- 
-2.30.1 (Apple Git-130)
+2.33.1
 

@@ -1,7 +1,7 @@
-From 0a8fd6f07eb1eda38589fd2adaeb50938197afdc Mon Sep 17 00:00:00 2001
+From 77acb83d7afc1b8526426e25da63f5f02b295f99 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 27 Nov 2020 03:56:29 -0500
-Subject: [PATCH 29/38] disable component updater pings by default
+Subject: [PATCH 28/36] disable component updater pings by default
 
 ---
  .../component_updater_command_line_config_policy.h              | 2 +-
@@ -21,5 +21,5 @@ index 17606fe0c867b..11be0a70cb57b 100644
  
    // If non-zero, time interval in seconds until the first component
 -- 
-2.30.1 (Apple Git-130)
+2.33.1
 

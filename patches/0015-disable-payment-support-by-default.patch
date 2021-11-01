@@ -1,7 +1,7 @@
-From 5776618d238215271129e2ce0ba5477c29baebd4 Mon Sep 17 00:00:00 2001
+From fdb22328182121bfde5afabd7a6cf32a1f3d7ddd Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 18 Jun 2019 22:28:53 -0400
-Subject: [PATCH 15/38] disable payment support by default
+Subject: [PATCH 15/36] disable payment support by default
 
 ---
  components/payments/core/payment_prefs.cc | 2 +-
@@ -21,5 +21,5 @@ index 9590d9494ed10..787ff68af12aa 100644
  }
  
 -- 
-2.30.1 (Apple Git-130)
+2.33.1
 

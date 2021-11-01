@@ -1,7 +1,7 @@
-From 5bf48e98cf29f82008830def673319c34b0a6e2e Mon Sep 17 00:00:00 2001
+From d54e297441a4d283837cdc5913bb9a192c5b6aca Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 4 Aug 2021 03:29:04 -0400
-Subject: [PATCH 34/38] disable trials of privacy-aware analytics/advertising
+Subject: [PATCH 32/36] disable trials of privacy-aware analytics/advertising
  APIs
 
 ---
@@ -45,5 +45,5 @@ index f6094c3d70091..6df947ac2311a 100644
  }
  
 -- 
-2.30.1 (Apple Git-130)
+2.33.1
 

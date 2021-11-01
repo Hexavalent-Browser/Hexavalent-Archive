@@ -1,7 +1,7 @@
-From 5b2b229b09082596e3f3a49a01dc90e925e44ab1 Mon Sep 17 00:00:00 2001
+From 1e865f29f202ba391b5551dd0ef538da2a2f2ac1 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 16 Jun 2019 15:57:29 -0400
-Subject: [PATCH 12/38] disable sensors access by default
+Subject: [PATCH 12/36] disable sensors access by default
 
 ---
  .../content_settings/core/browser/content_settings_registry.cc  | 2 +-
@@ -21,5 +21,5 @@ index 585b86afeeacd..d7272c314dfec 100644
             ValidSettings(CONTENT_SETTING_ALLOW, CONTENT_SETTING_BLOCK),
             WebsiteSettingsInfo::SINGLE_ORIGIN_ONLY_SCOPE,
 -- 
-2.30.1 (Apple Git-130)
+2.33.1
 

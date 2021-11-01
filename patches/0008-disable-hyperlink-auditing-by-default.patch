@@ -1,7 +1,7 @@
-From fa174f0a796696476da755cd0dde170fbc772c26 Mon Sep 17 00:00:00 2001
+From b39b2e24ce0daefa97c89b8cd821b30106ffc133 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sat, 26 Nov 2016 14:57:22 -0500
-Subject: [PATCH 08/38] disable hyperlink auditing by default
+Subject: [PATCH 08/36] disable hyperlink auditing by default
 
 ---
  chrome/browser/chrome_content_browser_client.cc | 2 +-
@@ -21,5 +21,5 @@ index 93a402f34c0da..988a8cab29354 100644
    // user policy in addition to the same named ones in Local State (which are
    // used for mapping the command-line flags).
 -- 
-2.30.1 (Apple Git-130)
+2.33.1
 

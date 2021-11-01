@@ -1,7 +1,7 @@
-From 9e10a998ef47eb6816182a19768a0a9c41cee8bf Mon Sep 17 00:00:00 2001
+From 2a20fb3d034d5faf9cd2a6e4a49e76f4740db30e Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 23 Oct 2020 23:59:13 -0400
-Subject: [PATCH 23/38] enable prefetch privacy changes by default
+Subject: [PATCH 23/36] enable prefetch privacy changes by default
 
 ---
  third_party/blink/common/features.cc | 2 +-
@@ -21,5 +21,5 @@ index 612c3140300de..734c040a778b9 100644
  // Decodes jpeg 4:2:0 formatted images to YUV instead of RGBX and stores in this
  // format in the image decode cache. See crbug.com/919627 for details on the
 -- 
-2.30.1 (Apple Git-130)
+2.33.1
 

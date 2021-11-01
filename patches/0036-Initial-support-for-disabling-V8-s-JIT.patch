@@ -1,7 +1,7 @@
-From dfaa41bc5359d32c2f78706210ae85b44d301408 Mon Sep 17 00:00:00 2001
+From 3978996c1e72c2d1e1616be5bec5e8e58e758471 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Tue, 19 Oct 2021 07:36:10 -0400
-Subject: [PATCH 38/38] Initial support for disabling V8's JIT
+Subject: [PATCH 36/36] Initial support for disabling V8's JIT
 
 This adds a flag in `chrome://flags` for toggling the V8 JIT
 compiler; it is default disabled.
@@ -138,5 +138,5 @@ index 8177563df293a..759553f3db918 100644
                           "--no-slow-histograms");
  
 -- 
-2.30.1 (Apple Git-130)
+2.33.1
 

@@ -1,7 +1,7 @@
-From be6fca3200e29a5775540670a32e6a6bc491da15 Mon Sep 17 00:00:00 2001
+From a4126765c809fb345aa0ab3157b35b96935d0033 Mon Sep 17 00:00:00 2001
 From: Michael Gilbert <mgilbert@debian.org>
 Date: Sun, 15 Aug 2021 05:08:49 +0100
-Subject: [PATCH 36/38] Debian: disable the google api key warning when those
+Subject: [PATCH 34/36] Debian: disable the google api key warning when those
  aren't found
 
 ---
@@ -23,5 +23,5 @@ index 30ea00322c28f..a9dde3fa30e0e 100644
        PrefService* local_state = g_browser_process->local_state();
        if (!local_state ||
 -- 
-2.30.1 (Apple Git-130)
+2.33.1
 

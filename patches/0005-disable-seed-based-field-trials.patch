@@ -1,7 +1,7 @@
-From bc89209a23264a191d06b704f8b2f8a7b4d72086 Mon Sep 17 00:00:00 2001
+From 0a4c60860194ffdc2d9874f3f474b5f71a067269 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 25 Dec 2018 16:19:51 -0500
-Subject: [PATCH 05/38] disable seed-based field trials
+Subject: [PATCH 05/36] disable seed-based field trials
 
 ---
  components/variations/service/variations_field_trial_creator.cc | 2 ++
@@ -23,5 +23,5 @@ index f9b197d113647..09e9a3ee070b4 100644
  
    platform_field_trials->SetupFeatureControllingFieldTrials(
 -- 
-2.30.1 (Apple Git-130)
+2.33.1
 
