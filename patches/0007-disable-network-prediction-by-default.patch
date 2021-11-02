@@ -1,7 +1,7 @@
-From 71c02631ae30a4b2dec5af32036e2df37bac9960 Mon Sep 17 00:00:00 2001
+From 2ec113055308215e0adb2d538850db96a795912d Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 23 Nov 2016 08:31:44 -0500
-Subject: [PATCH 07/41] disable network prediction by default
+Subject: [PATCH 07/40] disable network prediction by default
 
 ---
  chrome/browser/net/prediction_options.h | 2 +-

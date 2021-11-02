@@ -1,7 +1,7 @@
-From 8c77a82e7a1b1b2c3342f17a6767a48104b33d05 Mon Sep 17 00:00:00 2001
+From a0c1ec8028ccb6fb2b8eb130046cab4b0df2b903 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 8 Mar 2018 22:43:12 -0500
-Subject: [PATCH 10/41] disable article suggestions feature by default
+Subject: [PATCH 10/40] disable article suggestions feature by default
 
 ---
  components/feed/core/shared_prefs/pref_names.cc | 4 ++--

@@ -1,7 +1,7 @@
-From 5d7d23aaa615df0cb9fdd21c5a2b786275d30b4f Mon Sep 17 00:00:00 2001
+From b7393501d83e2eec29389c261fbff124958af9a3 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Mon, 17 Jun 2019 13:14:22 -0400
-Subject: [PATCH 32/41] always use local new tab page
+Subject: [PATCH 31/40] always use local new tab page
 
 ---
  chrome/browser/search/search.cc | 2 +-
