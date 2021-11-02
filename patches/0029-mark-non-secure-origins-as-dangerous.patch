@@ -1,7 +1,7 @@
 From edea5deffeafbcec492888d1c83ccf4d4f96f11e Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 20 Oct 2017 21:20:50 -0400
-Subject: [PATCH 29/40] mark non-secure origins as dangerous
+Subject: [PATCH 29/39] mark non-secure origins as dangerous
 
 ---
  components/security_state/core/security_state.cc | 2 +-

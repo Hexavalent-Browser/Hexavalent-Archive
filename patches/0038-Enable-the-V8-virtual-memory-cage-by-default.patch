@@ -1,7 +1,7 @@
-From 58b366fe221a5a30467d177944fc911798c99fc6 Mon Sep 17 00:00:00 2001
+From 4e2f70008ad98a874607f3f094b4e648824f1291 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Sat, 23 Oct 2021 08:15:14 -0400
-Subject: [PATCH 39/40] Enable the V8 virtual memory cage by default
+Subject: [PATCH 38/39] Enable the V8 virtual memory cage by default
 
 The goal of the V8 heap sandbox is to prevent an attacker with the
 ability to corrupt V8 objects from constructing an arbitrary memory
