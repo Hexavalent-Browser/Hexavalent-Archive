@@ -1,4 +1,4 @@
-From e60d2166d99d35ad780602edbca9a54efb8cb0f4 Mon Sep 17 00:00:00 2001
+From 02e39a5d2f54a7eabcd28c216f869c04b6ac62e7 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 8 Mar 2018 22:43:12 -0500
 Subject: [PATCH] disable article suggestions feature by default
@@ -37,5 +37,5 @@ index c5ea510f1e580..688887dc4ba76 100644
  const base::Feature kRemoteSuggestionsEmulateM58FetchingSchedule{
      "RemoteSuggestionsEmulateM58FetchingSchedule",
 -- 
-2.33.0.windows.1
+2.30.1 (Apple Git-130)
 

@@ -1,4 +1,4 @@
-From 7d1f208e4cb66e96af0ce9e4f829578f8bddb40e Mon Sep 17 00:00:00 2001
+From 8189feac04a06b1bd8922ce70de53a3b7fa6b124 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 04:10:21 -0400
 Subject: [PATCH] disable prefetching suggested pages by default
@@ -21,5 +21,5 @@ index d1a9a4fca3778..21b689819c4b5 100644
  const base::Feature kOfflinePagesCTV2Feature{"OfflinePagesCTV2",
                                               base::FEATURE_DISABLED_BY_DEFAULT};
 -- 
-2.33.0.windows.1
+2.30.1 (Apple Git-130)
 

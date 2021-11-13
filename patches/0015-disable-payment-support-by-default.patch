@@ -1,4 +1,4 @@
-From a1a8e35b45dd1284fe0e873d15f4a10edac755b9 Mon Sep 17 00:00:00 2001
+From ef4ae751f99d0a7ebd7de42334bc9a4ad38ae406 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 18 Jun 2019 22:28:53 -0400
 Subject: [PATCH] disable payment support by default
@@ -21,5 +21,5 @@ index 9590d9494ed10..787ff68af12aa 100644
  }
  
 -- 
-2.33.0.windows.1
+2.30.1 (Apple Git-130)
 

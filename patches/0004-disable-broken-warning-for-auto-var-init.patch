@@ -1,4 +1,4 @@
-From 84a7aca3d9629852bc825dae0ab1a96bed291639 Mon Sep 17 00:00:00 2001
+From c32394b25acf1d77019d6cc110cedfdb795ce6f5 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 21 May 2020 14:07:54 -0400
 Subject: [PATCH] disable broken warning for auto var init
@@ -8,10 +8,10 @@ Subject: [PATCH] disable broken warning for auto var init
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index 72fa768bcb698..26b5f90f28750 100644
+index dcfb48fdae137..ac90336cbe213 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -355,7 +355,7 @@ config("compiler") {
+@@ -356,7 +356,7 @@ config("compiler") {
      }
  
      if (is_clang) {
@@ -21,5 +21,5 @@ index 72fa768bcb698..26b5f90f28750 100644
  
      # Linker warnings.
 -- 
-2.33.0.windows.1
+2.30.1 (Apple Git-130)
 
