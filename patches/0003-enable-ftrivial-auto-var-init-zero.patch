@@ -1,7 +1,7 @@
-From d1b7f472b97831fc1451caa3e1ef79e19d07e840 Mon Sep 17 00:00:00 2001
+From 8186bc47111396df3513dd7c3cd0f1c1057090d0 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 8 Apr 2020 20:48:17 -0400
-Subject: [PATCH 03/36] enable -ftrivial-auto-var-init=zero
+Subject: [PATCH 03/37] enable -ftrivial-auto-var-init=zero
 
 ---
  build/config/compiler/BUILD.gn | 4 ++++
@@ -23,5 +23,5 @@ index e86b68cec1660..72fa768bcb698 100644
      if (fatal_linker_warnings && !is_apple && current_os != "aix") {
        ldflags += [ "-Wl,--fatal-warnings" ]
 -- 
-2.33.1
+2.33.0.windows.1
 

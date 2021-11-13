@@ -1,7 +1,7 @@
-From 8e686c0b973e3e1829d2aa22249978da49ca7440 Mon Sep 17 00:00:00 2001
+From 84a7aca3d9629852bc825dae0ab1a96bed291639 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 21 May 2020 14:07:54 -0400
-Subject: [PATCH 04/36] disable broken warning for auto var init
+Subject: [PATCH 04/37] disable broken warning for auto var init
 
 ---
  build/config/compiler/BUILD.gn | 2 +-
@@ -21,5 +21,5 @@ index 72fa768bcb698..26b5f90f28750 100644
  
      # Linker warnings.
 -- 
-2.33.1
+2.33.0.windows.1
 

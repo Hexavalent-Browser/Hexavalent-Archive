@@ -1,7 +1,7 @@
-From cdbc4f7837bf4c0df1f7ce6ded810b4faa5b82b1 Mon Sep 17 00:00:00 2001
+From 6f961a0257590e44a2368df617333c2a6dd36d0b Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 03:58:01 -0400
-Subject: [PATCH 18/36] disable offering translations by default
+Subject: [PATCH 18/37] disable offering translations by default
 
 ---
  chrome/browser/ui/browser_ui_prefs.cc | 2 +-
@@ -21,5 +21,5 @@ index 20bb8b5bd368b..914ad46bd50fb 100644
    registry->RegisterStringPref(prefs::kCloudPrintEmail, std::string());
    registry->RegisterBooleanPref(prefs::kCloudPrintProxyEnabled, true);
 -- 
-2.33.1
+2.33.0.windows.1
 
