@@ -1,7 +1,7 @@
-From cfb265e7f50b1e2f9331c7152024d5d145f748fe Mon Sep 17 00:00:00 2001
+From 6c8e284b9757094c4849a86d04eb1ecec0866860 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 1 Dec 2020 00:56:57 -0500
-Subject: [PATCH 27/36] disable autofill server communication by default
+Subject: [PATCH 27/37] disable autofill server communication by default
 
 ---
  components/autofill/core/common/autofill_features.cc | 2 +-
@@ -21,5 +21,5 @@ index ba9059a3cb4ce..153eed1cdd0ac 100644
  // Controls attaching the autofill type predictions to their respective
  // element in the DOM.
 -- 
-2.33.1
+2.33.0.windows.1
 

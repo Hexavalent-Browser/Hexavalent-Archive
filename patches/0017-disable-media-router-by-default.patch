@@ -1,7 +1,7 @@
-From 88b21d7fbf2d29291ebcde9ef37f33f88a4d4b3c Mon Sep 17 00:00:00 2001
+From f6225ed4e431aafc396de6fadc1425db15926622 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 4 Jul 2019 19:08:52 -0400
-Subject: [PATCH 17/36] disable media router by default
+Subject: [PATCH 17/37] disable media router by default
 
 ---
  chrome/browser/media/router/media_router_feature.cc | 2 +-
@@ -35,5 +35,5 @@ index 4d9987407277f..8fe00fa7fb2d3 100644
    registry->RegisterBooleanPref(prefs::kShowCastIconInToolbar, false);
  #endif  // !defined(OS_ANDROID)
 -- 
-2.33.1
+2.33.0.windows.1
 

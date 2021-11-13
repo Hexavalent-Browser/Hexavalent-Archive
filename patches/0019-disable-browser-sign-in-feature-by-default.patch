@@ -1,7 +1,7 @@
-From 3294ad6bfbfc07c8bca6edbaa8b395cdde75460b Mon Sep 17 00:00:00 2001
+From b7493a7497f76c00f6e6b225a92a75ba3ab866ec Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 04:23:18 -0400
-Subject: [PATCH 19/36] disable browser sign in feature by default
+Subject: [PATCH 19/37] disable browser sign in feature by default
 
 ---
  chrome/browser/signin/account_consistency_mode_manager.cc       | 2 +-
@@ -35,5 +35,5 @@ index b476a904a1b1b..5eb20771f8092 100644
  }
  
 -- 
-2.33.1
+2.33.0.windows.1
 

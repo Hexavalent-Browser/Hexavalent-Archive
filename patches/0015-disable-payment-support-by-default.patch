@@ -1,7 +1,7 @@
-From fdb22328182121bfde5afabd7a6cf32a1f3d7ddd Mon Sep 17 00:00:00 2001
+From a1a8e35b45dd1284fe0e873d15f4a10edac755b9 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 18 Jun 2019 22:28:53 -0400
-Subject: [PATCH 15/36] disable payment support by default
+Subject: [PATCH 15/37] disable payment support by default
 
 ---
  components/payments/core/payment_prefs.cc | 2 +-
@@ -21,5 +21,5 @@ index 9590d9494ed10..787ff68af12aa 100644
  }
  
 -- 
-2.33.1
+2.33.0.windows.1
 

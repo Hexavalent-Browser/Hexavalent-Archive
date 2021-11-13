@@ -1,7 +1,7 @@
-From b7742691c4f9c24970400ccc53f95937c24761c5 Mon Sep 17 00:00:00 2001
+From 3d3b616ab91d2da0c4967a27c2d1d1849ff50f05 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 20 Oct 2017 21:20:50 -0400
-Subject: [PATCH 29/36] mark non-secure origins as dangerous
+Subject: [PATCH 29/37] mark non-secure origins as dangerous
 
 ---
  components/security_state/core/security_state.cc | 2 +-
@@ -21,5 +21,5 @@ index fdcdf57e45abc..569dbf037bd2d 100644
      return NONE;
    }
 -- 
-2.33.1
+2.33.0.windows.1
 

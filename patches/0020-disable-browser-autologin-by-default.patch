@@ -1,7 +1,7 @@
-From fc7243185b4e1d1cd7a68d116b08bd6772ce83cd Mon Sep 17 00:00:00 2001
+From e00546850f50897ba6935385c899a4dabdce1fa5 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 22 Mar 2020 03:07:08 -0400
-Subject: [PATCH 20/36] disable browser autologin by default
+Subject: [PATCH 20/37] disable browser autologin by default
 
 ---
  .../signin/internal/identity_manager/primary_account_manager.cc | 2 +-
@@ -21,5 +21,5 @@ index 5eb20771f8092..8c5ca8dfa3e12 100644
    registry->RegisterBooleanPref(prefs::kSigninAllowed, false);
    registry->RegisterBooleanPref(prefs::kSignedInWithCredentialProvider, false);
 -- 
-2.33.1
+2.33.0.windows.1
 
