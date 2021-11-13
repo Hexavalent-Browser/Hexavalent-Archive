@@ -1,0 +1,36 @@
+From 2848b59062d050898b2f688f7607e3ca02c2ec1b Mon Sep 17 00:00:00 2001
+From: qua3k <cliffmaceyak@gmail.com>
+Date: Sat, 23 Oct 2021 00:00:00 +0000
+Subject: [PATCH] Enable the V8 Virtual Memory Cage by Default
+
+The goal of the V8 heap sandbox is to prevent an attacker with the
+ability to corrupt V8 objects from constructing an arbitrary memory
+read/write primitive. This is achieved through two fundamental
+mechanisms: the virtual memory cage, discussed in this document,
+and the external pointer table.
+
+Upstream is in the process of testing enabling this.
+
+See:
+*    https://twitter.com/5aelo/status/1450862485070827533
+*    https://chromium-review.googlesource.com/c/chromium/src/+/3220290
+---
+ gin/gin_features.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gin/gin_features.cc b/gin/gin_features.cc
+index 70442781a1c50..a003d7358d95b 100644
+--- a/gin/gin_features.cc
++++ b/gin/gin_features.cc
+@@ -112,7 +112,7 @@ const base::Feature kV8VirtualMemoryCage {
+       // The cage is required for the V8 Heap Sandbox.
+       base::FEATURE_ENABLED_BY_DEFAULT
+ #else
+-      base::FEATURE_DISABLED_BY_DEFAULT
++      base::FEATURE_ENABLED_BY_DEFAULT
+ #endif
+ };
+ 
+-- 
+2.30.1 (Apple Git-130)
+
