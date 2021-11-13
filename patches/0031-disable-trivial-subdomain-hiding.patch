@@ -1,4 +1,4 @@
-From edb3913e389a60567627ca39979b89d8c1829e4a Mon Sep 17 00:00:00 2001
+From 7188be6a434351233af9b43dff632eed9dced5b5 Mon Sep 17 00:00:00 2001
 From: JTL <jtl@teamclassified.ca>
 Date: Sat, 21 Dec 2019 04:04:24 +0000
 Subject: [PATCH] disable trivial subdomain hiding
@@ -22,5 +22,5 @@ index 9d02e998264a9..740c98b6d7ec0 100644
                             HostComponentTransform(trim_trivial_subdomains),
                             &url_string, &new_parsed->host, adjustments);
 -- 
-2.33.0.windows.1
+2.30.1 (Apple Git-130)
 

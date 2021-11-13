@@ -1,4 +1,4 @@
-From 6fbe9e513e13e86cf109dd638c0bc733f7338233 Mon Sep 17 00:00:00 2001
+From 9aff8ee7cc337d73a2bf7dab93f12b783c714310 Mon Sep 17 00:00:00 2001
 From: Michael Gilbert <mgilbert@debian.org>
 Date: Sun, 15 Aug 2021 05:08:49 +0100
 Subject: [PATCH] Debian: disable the google api key warning when those aren't
@@ -9,12 +9,12 @@ Subject: [PATCH] Debian: disable the google api key warning when those aren't
  1 file changed, 3 deletions(-)
 
 diff --git a/chrome/browser/ui/startup/startup_browser_creator_impl.cc b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-index 30ea00322c28f..a9dde3fa30e0e 100644
+index cb0280678c323..c10b0658a1d37 100644
 --- a/chrome/browser/ui/startup/startup_browser_creator_impl.cc
 +++ b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-@@ -695,9 +695,6 @@ void StartupBrowserCreatorImpl::AddInfoBarsIfNecessary(
-     }
- #endif
+@@ -672,9 +672,6 @@ void StartupBrowserCreatorImpl::AddInfoBarsIfNecessary(
+     infobars::ContentInfoBarManager* infobar_manager =
+         infobars::ContentInfoBarManager::FromWebContents(web_contents);
  
 -    if (!google_apis::HasAPIKeyConfigured())
 -      GoogleApiKeysInfoBarDelegate::Create(infobar_manager);
@@ -23,5 +23,5 @@ index 30ea00322c28f..a9dde3fa30e0e 100644
        PrefService* local_state = g_browser_process->local_state();
        if (!local_state ||
 -- 
-2.33.0.windows.1
+2.30.1 (Apple Git-130)
 

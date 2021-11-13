@@ -1,4 +1,4 @@
-From 8242d0db466cb3968a6688c10adbcdb7bd1c7e01 Mon Sep 17 00:00:00 2001
+From b8d6fcd2322cb9e907ae4d3335777dc5d6ae3bec Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 6 Mar 2018 00:27:41 -0500
 Subject: [PATCH] disable showing popular sites by default
@@ -27,5 +27,5 @@ index 4ce3356827cec..4414615ff6ac6 100644
  
  }  // namespace ntp_tiles
 -- 
-2.33.0.windows.1
+2.30.1 (Apple Git-130)
 

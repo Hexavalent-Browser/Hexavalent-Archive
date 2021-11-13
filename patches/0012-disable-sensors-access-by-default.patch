@@ -1,4 +1,4 @@
-From 136bbd2a9a8817a444064e6a1544abf10249f4b3 Mon Sep 17 00:00:00 2001
+From 6421a5adb63075308c28763c948dedf6f8989957 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 16 Jun 2019 15:57:29 -0400
 Subject: [PATCH] disable sensors access by default
@@ -8,7 +8,7 @@ Subject: [PATCH] disable sensors access by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/content_settings/core/browser/content_settings_registry.cc b/components/content_settings/core/browser/content_settings_registry.cc
-index 585b86afeeacd..d7272c314dfec 100644
+index beeb57851306b..9a92553a1d7d5 100644
 --- a/components/content_settings/core/browser/content_settings_registry.cc
 +++ b/components/content_settings/core/browser/content_settings_registry.cc
 @@ -403,7 +403,7 @@ void ContentSettingsRegistry::Init() {
@@ -21,5 +21,5 @@ index 585b86afeeacd..d7272c314dfec 100644
             ValidSettings(CONTENT_SETTING_ALLOW, CONTENT_SETTING_BLOCK),
             WebsiteSettingsInfo::SINGLE_ORIGIN_ONLY_SCOPE,
 -- 
-2.33.0.windows.1
+2.30.1 (Apple Git-130)
 
