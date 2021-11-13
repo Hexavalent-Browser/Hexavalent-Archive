@@ -1,7 +1,7 @@
 From 0f99aea0baeef2963f2b5def693dbf36c633743d Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Mon, 8 Mar 2021 16:53:47 -0500
-Subject: [PATCH 25/37] enable partitioning connections by default
+Subject: [PATCH] enable partitioning connections by default
 
 ---
  net/base/features.cc | 12 ++++++------

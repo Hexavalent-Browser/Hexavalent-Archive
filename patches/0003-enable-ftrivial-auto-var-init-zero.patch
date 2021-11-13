@@ -1,7 +1,7 @@
 From 8186bc47111396df3513dd7c3cd0f1c1057090d0 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 8 Apr 2020 20:48:17 -0400
-Subject: [PATCH 03/37] enable -ftrivial-auto-var-init=zero
+Subject: [PATCH] enable -ftrivial-auto-var-init=zero
 
 ---
  build/config/compiler/BUILD.gn | 4 ++++

@@ -1,8 +1,7 @@
 From 808332a19534ecbe98ce858bc99b9a1ed23b7b80 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 4 Aug 2021 03:29:04 -0400
-Subject: [PATCH 32/37] disable trials of privacy-aware analytics/advertising
- APIs
+Subject: [PATCH] disable trials of privacy-aware analytics/advertising APIs
 
 ---
  chrome/common/chrome_features.cc                    | 2 +-

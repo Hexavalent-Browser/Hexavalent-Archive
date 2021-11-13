@@ -1,7 +1,7 @@
 From 6c8e284b9757094c4849a86d04eb1ecec0866860 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 1 Dec 2020 00:56:57 -0500
-Subject: [PATCH 27/37] disable autofill server communication by default
+Subject: [PATCH] disable autofill server communication by default
 
 ---
  components/autofill/core/common/autofill_features.cc | 2 +-

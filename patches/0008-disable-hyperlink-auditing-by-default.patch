@@ -1,7 +1,7 @@
 From c3a6aec5ba5747eed0c5c8e2d08a286881efe66c Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sat, 26 Nov 2016 14:57:22 -0500
-Subject: [PATCH 08/37] disable hyperlink auditing by default
+Subject: [PATCH] disable hyperlink auditing by default
 
 ---
  chrome/browser/chrome_content_browser_client.cc | 2 +-
