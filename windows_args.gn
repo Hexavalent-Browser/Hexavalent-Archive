@@ -28,8 +28,8 @@ enable_resource_allowlist_generation = false
 # Disable remote control apis
 enable_remoting = false
 
-# Reporting is unused? (needs investigation) 
-#enable_reporting = false
-
 # Native Client is dead
 enable_nacl = false
+
+# Disable field trials
+disable_fieldtrial_testing_config=true
