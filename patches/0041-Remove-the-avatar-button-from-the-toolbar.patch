@@ -1,0 +1,27 @@
+From 2bcf716a30ca94f832bdcc67daef3adc5417bc58 Mon Sep 17 00:00:00 2001
+From: Cliff Maceyak <cliffmaceyak@gmail.com>
+Date: Sun, 14 Nov 2021 00:00:00 +0000
+Subject: [PATCH] Remove the avatar button from the toolbar
+
+Bug: #59
+Signed-off-by: Cliff Maceyak <cliffmaceyak@gmail.com>
+---
+ chrome/browser/ui/views/toolbar/toolbar_view.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chrome/browser/ui/views/toolbar/toolbar_view.cc b/chrome/browser/ui/views/toolbar/toolbar_view.cc
+index f887f0fd2db37..73baaef0cd42b 100644
+--- a/chrome/browser/ui/views/toolbar/toolbar_view.cc
++++ b/chrome/browser/ui/views/toolbar/toolbar_view.cc
+@@ -273,7 +273,7 @@ void ToolbarView::Init() {
+ 
+   std::unique_ptr<ToolbarAccountIconContainerView>
+       toolbar_account_icon_container;
+-  bool show_avatar_toolbar_button = true;
++  bool show_avatar_toolbar_button = false;
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
+   // ChromeOS only badges Incognito and Guest icons in the browser window.
+   show_avatar_toolbar_button = browser_->profile()->IsOffTheRecord() ||
+-- 
+2.30.1 (Apple Git-130)
+
