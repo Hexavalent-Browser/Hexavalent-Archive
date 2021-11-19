@@ -1,0 +1,77 @@
+From 3d95042f716f4dc96e757f389ed606613965c0b6 Mon Sep 17 00:00:00 2001
+From: qua3k <cliffmaceyak@gmail.com>
+Date: Fri, 19 Nov 2021 00:00:00 +0000
+Subject: [PATCH] Remove mremap from system call whitelist
+
+It's not used in PartitionAlloc and should be removed.
+---
+ sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc         | 1 -
+ sandbox/policy/linux/bpf_cdm_policy_linux.cc              | 1 -
+ sandbox/policy/linux/bpf_print_compositor_policy_linux.cc | 1 -
+ sandbox/policy/linux/bpf_service_policy_linux.cc          | 1 -
+ sandbox/policy/linux/bpf_utility_policy_linux.cc          | 1 -
+ 5 files changed, 5 deletions(-)
+
+diff --git a/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc b/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
+index eba03d4892..28139e77f2 100644
+--- a/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
++++ b/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
+@@ -562,7 +562,6 @@ bool SyscallSets::IsAllowedAddressSpaceAccess(int sysno) {
+     case __NR_modify_ldt:
+ #endif
+     case __NR_mprotect:
+-    case __NR_mremap:
+     case __NR_msync:
+     case __NR_munlockall:
+     case __NR_readahead:
+diff --git a/sandbox/policy/linux/bpf_cdm_policy_linux.cc b/sandbox/policy/linux/bpf_cdm_policy_linux.cc
+index 1181e7291d..b47b7f3b9d 100644
+--- a/sandbox/policy/linux/bpf_cdm_policy_linux.cc
++++ b/sandbox/policy/linux/bpf_cdm_policy_linux.cc
+@@ -39,7 +39,6 @@ ResultExpr CdmProcessPolicy::EvaluateSyscall(int sysno) const {
+ #if defined(__i386__) || defined(__arm__)
+     case __NR_ugetrlimit:
+ #endif
+-    case __NR_mremap:  // https://crbug.com/546204
+     case __NR_pwrite64:
+     case __NR_sysinfo:
+     case __NR_times:
+diff --git a/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc b/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
+index 4a234d7914..5a35c7386d 100644
+--- a/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
++++ b/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
+@@ -39,7 +39,6 @@ ResultExpr PrintCompositorProcessPolicy::EvaluateSyscall(int sysno) const {
+ #if defined(__i386__) || defined(__arm__)
+     case __NR_ugetrlimit:
+ #endif
+-    case __NR_mremap:  // https://crbug.com/546204
+     case __NR_pwrite64:
+     case __NR_sysinfo:
+     case __NR_times:
+diff --git a/sandbox/policy/linux/bpf_service_policy_linux.cc b/sandbox/policy/linux/bpf_service_policy_linux.cc
+index 3ddc8bfa79..b4052dfc07 100644
+--- a/sandbox/policy/linux/bpf_service_policy_linux.cc
++++ b/sandbox/policy/linux/bpf_service_policy_linux.cc
+@@ -32,7 +32,6 @@ ResultExpr ServiceProcessPolicy::EvaluateSyscall(int sysno) const {
+ #if defined(__i386__) || defined(__arm__)
+     case __NR_ugetrlimit:
+ #endif
+-    case __NR_mremap:  // https://crbug.com/546204
+     case __NR_pwrite64:
+     case __NR_times:
+       return Allow();
+diff --git a/sandbox/policy/linux/bpf_utility_policy_linux.cc b/sandbox/policy/linux/bpf_utility_policy_linux.cc
+index dfe9e9c55a..8d8cf924ed 100644
+--- a/sandbox/policy/linux/bpf_utility_policy_linux.cc
++++ b/sandbox/policy/linux/bpf_utility_policy_linux.cc
+@@ -40,7 +40,6 @@ ResultExpr UtilityProcessPolicy::EvaluateSyscall(int sysno) const {
+ #if defined(__i386__) || defined(__arm__)
+     case __NR_ugetrlimit:
+ #endif
+-    case __NR_mremap:  // https://crbug.com/546204
+     case __NR_pwrite64:
+     case __NR_sysinfo:
+     case __NR_times:
+-- 
+2.34.1
+
