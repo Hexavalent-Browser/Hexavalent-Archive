@@ -1,4 +1,4 @@
-From 2bcf716a30ca94f832bdcc67daef3adc5417bc58 Mon Sep 17 00:00:00 2001
+From 802583979c0f46001b2d551920e5ed5fba062d2c Mon Sep 17 00:00:00 2001
 From: Cliff Maceyak <cliffmaceyak@gmail.com>
 Date: Sun, 14 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Remove the avatar button from the toolbar
