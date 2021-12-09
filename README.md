@@ -2,29 +2,26 @@
 
 A Chromium downstream project
 
-NOTE: 
+# Current project status
 
-- THIS IS A WORK IN PROGRESS PROJECT.
-- THE CURRENT CODEBASE DOES NOT AT ALL REFLECT THE INTENDED GOAL OF IT IN ITS CURRENT STATE. 
-- KEEP IT LOWKEY.
-
-# Why was this made?
-
-- Linux distributions can be a mess. They don't package it properly.
-- Existing packages are slow to update.
-- To provide a reference for people who want to package Chromium.
-- No "untouched" chromium with auto updates exists for Windows.
+- Production builds to come soon.
+- Project is still in early development stages.
+- Current state of the project is still very far from our intentions in the far future.
+- Keep it lowkey. Please.
 
 # Aims
 
+- Properly package and distribute Chromium as upstream intends.
 - Use Clang/LLVM to compile Chromium as upstream intends.
 - Use official builds only.
 - Compile with modern security features that upstream provides.
+- Build meaningful defenses of our own without compromising usability.
 - Be easy to maintain, clean, quick and efficient.
 - Fast updates — no more than 4 days lag time ideally.
 - Leverage the Windows hypervisor platform on Windows.
 
 # Credits
 
- - The GrapheneOS project's Vanadium patchset.
-   https://github.com/GrapheneOS/Vanadium
+- Licencing acknowledgements can be found at ```chrome://credits``` within the browser.
+- The GrapheneOS project's Vanadium patchset, which helped to kickstart Hexavalent.
+- The Spite community, who were instrumental in getting the project off the ground.
