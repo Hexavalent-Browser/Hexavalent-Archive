@@ -1,4 +1,4 @@
-From b6783329ef5978c9a252f4da23c955170515197c Mon Sep 17 00:00:00 2001
+From 8b67bf5ddb18f273f4e19540483fd8f6609f0af8 Mon Sep 17 00:00:00 2001
 From: flawedworld <flawedworld@flawed.world>
 Date: Fri, 12 Nov 2021 14:28:42 +0000
 Subject: [PATCH] Add VS 2022 support
