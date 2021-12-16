@@ -340,13 +340,13 @@ def replace(pattern, repl, file_path):
     """
     # Read the file and replace the strings matching the pattern
     # with repl.
-    with open(file_path, "r") as file:
+    with open(file_path, "r", newline="") as file:
         content = file.read()
         content = re.sub(pattern, repl, content)
 
     # Overwrite the modified content to the file. There is no
     # need of backing up the file as it is handeled by git.
-    with open(file_path, "w") as file:
+    with open(file_path, "w", newline="") as file:
         file.write(content)
 
 
