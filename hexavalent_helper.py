@@ -56,6 +56,7 @@ config = {
             # Replace the given pattern in the following files:
             # It is a list of dicts (hash tables) with the following convention:
             # file_path (relative to chromium source): pattern.
+            # TODO: Figure out which of these are actually necessary.
             "files": [
                 # UI Strings
                 {
@@ -78,6 +79,7 @@ config = {
                     "chrome/BUILD.gn": "chrome(?=\.exe)|(?<=initialexe/)chrome",
                     "chrome/installer/mini_installer/BUILD.gn": "chrome(?=\.exe)",
                     # * In source code
+                    "chrome/chrome_proxy/chrome_proxy_main_win.cc": "chrome(?=\.exe)",
                     "chrome/common/chrome_constants.cc": "chrome(?=\.exe)",
                     "chrome/tools/build/win/FILES.cfg": "chrome(?=\.exe)",
                     "chrome/installer/mini_installer/chrome.release": "chrome(?=\.exe)",
@@ -289,6 +291,11 @@ config = {
                     "chrome/installer/setup/install_worker_unittest.cc": "(?<=\\\\)Chromium",
                     "chrome/installer/setup/installer_crash_reporter_client.cc": "(?<=\\\\)Chromium",
                     "chrome/installer/util/logging_installer.cc": "chromium",
+                    "chrome/installer/util/util_constants.cc": "chrmstp",
+                    "chrome/installer/setup/install_worker_unittest.cc": "Chrome(?=-bin)",
+                    "chrome/tools/build/win/create_installer_archive.py": "Chrome(?=-bin)",
+                    "chrome/installer/setup/setup_constants.cc": "Chrome(?=-bin)",
+                    "chrome/installer/test/alternate_version_generator.cc": "Chrome(?=-bin)",
                 },
                 # Rename chrome.7z and chrome.packed.7z.
                 {
@@ -321,6 +328,40 @@ config = {
                     "chrome/test/mini_installer/config/previous_chrome_canary_installed.prop": "chrome(?=\.Visual)",
                     "chrome/test/mini_installer/config/previous_chrome_user_installed.prop": "chrome(?=\.Visual)",
                 },
+                # chrome_100_percent.pak and chrome_200_percent.pak.
+                {
+                    "chrome/chrome_paks.gni": "chrome(?=_\$\{percent\})",
+                    "chrome/app/chrome_exe_main_win.cc": "chrome(?=_(1|2)00_percent_pak)",
+                    "chrome/browser/resources_integrity.cc": "chrome(?=_(1|2)00_percent(_|\.)pak)",
+                    "chrome/browser/resources_integrity_unittest.cc": "chrome(?=_(1|2)00_percent_pak)",
+                    "chrome/browser/resources/chromeos/accessibility/chromevox/BUILD.gn": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/BUILD.gn": "chrome(?=_(1|2)00_percent\.pak)",
+                    "ui/accessibility/extensions/chromevoxclassic/BUILD.gn": "chrome(?=_(1|2)00_percent\.pak)",
+                    "ui/resources/BUILD.gn": "chrome(?=_(1|2)00_percent\.pak)",
+                    "android_webview/BUILD.gn": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/android/BUILD.gn": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/test/BUILD.gn": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/browser/resources/chromeos/accessibility/common/BUILD.gn": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/tools/build/chromeos/FILES.cfg": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/browser/resources/chromeos/accessibility/select_to_speak/BUILD.gn": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/browser/resources/chromeos/accessibility/accessibility_common/BUILD.gn": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/installer/mini_installer/chrome.release": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/android/expectations/chrome_modern_public_bundle.arm64.libs_and_assets.expected": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/android/expectations/trichrome_chrome_bundle.arm64.libs_and_assets.expected": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/android/expectations/chrome_modern_public_bundle.arm.libs_and_assets.expected": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/android/expectations/chrome_modern_public_bundle.arm.libs_and_assets.expected": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/android/expectations/monochrome_public_bundle.arm.libs_and_assets.expected": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/android/expectations/monochrome_public_bundle.arm64.libs_and_assets.expected": "chrome(?=_(1|2)00_percent\.pak)",
+                    "build/lacros/lacros_resource_sizes.py": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/tools/build/win/FILES.cfg": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/tools/build/linux/FILES.cfg": "chrome(?=_(1|2)00_percent\.pak)",
+                    "ui/base/resource/resource_bundle_android.cc": "chrome(?=_(1|2)00_percent\.pak)",
+                    "ui/base/resource/resource_bundle.cc": "chrome(?=_(1|2)00_percent\.pak)",
+                    "headless/lib/headless_content_main_delegate.cc": "chrome(?=_(1|2)00_percent\.pak)",
+                    "chrome/installer/linux/common/installer.include": "chrome(?=_(1|2)00_percent\.pak)",
+                    "infra/archive_config/win-tagged.json": "chrome(?=_(1|2)00_percent\.pak)",
+                    "tools/bisect_repackage/bisect_repackage.py": "chrome(?=_(1|2)00_percent\.pak)",
+                },
                 # {
                 #     # TODO Merge these with the rest. It is basically duck's branding patch.
                 #     "base/files/file_util_posix.cc": "(?<=\.)(C|c)hromium",
@@ -350,11 +391,13 @@ config = {
             "strings": {
                 "Chromium": "Hexavalent",
                 "chromium": "hexavalent",
+                "Chrome": "Hexavalent",
                 "chrome": "hexavalent",
                 'executable("chrome_proxy") {': 'executable("chrome_proxy") {\n  output_name = "hexavalent_proxy"\n',
                 'shared_library("chrome_elf") {': 'shared_library("chrome_elf") {\n  output_name = "hexavalent_elf"\n',
                 'executable("chrome_pwa_launcher") {': 'executable("chrome_pwa_launcher") {\n  output_name = "hexavalent_pwa_launcher"\n',
                 '"//chrome"': '"//chrome:hexavalent"',
+                "chrmstp": "hxvlstp",
             },
         },
     },
