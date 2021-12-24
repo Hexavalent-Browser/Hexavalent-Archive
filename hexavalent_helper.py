@@ -286,6 +286,24 @@ config = {
                     "chrome/installer/setup/installer_crash_reporter_client.cc": "(?<=\\\\)Chromium",
                     "chrome/installer/util/logging_installer.cc": "chromium",
                 },
+                # Rename chrome.7z and chrome.packed.7z.
+                {
+                    "chrome/tools/build/win/FILES.cfg": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/installer/mini_installer/BUILD.gn": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/installer/setup/setup_constants.cc": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/installer/mini_installer/mini_installer_constants.cc": '(?<=L")chrome',
+                    "chrome/tools/build/win/create_installer_archive.py": "(?<=')chrome(?=')",
+                    "chrome/installer/setup/install_worker_unittest.cc": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/installer/test/alternate_version_generator.cc": "CHROME(?=\.7Z)|CHROME(?=\.PACKED\.7Z)",
+                    "chrome/test/mini_installer/config/chrome_dev_installed.prop": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/test/mini_installer/config/chrome_user_installed.prop": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/test/mini_installer/config/chrome_beta_installed.prop": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/test/mini_installer/config/chrome_system_installed.prop": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/test/mini_installer/config/chrome_canary_installed.prop": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/test/mini_installer/config/previous_chrome_user_installed.prop": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/test/mini_installer/config/previous_chrome_canary_installed.prop": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                    "chrome/test/mini_installer/config/previous_chrome_system_installed.prop": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
+                },
                 # {
                 #     # TODO Merge these with the rest. It is basically duck's branding patch.
                 #     "base/files/file_util_posix.cc": "(?<=\.)(C|c)hromium",
