@@ -1,4 +1,4 @@
-From 9be0d2480964d00ddfb5fc028491aa58ef41a2bc Mon Sep 17 00:00:00 2001
+From 1c0cb2001f96f72cfbeecf427b0a2d3a15d0c3bd Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 05:22:11 -0400
 Subject: [PATCH] disable safe browsing reporting opt-in by default
@@ -8,7 +8,7 @@ Subject: [PATCH] disable safe browsing reporting opt-in by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/safe_browsing/core/common/safe_browsing_prefs.cc b/components/safe_browsing/core/common/safe_browsing_prefs.cc
-index 3db4c28fc01e5..cccc3f266fd61 100644
+index 3db4c28fc0..cccc3f266f 100644
 --- a/components/safe_browsing/core/common/safe_browsing_prefs.cc
 +++ b/components/safe_browsing/core/common/safe_browsing_prefs.cc
 @@ -190,7 +190,7 @@ void RegisterProfilePrefs(PrefRegistrySimple* registry) {
@@ -21,5 +21,5 @@ index 3db4c28fc01e5..cccc3f266fd61 100644
        prefs::kSafeBrowsingEnabled, true,
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
 -- 
-2.30.1 (Apple Git-130)
+2.34.1
 

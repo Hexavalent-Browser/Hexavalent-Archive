@@ -1,0 +1,34 @@
+From e4de741425fea497d5e0d1b7b423ba5d6ec3fb25 Mon Sep 17 00:00:00 2001
+From: loryeam <loryeam@gmail.com>
+Date: Fri, 24 Dec 2021 10:50:29 +0000
+Subject: [PATCH] Enable system-level installation by default on Windows
+
+Some of Hexavalent ProgIDs exceed the 39 character limit with user-level
+installations. This is due to the installer appending a 27 character
+string suffix to Hexavalent ProgIDs on user-level installs. See
+https://www.chromium.org/developers/installer for more info. This causes
+improper installation of Hexavalent, when branding is applied. Thus, we
+disable user-level installation.
+---
+ chrome/installer/util/initial_preferences.cc | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/chrome/installer/util/initial_preferences.cc b/chrome/installer/util/initial_preferences.cc
+index daca0a3a4f..896f370c72 100644
+--- a/chrome/installer/util/initial_preferences.cc
++++ b/chrome/installer/util/initial_preferences.cc
+@@ -153,6 +153,11 @@ void InitialPreferences::InitializeFromCommandLine(
+     }
+   }
+ 
++  VLOG(1) << "Enabling system-level for Hexavalent builds by default";
++  name.assign(installer::initial_preferences::kDistroDict);
++  name.append(".").append(installer::initial_preferences::kSystemLevel);
++  initial_dictionary_->SetBoolean(name, true);
++
+   // See if the log file path was specified on the command line.
+   std::wstring str_value(
+       cmd_line.GetSwitchValueNative(installer::switches::kLogFile));
+-- 
+2.34.1
+

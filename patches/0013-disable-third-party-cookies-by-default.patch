@@ -1,4 +1,4 @@
-From 7b1632756c2dd85cc31eccd5dd811100b2df0129 Mon Sep 17 00:00:00 2001
+From 134f8422b9603c6ca5909689bf6038c1002b16e9 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 16 Jun 2019 16:01:31 -0400
 Subject: [PATCH] disable third party cookies by default
@@ -8,7 +8,7 @@ Subject: [PATCH] disable third party cookies by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/content_settings/core/browser/cookie_settings.cc b/components/content_settings/core/browser/cookie_settings.cc
-index 3d766d54fc75a..b069465216c14 100644
+index 3d766d54fc..b069465216 100644
 --- a/components/content_settings/core/browser/cookie_settings.cc
 +++ b/components/content_settings/core/browser/cookie_settings.cc
 @@ -63,7 +63,7 @@ void CookieSettings::RegisterProfilePrefs(
@@ -21,5 +21,5 @@ index 3d766d54fc75a..b069465216c14 100644
  }
  
 -- 
-2.30.1 (Apple Git-130)
+2.34.1
 

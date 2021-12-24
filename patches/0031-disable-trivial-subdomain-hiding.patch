@@ -1,4 +1,4 @@
-From da5c2f17ed769dfd747633cce071700d73cc4bad Mon Sep 17 00:00:00 2001
+From 2430763d72fb1e51ebef75673c6cf26753adf865 Mon Sep 17 00:00:00 2001
 From: JTL <jtl@teamclassified.ca>
 Date: Sat, 21 Dec 2019 04:04:24 +0000
 Subject: [PATCH] disable trivial subdomain hiding
@@ -8,7 +8,7 @@ Subject: [PATCH] disable trivial subdomain hiding
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/components/url_formatter/url_formatter.cc b/components/url_formatter/url_formatter.cc
-index 9d02e998264a9..740c98b6d7ec0 100644
+index 9d02e99826..740c98b6d7 100644
 --- a/components/url_formatter/url_formatter.cc
 +++ b/components/url_formatter/url_formatter.cc
 @@ -589,8 +589,7 @@ std::u16string FormatUrlWithAdjustments(
@@ -22,5 +22,5 @@ index 9d02e998264a9..740c98b6d7ec0 100644
                             HostComponentTransform(trim_trivial_subdomains),
                             &url_string, &new_parsed->host, adjustments);
 -- 
-2.30.1 (Apple Git-130)
+2.34.1
 

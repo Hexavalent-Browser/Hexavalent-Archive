@@ -1,4 +1,4 @@
-From 85b7174cb2c0b0a0d1bc2e7165c985bd7e765922 Mon Sep 17 00:00:00 2001
+From ffa0ad2ab31dfb01c24b7729228758efeb8ff818 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Mon, 8 Mar 2021 16:53:47 -0500
 Subject: [PATCH] enable partitioning connections by default
@@ -8,7 +8,7 @@ Subject: [PATCH] enable partitioning connections by default
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/net/base/features.cc b/net/base/features.cc
-index 39240192c87ea..fb45fb3c7a040 100644
+index 39240192c8..fb45fb3c7a 100644
 --- a/net/base/features.cc
 +++ b/net/base/features.cc
 @@ -99,27 +99,27 @@ const base::Feature kSplitCacheByNetworkIsolationKey{
@@ -46,5 +46,5 @@ index 39240192c87ea..fb45fb3c7a040 100644
  const base::Feature kExpectCTPruning{"ExpectCTPruning",
                                       base::FEATURE_ENABLED_BY_DEFAULT};
 -- 
-2.30.1 (Apple Git-130)
+2.34.1
 
