@@ -1,4 +1,4 @@
-From 6189503ffeb51ccc5a60d5461e6081c5b800ccc5 Mon Sep 17 00:00:00 2001
+From 347c815c92a1acbf41b35389b423baf01caee70e Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 04:10:21 -0400
 Subject: [PATCH] disable prefetching suggested pages by default
@@ -8,7 +8,7 @@ Subject: [PATCH] disable prefetching suggested pages by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/offline_pages/core/offline_page_feature.cc b/components/offline_pages/core/offline_page_feature.cc
-index d1a9a4fca3778..21b689819c4b5 100644
+index d1a9a4fca3..21b689819c 100644
 --- a/components/offline_pages/core/offline_page_feature.cc
 +++ b/components/offline_pages/core/offline_page_feature.cc
 @@ -27,7 +27,7 @@ const base::Feature kOfflinePagesLivePageSharingFeature{
@@ -21,5 +21,5 @@ index d1a9a4fca3778..21b689819c4b5 100644
  const base::Feature kOfflinePagesCTV2Feature{"OfflinePagesCTV2",
                                               base::FEATURE_DISABLED_BY_DEFAULT};
 -- 
-2.30.1 (Apple Git-130)
+2.34.1
 
