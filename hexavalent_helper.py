@@ -48,6 +48,10 @@ config = {
         # directory. Its contents will be copied directly to chromium
         # source directory.
         "icons": "icons",
+        "files_to_rename": {
+            # file_path: new_file_path (both relative to chromium source)
+            "chrome/app/visual_elements_resources/chrome.VisualElementsManifest.xml": "chrome/app/visual_elements_resources/hexavalent.VisualElementsManifest.xml"
+        },
         "replacement": {
             # Replace the given pattern in the following files:
             # It is a list of dicts (hash tables) with the following convention:
@@ -304,6 +308,19 @@ config = {
                     "chrome/test/mini_installer/config/previous_chrome_canary_installed.prop": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
                     "chrome/test/mini_installer/config/previous_chrome_system_installed.prop": "chrome(?=\.7z)|chrome(?=\.packed\.7z)",
                 },
+                # Replace chrome.VisualElementsManifest.xml with hexavalent.VisualElementsManifest.xml.
+                {
+                    "chrome/BUILD.gn": "chrome(?=\.Visual)",
+                    "chrome/installer/setup/setup_constants.cc": "chrome(?=\.Visual)",
+                    "chrome/test/mini_installer/config/chrome_system_installed.prop": "chrome(?=\.Visual)",
+                    "chrome/test/mini_installer/config/chrome_canary_installed.prop": "chrome(?=\.Visual)",
+                    "chrome/test/mini_installer/config/chrome_dev_installed.prop": "chrome(?=\.Visual)",
+                    "chrome/test/mini_installer/config/chrome_user_installed.prop": "chrome(?=\.Visual)",
+                    "chrome/test/mini_installer/config/chrome_beta_installed.prop": "chrome(?=\.Visual)",
+                    "chrome/test/mini_installer/config/previous_chrome_system_installed.prop": "chrome(?=\.Visual)",
+                    "chrome/test/mini_installer/config/previous_chrome_canary_installed.prop": "chrome(?=\.Visual)",
+                    "chrome/test/mini_installer/config/previous_chrome_user_installed.prop": "chrome(?=\.Visual)",
+                },
                 # {
                 #     # TODO Merge these with the rest. It is basically duck's branding patch.
                 #     "base/files/file_util_posix.cc": "(?<=\.)(C|c)hromium",
@@ -390,6 +407,10 @@ def apply_branding(chromium_src, hexavalent_src, branding_config):
         chromium_src,
         dirs_exist_ok=True,
     )
+
+    # Rename files.
+    for old_file, new_file in branding_config["files_to_rename"].items():
+        shutil.move(old_file, new_file)
 
     # Replace chromium strings with hexavalent in relevant files.
     # TODO Implement concurrency.
