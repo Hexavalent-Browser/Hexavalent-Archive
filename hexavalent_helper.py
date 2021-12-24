@@ -274,6 +274,18 @@ config = {
                     "gpu/BUILD.gn": '"//chrome"',
                     "components/viz/BUILD.gn": '"//chrome"',
                 },
+                # Chromium ProgID prefix, install modes and details.
+                {
+                    "chrome/install_static/chromium_install_modes.cc": '(?<=")(C|c)hromium',
+                    "chrome/install_static/product_install_details_unittest.cc": "(?<=\\\\)Chromium",
+                    "chrome/install_static/install_util_unittest.cc": '(C|c)hromium(?=")',
+                    "chrome/install_static/user_data_dir_win_unittest.cc": "(?<=\\\\)Chromium",
+                    "chrome/installer/launcher_support/chrome_launcher_support.cc": "(?<=\\\\)Chromium",
+                    "chrome/installer/mini_installer/mini_installer_constants.cc": "(?<=\\\\)Chromium",
+                    "chrome/installer/setup/install_worker_unittest.cc": "(?<=\\\\)Chromium",
+                    "chrome/installer/setup/installer_crash_reporter_client.cc": "(?<=\\\\)Chromium",
+                    "chrome/installer/util/logging_installer.cc": "chromium",
+                },
                 # {
                 #     # TODO Merge these with the rest. It is basically duck's branding patch.
                 #     "base/files/file_util_posix.cc": "(?<=\.)(C|c)hromium",
