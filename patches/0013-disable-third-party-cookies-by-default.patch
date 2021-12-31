@@ -1,4 +1,4 @@
-From 134f8422b9603c6ca5909689bf6038c1002b16e9 Mon Sep 17 00:00:00 2001
+From c84a9b00447934a9e749087a5e72bec8aecc0239 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 16 Jun 2019 16:01:31 -0400
 Subject: [PATCH] disable third party cookies by default
@@ -8,7 +8,7 @@ Subject: [PATCH] disable third party cookies by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/content_settings/core/browser/cookie_settings.cc b/components/content_settings/core/browser/cookie_settings.cc
-index 3d766d54fc..b069465216 100644
+index 0a68743998..563b7c88a2 100644
 --- a/components/content_settings/core/browser/cookie_settings.cc
 +++ b/components/content_settings/core/browser/cookie_settings.cc
 @@ -63,7 +63,7 @@ void CookieSettings::RegisterProfilePrefs(
@@ -21,5 +21,5 @@ index 3d766d54fc..b069465216 100644
  }
  
 -- 
-2.34.1
+2.33.0.windows.1
 

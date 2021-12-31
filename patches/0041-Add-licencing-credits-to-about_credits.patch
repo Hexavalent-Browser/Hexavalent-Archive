@@ -1,4 +1,4 @@
-From fd5677526731d85dac5ff309473f384bc08c8447 Mon Sep 17 00:00:00 2001
+From 9c250a1e501879f8150d2fdef82bce9c32087f07 Mon Sep 17 00:00:00 2001
 From: loryeam <loryeam@gmail.com>
 Date: Wed, 1 Dec 2021 00:00:00 +0000
 Subject: [PATCH] Add licencing credits to about_credits
@@ -113,7 +113,7 @@ index 0000000000..3a7d697acc
 +OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 +THE SOFTWARE.
 diff --git a/tools/licenses.py b/tools/licenses.py
-index f251273b89..c800653d05 100755
+index beac8b9ef1..c25a330c99 100755
 --- a/tools/licenses.py
 +++ b/tools/licenses.py
 @@ -133,6 +133,10 @@ ADDITIONAL_PATHS = (
@@ -153,5 +153,5 @@ index f251273b89..c800653d05 100755
  
  # Special value for 'License File' field used to indicate that the license file
 -- 
-2.34.1
+2.33.0.windows.1
 
