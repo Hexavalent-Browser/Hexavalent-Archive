@@ -1,4 +1,4 @@
-From dd9ef95668ee95ba9f2a2c8089ebaeb4d6e88dee Mon Sep 17 00:00:00 2001
+From 7ebfdf2d72967874492c9375972c2524dda2caa6 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 18 Jun 2019 22:28:53 -0400
 Subject: [PATCH] disable payment support by default
@@ -21,5 +21,5 @@ index 9590d9494e..787ff68af1 100644
  }
  
 -- 
-2.34.1
+2.33.0.windows.1
 
