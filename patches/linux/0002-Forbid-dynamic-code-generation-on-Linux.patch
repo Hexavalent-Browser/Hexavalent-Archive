@@ -1,4 +1,4 @@
-From a478943418adb92cbd9676abf98c414fde74095e Mon Sep 17 00:00:00 2001
+From a12619254b91a11069e4d0eae03589f3cf4bee1e Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Forbid dynamic code generation on Linux
@@ -125,7 +125,7 @@ index c05e3043d4..f2a7a5b256 100644
  
  }  // namespace policy
 diff --git a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
-index 4c8725e86a..201821f95c 100644
+index e43ad80119..6714c62262 100644
 --- a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 +++ b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 @@ -19,6 +19,7 @@
@@ -133,10 +133,10 @@ index 4c8725e86a..201821f95c 100644
  #include "build/build_config.h"
  #include "build/chromeos_buildflags.h"
 +#include "gin/gin_features.h"
+ #include "ppapi/buildflags/buildflags.h"
  #include "printing/buildflags/buildflags.h"
  #include "sandbox/linux/bpf_dsl/bpf_dsl.h"
- #include "sandbox/linux/bpf_dsl/trap_registry.h"
-@@ -30,6 +31,8 @@
+@@ -31,6 +32,8 @@
  
  #include "base/files/scoped_file.h"
  #include "base/posix/eintr_wrapper.h"
@@ -145,13 +145,13 @@ index 4c8725e86a..201821f95c 100644
  #include "sandbox/linux/seccomp-bpf-helpers/baseline_policy.h"
  #include "sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.h"
  #include "sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h"
-@@ -172,8 +175,29 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
+@@ -173,8 +176,29 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
    switch (sandbox_type) {
-     case SandboxType::kGpu:
+     case sandbox::mojom::Sandbox::kGpu:
        return GetGpuProcessSandbox(options.use_amd_specific_policies);
--    case SandboxType::kRenderer:
+-    case sandbox::mojom::Sandbox::kRenderer:
 -      return std::make_unique<RendererProcessPolicy>();
-+    case SandboxType::kRenderer: {
++    case sandbox::mojom::Sandbox::kRenderer: {
 +      const base::CommandLine& command_line =
 +          *base::CommandLine::ForCurrentProcess();
 +      bool dynamic_code_can_be_disabled = false;
@@ -175,8 +175,8 @@ index 4c8725e86a..201821f95c 100644
 +      return std::make_unique<RendererProcessPolicy>(dynamic_code_can_be_disabled);
 +    }
  #if BUILDFLAG(ENABLE_PLUGINS)
-     case SandboxType::kPpapi:
+     case sandbox::mojom::Sandbox::kPpapi:
        return std::make_unique<PpapiProcessPolicy>();
 -- 
-2.34.1
+2.33.0.windows.1
 
