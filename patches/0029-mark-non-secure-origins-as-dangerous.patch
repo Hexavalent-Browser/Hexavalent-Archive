@@ -1,4 +1,4 @@
-From 5ac44ee314c1dfcfa2a6d91678bb7d402e0d7042 Mon Sep 17 00:00:00 2001
+From c9a9e4e4ac3eb18f4d2149fccfe278a5152232b9 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 20 Oct 2017 21:20:50 -0400
 Subject: [PATCH] mark non-secure origins as dangerous
@@ -21,5 +21,5 @@ index fdcdf57e45..569dbf037b 100644
      return NONE;
    }
 -- 
-2.34.1
+2.33.0.windows.1
 

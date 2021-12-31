@@ -1,4 +1,4 @@
-From 5cdf93629bdb1d9f66421f54ca86707863313fd8 Mon Sep 17 00:00:00 2001
+From 71de79f23dc6e8e9f76aebba6971dbb14fad9fd2 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Restrict creation of dynamic code
@@ -144,5 +144,5 @@ index 348970b39e..59bdd4db8a 100644
  // Restrict socketcall(2) to only allow socketpair(2), send(2), recv(2),
  // sendto(2), recvfrom(2), shutdown(2), sendmsg(2) and recvmsg(2).
 -- 
-2.34.1
+2.33.0.windows.1
 
