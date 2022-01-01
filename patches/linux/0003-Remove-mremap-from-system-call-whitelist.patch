@@ -1,4 +1,4 @@
-From 156ea89d755d7d58dca404ce494c50bcf7e0ad6e Mon Sep 17 00:00:00 2001
+From 3d95042f716f4dc96e757f389ed606613965c0b6 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Fri, 19 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Remove mremap from system call whitelist
@@ -13,7 +13,7 @@ It's not used in PartitionAlloc and should be removed.
  5 files changed, 5 deletions(-)
 
 diff --git a/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc b/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
-index e7caffd21f..b33cab6272 100644
+index eba03d4892..28139e77f2 100644
 --- a/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
 +++ b/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
 @@ -562,7 +562,6 @@ bool SyscallSets::IsAllowedAddressSpaceAccess(int sysno) {
@@ -73,5 +73,5 @@ index dfe9e9c55a..8d8cf924ed 100644
      case __NR_sysinfo:
      case __NR_times:
 -- 
-2.33.0.windows.1
+2.34.1
 

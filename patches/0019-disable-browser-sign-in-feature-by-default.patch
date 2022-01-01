@@ -1,4 +1,4 @@
-From c777266f893b1852eca0bef7fcaf5014a9e79cf1 Mon Sep 17 00:00:00 2001
+From 4b3672bd049a9e23cb49ddde46e9400108ccc21c Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 04:23:18 -0400
 Subject: [PATCH] disable browser sign in feature by default
@@ -35,5 +35,5 @@ index 51ca2abc2b..160c453651 100644
  }
  
 -- 
-2.33.0.windows.1
+2.34.1
 

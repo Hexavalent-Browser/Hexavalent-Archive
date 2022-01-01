@@ -1,4 +1,4 @@
-From 8064499242ba1c2ffb8bdb6b5788b020b45ba7b4 Mon Sep 17 00:00:00 2001
+From 1c0cb2001f96f72cfbeecf427b0a2d3a15d0c3bd Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 05:22:11 -0400
 Subject: [PATCH] disable safe browsing reporting opt-in by default
@@ -8,10 +8,10 @@ Subject: [PATCH] disable safe browsing reporting opt-in by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/safe_browsing/core/common/safe_browsing_prefs.cc b/components/safe_browsing/core/common/safe_browsing_prefs.cc
-index 2a5312568d..e1ff2e5d7a 100644
+index 3db4c28fc0..cccc3f266f 100644
 --- a/components/safe_browsing/core/common/safe_browsing_prefs.cc
 +++ b/components/safe_browsing/core/common/safe_browsing_prefs.cc
-@@ -188,7 +188,7 @@ void RegisterProfilePrefs(PrefRegistrySimple* registry) {
+@@ -190,7 +190,7 @@ void RegisterProfilePrefs(PrefRegistrySimple* registry) {
    registry->RegisterBooleanPref(
        prefs::kSafeBrowsingSawInterstitialScoutReporting, false);
    registry->RegisterBooleanPref(
@@ -21,5 +21,5 @@ index 2a5312568d..e1ff2e5d7a 100644
        prefs::kSafeBrowsingEnabled, true,
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
 -- 
-2.33.0.windows.1
+2.34.1
 
