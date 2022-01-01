@@ -1,4 +1,4 @@
-From 84145b7bbc19e0f86a06f041d84a5ffa35659346 Mon Sep 17 00:00:00 2001
+From d8560e2bd3e75bf1f0a2d889f405d957d555ba1e Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 23 Nov 2016 08:31:44 -0500
 Subject: [PATCH] disable network prediction by default
@@ -21,5 +21,5 @@ index 2ae6a10930..7fc83de1aa 100644
  
  enum class NetworkPredictionStatus {
 -- 
-2.33.0.windows.1
+2.34.1
 
