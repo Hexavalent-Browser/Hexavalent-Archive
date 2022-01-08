@@ -1,4 +1,4 @@
-From 1ae097f700537c61e40ec15ffbf4ef2065323278 Mon Sep 17 00:00:00 2001
+From d7e7a278ee05f81ee966fb12a9916c200c2fa23a Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Forbid dynamic code generation on Linux
@@ -125,22 +125,15 @@ index c05e3043d4..f2a7a5b256 100644
  
  }  // namespace policy
 diff --git a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
-index e43ad80119..049d54cd51 100644
+index e43ad80119..56f9bc338b 100644
 --- a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 +++ b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
-@@ -19,6 +19,7 @@
- #include "base/notreached.h"
- #include "build/build_config.h"
- #include "build/chromeos_buildflags.h"
-+#include "gin/gin_features.h"
- #include "ppapi/buildflags/buildflags.h"
- #include "printing/buildflags/buildflags.h"
- #include "sandbox/linux/bpf_dsl/bpf_dsl.h"
-@@ -31,6 +32,7 @@
+@@ -31,6 +31,8 @@
  
  #include "base/files/scoped_file.h"
  #include "base/posix/eintr_wrapper.h"
 +#include "base/strings/string_split.h"
++#include "gin/gin_features.h"
  #include "sandbox/linux/seccomp-bpf-helpers/baseline_policy.h"
  #include "sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.h"
  #include "sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h"
