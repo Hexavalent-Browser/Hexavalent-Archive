@@ -1,4 +1,4 @@
-From d613202f46171005eba575fb52109f00e17509e6 Mon Sep 17 00:00:00 2001
+From 524c71a902b8f639b9bbad40cf54e41d84381b33 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sat, 26 Nov 2016 14:57:22 -0500
 Subject: [PATCH] disable hyperlink auditing by default
@@ -8,10 +8,10 @@ Subject: [PATCH] disable hyperlink auditing by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/chrome_content_browser_client.cc b/chrome/browser/chrome_content_browser_client.cc
-index 4ba206e769..f61aa9453c 100644
+index 9db18f9040..c960067453 100644
 --- a/chrome/browser/chrome_content_browser_client.cc
 +++ b/chrome/browser/chrome_content_browser_client.cc
-@@ -1267,7 +1267,7 @@ void ChromeContentBrowserClient::RegisterLocalStatePrefs(
+@@ -1275,7 +1275,7 @@ void ChromeContentBrowserClient::RegisterLocalStatePrefs(
  void ChromeContentBrowserClient::RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterBooleanPref(prefs::kDisable3DAPIs, false);
@@ -21,5 +21,5 @@ index 4ba206e769..f61aa9453c 100644
    // user policy in addition to the same named ones in Local State (which are
    // used for mapping the command-line flags).
 -- 
-2.34.1
+2.33.0.windows.1
 

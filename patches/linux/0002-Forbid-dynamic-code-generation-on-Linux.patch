@@ -1,4 +1,4 @@
-From a478943418adb92cbd9676abf98c414fde74095e Mon Sep 17 00:00:00 2001
+From 1ae097f700537c61e40ec15ffbf4ef2065323278 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Forbid dynamic code generation on Linux
@@ -125,7 +125,7 @@ index c05e3043d4..f2a7a5b256 100644
  
  }  // namespace policy
 diff --git a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
-index 4c8725e86a..201821f95c 100644
+index e43ad80119..049d54cd51 100644
 --- a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 +++ b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 @@ -19,6 +19,7 @@
@@ -133,34 +133,41 @@ index 4c8725e86a..201821f95c 100644
  #include "build/build_config.h"
  #include "build/chromeos_buildflags.h"
 +#include "gin/gin_features.h"
+ #include "ppapi/buildflags/buildflags.h"
  #include "printing/buildflags/buildflags.h"
  #include "sandbox/linux/bpf_dsl/bpf_dsl.h"
- #include "sandbox/linux/bpf_dsl/trap_registry.h"
-@@ -30,6 +31,8 @@
+@@ -31,6 +32,7 @@
  
  #include "base/files/scoped_file.h"
  #include "base/posix/eintr_wrapper.h"
 +#include "base/strings/string_split.h"
-+#include "content/public/common/content_switches.h"
  #include "sandbox/linux/seccomp-bpf-helpers/baseline_policy.h"
  #include "sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.h"
  #include "sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h"
-@@ -172,8 +175,29 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
+@@ -51,6 +53,7 @@
+ #include "sandbox/policy/linux/bpf_service_policy_linux.h"
+ #include "sandbox/policy/linux/bpf_speech_recognition_policy_linux.h"
+ #include "sandbox/policy/linux/bpf_utility_policy_linux.h"
++#include "third_party/blink/public/common/switches.h"
+ 
+ #if !defined(OS_NACL_NONSFI)
+ #include "sandbox/policy/chromecast_sandbox_allowlist_buildflags.h"
+@@ -173,8 +176,29 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
    switch (sandbox_type) {
-     case SandboxType::kGpu:
+     case sandbox::mojom::Sandbox::kGpu:
        return GetGpuProcessSandbox(options.use_amd_specific_policies);
--    case SandboxType::kRenderer:
+-    case sandbox::mojom::Sandbox::kRenderer:
 -      return std::make_unique<RendererProcessPolicy>();
-+    case SandboxType::kRenderer: {
++    case sandbox::mojom::Sandbox::kRenderer: {
 +      const base::CommandLine& command_line =
 +          *base::CommandLine::ForCurrentProcess();
 +      bool dynamic_code_can_be_disabled = false;
 +      if (base::FeatureList::IsEnabled(features::kV8NoJIT)) {
 +        dynamic_code_can_be_disabled = true;
 +      }
-+      else if (command_line.HasSwitch(::switches::kJavaScriptFlags)) {
++      else if (command_line.HasSwitch(blink::switches::kJavaScriptFlags)) {
 +        std::string js_flags =
-+            command_line.GetSwitchValueASCII(::switches::kJavaScriptFlags);
++            command_line.GetSwitchValueASCII(blink::switches::kJavaScriptFlags);
 +        std::vector<base::StringPiece> js_flag_list = base::SplitStringPiece(
 +            js_flags, ",", base::TRIM_WHITESPACE, base::SPLIT_WANT_NONEMPTY);
 +        for (const auto& js_flag : js_flag_list) {
@@ -175,8 +182,8 @@ index 4c8725e86a..201821f95c 100644
 +      return std::make_unique<RendererProcessPolicy>(dynamic_code_can_be_disabled);
 +    }
  #if BUILDFLAG(ENABLE_PLUGINS)
-     case SandboxType::kPpapi:
+     case sandbox::mojom::Sandbox::kPpapi:
        return std::make_unique<PpapiProcessPolicy>();
 -- 
-2.34.1
+2.33.0.windows.1
 
