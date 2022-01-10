@@ -1,4 +1,4 @@
-From 71de79f23dc6e8e9f76aebba6971dbb14fad9fd2 Mon Sep 17 00:00:00 2001
+From e8c990bef48064440cd9431c37f1c354a620800f Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Restrict creation of dynamic code
@@ -16,7 +16,7 @@ It's inspired by PaX MPROTECT restrictions.
  2 files changed, 73 insertions(+)
 
 diff --git a/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc b/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
-index a8f860fcf0..0fa915324b 100644
+index a8f860fcf082..0fa915324b45 100644
 --- a/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
 +++ b/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
 @@ -13,6 +13,7 @@
@@ -103,7 +103,7 @@ index a8f860fcf0..0fa915324b 100644
  ResultExpr RestrictSocketcallCommand() {
    // Unfortunately, we are unable to restrict the first parameter to
 diff --git a/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h b/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h
-index 348970b39e..59bdd4db8a 100644
+index 348970b39e76..59bdd4db8a7b 100644
 --- a/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h
 +++ b/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h
 @@ -37,11 +37,25 @@ SANDBOX_EXPORT bpf_dsl::ResultExpr RestrictIoctl();
@@ -143,6 +143,3 @@ index 348970b39e..59bdd4db8a 100644
  #if defined(__i386__) || defined(__mips__)
  // Restrict socketcall(2) to only allow socketpair(2), send(2), recv(2),
  // sendto(2), recvfrom(2), shutdown(2), sendmsg(2) and recvmsg(2).
--- 
-2.33.0.windows.1
-
