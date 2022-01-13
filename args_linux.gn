@@ -7,6 +7,9 @@ target_cpu = "x64"
 # Official build implies CFI and other production settings
 is_official_build = true
 
+# Enable bad cast checking (currently base-to-derived/unrelated cast)
+use_cfi_cast = true
+
 # We do not want shared libraries
 is_component_build = false
 
