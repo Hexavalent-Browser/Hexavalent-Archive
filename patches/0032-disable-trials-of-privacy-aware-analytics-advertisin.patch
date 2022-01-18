@@ -1,4 +1,4 @@
-From cfeb09e7b855ac4150b759e57115b8e2345ba135 Mon Sep 17 00:00:00 2001
+From 543d2f1bc556d41e477ccf0e78db34a6ca259d60 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 4 Aug 2021 03:29:04 -0400
 Subject: [PATCH] disable trials of privacy-aware analytics/advertising APIs
@@ -29,6 +29,3 @@ index f6094c3d70..6df947ac23 100644
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  }
  
--- 
-2.33.0.windows.1
-

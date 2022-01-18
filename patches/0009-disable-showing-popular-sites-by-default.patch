@@ -1,4 +1,4 @@
-From 1c9f73e23f087b83d839c9aea03a103c89f5205e Mon Sep 17 00:00:00 2001
+From bebeb838a1714d1dc9efbeca504c6e1231145ce9 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 6 Mar 2018 00:27:41 -0500
 Subject: [PATCH] disable showing popular sites by default
@@ -26,6 +26,3 @@ index 4ce3356827..4414615ff6 100644
 +    "UsePopularSitesSuggestions", base::FEATURE_DISABLED_BY_DEFAULT};
  
  }  // namespace ntp_tiles
--- 
-2.33.0.windows.1
-

@@ -1,4 +1,4 @@
-From bc81d2af54259e808e901e47bb597d7c0d42cfa8 Mon Sep 17 00:00:00 2001
+From 010c2d137ada35f495abe7bfdea821871ce27d8e Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Mon, 18 Oct 2021 17:18:52 -0400
 Subject: [PATCH] Hexavalent: Make HTTPS-only mode the default
@@ -19,6 +19,3 @@ index 91dc40abe7..7b8875e960 100644
 +      prefs::kHttpsOnlyModeEnabled, true,
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  }
--- 
-2.33.0.windows.1
-

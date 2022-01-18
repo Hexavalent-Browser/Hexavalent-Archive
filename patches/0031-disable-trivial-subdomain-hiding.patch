@@ -1,4 +1,4 @@
-From b5de67754a2b0791cef2aa0f6bd30b8ec7ee98cf Mon Sep 17 00:00:00 2001
+From 334df11add0e8d3a30c93d12f5361b425861e30a Mon Sep 17 00:00:00 2001
 From: JTL <jtl@teamclassified.ca>
 Date: Sat, 21 Dec 2019 04:04:24 +0000
 Subject: [PATCH] disable trivial subdomain hiding
@@ -8,10 +8,10 @@ Subject: [PATCH] disable trivial subdomain hiding
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/components/url_formatter/url_formatter.cc b/components/url_formatter/url_formatter.cc
-index 9d02e99826..740c98b6d7 100644
+index efc24b744e..ef561ccb93 100644
 --- a/components/url_formatter/url_formatter.cc
 +++ b/components/url_formatter/url_formatter.cc
-@@ -589,8 +589,7 @@ std::u16string FormatUrlWithAdjustments(
+@@ -593,8 +593,7 @@ std::u16string FormatUrlWithAdjustments(
      *prefix_end = static_cast<size_t>(url_string.length());
  
    // Host.
@@ -21,6 +21,3 @@ index 9d02e99826..740c98b6d7 100644
    AppendFormattedComponent(spec, parsed.host,
                             HostComponentTransform(trim_trivial_subdomains),
                             &url_string, &new_parsed->host, adjustments);
--- 
-2.33.0.windows.1
-

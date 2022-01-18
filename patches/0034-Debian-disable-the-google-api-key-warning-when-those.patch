@@ -1,18 +1,18 @@
-From 5ab71f29394d0a76e6a2c01c838c5f319bc4cd5d Mon Sep 17 00:00:00 2001
+From 3495fd164c84aea6d33eaab6358be8ce197427b5 Mon Sep 17 00:00:00 2001
 From: Michael Gilbert <mgilbert@debian.org>
 Date: Sun, 15 Aug 2021 05:08:49 +0100
 Subject: [PATCH] Debian: disable the google api key warning when those aren't
  found
 
 ---
- chrome/browser/ui/startup/startup_browser_creator_impl.cc | 3 ---
+ chrome/browser/ui/startup/infobar_utils.cc | 3 ---
  1 file changed, 3 deletions(-)
 
-diff --git a/chrome/browser/ui/startup/startup_browser_creator_impl.cc b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-index da1a68143b..20134b9b8f 100644
---- a/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-+++ b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-@@ -662,9 +662,6 @@ void StartupBrowserCreatorImpl::AddInfoBarsIfNecessary(
+diff --git a/chrome/browser/ui/startup/infobar_utils.cc b/chrome/browser/ui/startup/infobar_utils.cc
+index aeb1f88101..e2aa69af59 100644
+--- a/chrome/browser/ui/startup/infobar_utils.cc
++++ b/chrome/browser/ui/startup/infobar_utils.cc
+@@ -113,9 +113,6 @@ void AddInfoBarsIfNecessary(Browser* browser,
      infobars::ContentInfoBarManager* infobar_manager =
          infobars::ContentInfoBarManager::FromWebContents(web_contents);
  
@@ -22,6 +22,3 @@ index da1a68143b..20134b9b8f 100644
      if (ObsoleteSystem::IsObsoleteNowOrSoon()) {
        PrefService* local_state = g_browser_process->local_state();
        if (!local_state ||
--- 
-2.33.0.windows.1
-

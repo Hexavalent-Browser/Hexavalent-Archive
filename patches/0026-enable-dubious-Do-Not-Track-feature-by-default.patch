@@ -1,4 +1,4 @@
-From 2771b853d1e4433db403dbbab5fbcac66b0a8bf9 Mon Sep 17 00:00:00 2001
+From cac175ebff7c7f00073c8a9195d91c508e32ce23 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 1 Aug 2017 11:16:11 -0400
 Subject: [PATCH] enable dubious Do Not Track feature by default
@@ -20,6 +20,3 @@ index 914ad46bd5..7bbd3ba5f9 100644
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  #if !BUILDFLAG(IS_CHROMEOS_ASH) && !defined(OS_ANDROID)
    registry->RegisterBooleanPref(prefs::kPrintPreviewUseSystemDefaultPrinter,
--- 
-2.33.0.windows.1
-

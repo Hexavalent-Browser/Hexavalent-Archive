@@ -1,4 +1,4 @@
-From 5c1b885beb9116e39df1fd881bf2e4fd42da72e4 Mon Sep 17 00:00:00 2001
+From cd8134341b4ef93bb1283a8523860d0da3600a55 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Tue, 19 Oct 2021 07:36:10 -0400
 Subject: [PATCH] Initial support for disabling V8's JIT
@@ -17,10 +17,10 @@ compiler; it is default disabled.
  8 files changed, 29 insertions(+)
 
 diff --git a/chrome/browser/about_flags.cc b/chrome/browser/about_flags.cc
-index 1ace853084..7ebe27f12c 100644
+index d1b66475ef..4310f7fde9 100644
 --- a/chrome/browser/about_flags.cc
 +++ b/chrome/browser/about_flags.cc
-@@ -160,6 +160,7 @@
+@@ -159,6 +159,7 @@
  #include "device/gamepad/public/cpp/gamepad_features.h"
  #include "device/vr/buildflags/buildflags.h"
  #include "extensions/buildflags/buildflags.h"
@@ -28,7 +28,7 @@ index 1ace853084..7ebe27f12c 100644
  #include "gpu/config/gpu_finch_features.h"
  #include "gpu/config/gpu_switches.h"
  #include "media/audio/audio_features.h"
-@@ -5357,6 +5358,10 @@ const FeatureEntry kFeatureEntries[] = {
+@@ -5271,6 +5272,10 @@ const FeatureEntry kFeatureEntries[] = {
       flag_descriptions::kDisableProcessReuseDescription, kOsDesktop,
       FEATURE_VALUE_TYPE(features::kDisableProcessReuse)},
  
@@ -40,10 +40,10 @@ index 1ace853084..7ebe27f12c 100644
      {"enable-accessibility-live-caption",
       flag_descriptions::kEnableAccessibilityLiveCaptionName,
 diff --git a/chrome/browser/flag-metadata.json b/chrome/browser/flag-metadata.json
-index 00f1760feb..69e42518d7 100644
+index 1ed02b5111..332c6cad8c 100644
 --- a/chrome/browser/flag-metadata.json
 +++ b/chrome/browser/flag-metadata.json
-@@ -1209,6 +1209,13 @@
+@@ -1242,6 +1242,13 @@
      // issues.
      "expiry_milestone": -1
    },
@@ -70,10 +70,10 @@ index 9f1d1941d2..9560f9ab1a 100644
    "disable-webrtc-hw-encoding",
    "disallow-doc-written-script-loads",
 diff --git a/chrome/browser/flag_descriptions.cc b/chrome/browser/flag_descriptions.cc
-index ba1068f339..c409bf603d 100644
+index e333a38ef3..ec9d49f1ba 100644
 --- a/chrome/browser/flag_descriptions.cc
 +++ b/chrome/browser/flag_descriptions.cc
-@@ -2637,6 +2637,11 @@ const char kUseSearchClickForRightClickDescription[] =
+@@ -2613,6 +2613,11 @@ const char kUseSearchClickForRightClickDescription[] =
      "webpages and apps to consume alt+click. When disabled the legacy "
      "behavior of remapping alt+click to right click will remain unchanged.";
  
@@ -86,10 +86,10 @@ index ba1068f339..c409bf603d 100644
  const char kV8VmFutureDescription[] =
      "This enables upcoming and experimental V8 VM features. "
 diff --git a/chrome/browser/flag_descriptions.h b/chrome/browser/flag_descriptions.h
-index 38570d9ed2..3a53b223fc 100644
+index d2eda3689e..42dd9fb6b9 100644
 --- a/chrome/browser/flag_descriptions.h
 +++ b/chrome/browser/flag_descriptions.h
-@@ -1504,6 +1504,9 @@ extern const char kUseFirstPartySetDescription[];
+@@ -1499,6 +1499,9 @@ extern const char kUseFirstPartySetDescription[];
  extern const char kUseSearchClickForRightClickName[];
  extern const char kUseSearchClickForRightClickDescription[];
  
@@ -100,10 +100,10 @@ index 38570d9ed2..3a53b223fc 100644
  extern const char kV8VmFutureDescription[];
  
 diff --git a/gin/gin_features.cc b/gin/gin_features.cc
-index ffa817f3ce..297fa99f6f 100644
+index ab83bb99fb..e469e2521a 100644
 --- a/gin/gin_features.cc
 +++ b/gin/gin_features.cc
-@@ -47,6 +47,9 @@ const base::Feature kV8ReduceConcurrentMarkingTasks{
+@@ -55,6 +55,9 @@ const base::Feature kV8ReduceConcurrentMarkingTasks{
  const base::Feature kV8NoReclaimUnmodifiedWrappers{
      "V8NoReclaimUnmodifiedWrappers", base::FEATURE_DISABLED_BY_DEFAULT};
  
@@ -114,10 +114,10 @@ index ffa817f3ce..297fa99f6f 100644
  // This is enabled in V8 by default. To test the performance impact, we are
  // going to disable this feature in a finch experiment.
 diff --git a/gin/gin_features.h b/gin/gin_features.h
-index c978d927c5..52fc4a8e77 100644
+index 834d9a0b93..d24beb8a6f 100644
 --- a/gin/gin_features.h
 +++ b/gin/gin_features.h
-@@ -18,6 +18,7 @@ GIN_EXPORT extern const base::Feature kV8FlushBaselineCode;
+@@ -23,6 +23,7 @@ GIN_EXPORT extern const base::Feature kV8FlushBaselineCode;
  GIN_EXPORT extern const base::Feature kV8FlushEmbeddedBlobICache;
  GIN_EXPORT extern const base::Feature kV8LazyFeedbackAllocation;
  GIN_EXPORT extern const base::Feature kV8NoReclaimUnmodifiedWrappers;
@@ -126,10 +126,10 @@ index c978d927c5..52fc4a8e77 100644
  GIN_EXPORT extern const base::Feature kV8OffThreadFinalization;
  GIN_EXPORT extern const base::Feature kV8OptimizeJavascript;
 diff --git a/gin/v8_initializer.cc b/gin/v8_initializer.cc
-index 390b5e0f3a..bfd0f621a9 100644
+index f576fc909e..1a126aaf13 100644
 --- a/gin/v8_initializer.cc
 +++ b/gin/v8_initializer.cc
-@@ -280,6 +280,10 @@ void SetFlags(IsolateHolder::ScriptMode mode,
+@@ -287,6 +287,10 @@ void SetFlags(IsolateHolder::ScriptMode mode,
    SetV8FlagsIfOverridden(features::kV8SlowHistograms, "--slow-histograms",
                           "--no-slow-histograms");
  
@@ -137,9 +137,6 @@ index 390b5e0f3a..bfd0f621a9 100644
 +    SetV8Flags("--jitless");
 +  }
 +
-   if (base::FeatureList::IsEnabled(features::kV8ScriptAblation)) {
-     if (int delay = features::kV8ScriptDelayMs.Get()) {
-       SetV8FlagsFormatted("--script-delay=%i", delay);
--- 
-2.33.0.windows.1
-
+   if (base::FeatureList::IsEnabled(features::kV8ConcurrentSparkplug)) {
+     if (int max_threads = features::kV8ConcurrentSparkplugMaxThreads.Get()) {
+       SetV8FlagsFormatted("--concurrent-sparkplug-max-threads=%i", max_threads);

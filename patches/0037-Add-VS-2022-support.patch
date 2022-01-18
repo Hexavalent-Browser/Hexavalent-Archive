@@ -1,4 +1,4 @@
-From 02c1d54e91fbe3bb0d07abbef67fe4908c81e066 Mon Sep 17 00:00:00 2001
+From ba6655391d26301e84e3767dd463e41983b3d24c Mon Sep 17 00:00:00 2001
 From: flawedworld <flawedworld@flawed.world>
 Date: Fri, 12 Nov 2021 14:28:42 +0000
 Subject: [PATCH] Add VS 2022 support
@@ -26,6 +26,3 @@ index ecf0971ab1..50f37096b5 100755
     '2019' : 'VC142',
     '2017' : 'VC141',
  }
--- 
-2.33.0.windows.1
-

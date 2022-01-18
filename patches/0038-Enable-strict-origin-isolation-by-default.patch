@@ -1,4 +1,4 @@
-From 0c49d43d3a6d5d965c31339c913b94552ab31b77 Mon Sep 17 00:00:00 2001
+From 2a6b635d23da677c0b5643c6697a325d0141d35b Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 21 Oct 2021 00:00:00 +0000
 Subject: [PATCH] Enable strict origin isolation by default
@@ -15,10 +15,10 @@ for more detail.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/content/public/common/content_features.cc b/content/public/common/content_features.cc
-index 0ccf45c1e4..fd7af4429a 100644
+index 8fddcb7d90..9a3132c527 100644
 --- a/content/public/common/content_features.cc
 +++ b/content/public/common/content_features.cc
-@@ -828,7 +828,7 @@ const base::Feature kStorageServiceOutOfProcess{
+@@ -876,7 +876,7 @@ const base::Feature kStorageServiceOutOfProcess{
  // Controls whether site isolation should use origins instead of scheme and
  // eTLD+1.
  const base::Feature kStrictOriginIsolation{"StrictOriginIsolation",
@@ -27,6 +27,3 @@ index 0ccf45c1e4..fd7af4429a 100644
  
  // Enables subresource loading with Web Bundles.
  const base::Feature kSubresourceWebBundles{"SubresourceWebBundles",
--- 
-2.33.0.windows.1
-

@@ -1,25 +1,36 @@
-From 84145b7bbc19e0f86a06f041d84a5ffa35659346 Mon Sep 17 00:00:00 2001
+From aaab4226ac5eb59aa38773092b50a63ce1fe399a Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 23 Nov 2016 08:31:44 -0500
 Subject: [PATCH] disable network prediction by default
 
 ---
- chrome/browser/net/prediction_options.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ chrome/browser/prefetch/prefetch_prefs.h                       | 2 +-
+ chrome/browser/resources/settings/privacy_page/cookies_page.ts | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/chrome/browser/net/prediction_options.h b/chrome/browser/net/prediction_options.h
-index 2ae6a10930..7fc83de1aa 100644
---- a/chrome/browser/net/prediction_options.h
-+++ b/chrome/browser/net/prediction_options.h
-@@ -22,7 +22,7 @@ enum NetworkPredictionOptions {
-   NETWORK_PREDICTION_ALWAYS,
-   NETWORK_PREDICTION_WIFI_ONLY,
-   NETWORK_PREDICTION_NEVER,
--  NETWORK_PREDICTION_DEFAULT = NETWORK_PREDICTION_WIFI_ONLY,
-+  NETWORK_PREDICTION_DEFAULT = NETWORK_PREDICTION_NEVER,
+diff --git a/chrome/browser/prefetch/prefetch_prefs.h b/chrome/browser/prefetch/prefetch_prefs.h
+index 77e3601c57..a33eacc9ab 100644
+--- a/chrome/browser/prefetch/prefetch_prefs.h
++++ b/chrome/browser/prefetch/prefetch_prefs.h
+@@ -22,7 +22,7 @@ enum class NetworkPredictionOptions {
+   kWifiOnlyDeprecated = 1,
+   kDisabled = 2,
+   kExtended = 3,
+-  kDefault = kWifiOnlyDeprecated,
++  kDefault = kDisabled,
  };
  
- enum class NetworkPredictionStatus {
--- 
-2.33.0.windows.1
-
+ // Enum representing possible values of the Preload Pages opt-in state.  Since
+diff --git a/chrome/browser/resources/settings/privacy_page/cookies_page.ts b/chrome/browser/resources/settings/privacy_page/cookies_page.ts
+index a9fea35ea8..1044de1641 100644
+--- a/chrome/browser/resources/settings/privacy_page/cookies_page.ts
++++ b/chrome/browser/resources/settings/privacy_page/cookies_page.ts
+@@ -47,7 +47,7 @@ enum NetworkPredictionOptions {
+   WIFI_ONLY_DEPRECATED = 1,
+   DISABLED = 2,
+   EXTENDED = 3,
+-  DEFAULT = 1,
++  DEFAULT = 2,
+ }
+ 
+ type FocusConfig = Map<string, (string|(() => void))>;
