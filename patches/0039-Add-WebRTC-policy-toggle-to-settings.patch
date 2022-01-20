@@ -1,4 +1,4 @@
-From f47d14ed4489d049553db6f10947607e4b78752e Mon Sep 17 00:00:00 2001
+From d483450e28a275cc88034fe8186565caa9fa90cc Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Fri, 22 Oct 2021 00:00:00 +0000
 Subject: [PATCH] Add WebRTC policy toggle to settings
@@ -270,6 +270,3 @@ index 14b31a7eda..618d7a872b 100644
      {"manageCertificates", IDS_SETTINGS_MANAGE_CERTIFICATES},
      {"manageCertificatesDescription",
       IDS_SETTINGS_MANAGE_CERTIFICATES_DESCRIPTION},
--- 
-2.33.0.windows.1
-

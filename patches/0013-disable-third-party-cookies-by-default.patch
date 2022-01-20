@@ -1,4 +1,4 @@
-From c84a9b00447934a9e749087a5e72bec8aecc0239 Mon Sep 17 00:00:00 2001
+From 4d1519421f484ab85fd10a77cebf69dc71480e49 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 16 Jun 2019 16:01:31 -0400
 Subject: [PATCH] disable third party cookies by default
@@ -20,6 +20,3 @@ index 0a68743998..563b7c88a2 100644
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  }
  
--- 
-2.33.0.windows.1
-

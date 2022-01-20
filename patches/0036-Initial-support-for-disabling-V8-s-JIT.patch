@@ -1,4 +1,4 @@
-From 5c1b885beb9116e39df1fd881bf2e4fd42da72e4 Mon Sep 17 00:00:00 2001
+From f511cfc0ce1eaed2521bc62edc1f0e9cfb42a950 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Tue, 19 Oct 2021 07:36:10 -0400
 Subject: [PATCH] Initial support for disabling V8's JIT
@@ -140,6 +140,3 @@ index 390b5e0f3a..bfd0f621a9 100644
    if (base::FeatureList::IsEnabled(features::kV8ScriptAblation)) {
      if (int delay = features::kV8ScriptDelayMs.Get()) {
        SetV8FlagsFormatted("--script-delay=%i", delay);
--- 
-2.33.0.windows.1
-

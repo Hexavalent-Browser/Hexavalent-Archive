@@ -1,4 +1,4 @@
-From 004e48cd4205095f8752ca8e0519cb15ec0d0501 Mon Sep 17 00:00:00 2001
+From 3798ae6598da2f6d4ecb9dad961e7731eaaa85b3 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Mon, 17 Jun 2019 11:29:21 -0400
 Subject: [PATCH] stub out the battery status API
@@ -63,6 +63,3 @@ index 840da4b66f..7879bdb4e0 100644
  }
  
  void BatteryManager::RegisterWithDispatcher() {
--- 
-2.33.0.windows.1
-

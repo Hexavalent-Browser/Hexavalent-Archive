@@ -1,4 +1,4 @@
-From 027bfce5551c6eef5703837493b9f6c0182b1ad7 Mon Sep 17 00:00:00 2001
+From 7f2b7515223d8e1b53ac75454629149a4e319296 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 16 Jun 2019 21:57:26 -0400
 Subject: [PATCH] disable background sync by default
@@ -20,6 +20,3 @@ index 9a92553a1d..336b5498e3 100644
             AllowlistedSchemes(),
             ValidSettings(CONTENT_SETTING_ALLOW, CONTENT_SETTING_BLOCK),
             WebsiteSettingsInfo::SINGLE_ORIGIN_ONLY_SCOPE,
--- 
-2.33.0.windows.1
-

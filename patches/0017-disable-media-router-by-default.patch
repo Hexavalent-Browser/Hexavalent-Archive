@@ -1,4 +1,4 @@
-From 3e9fb16b670bed072bc6fb3f70b9878e0d16ccb9 Mon Sep 17 00:00:00 2001
+From 57a9dcdefac5645505226be2f8a2d6e2bd1c8ea3 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 4 Jul 2019 19:08:52 -0400
 Subject: [PATCH] disable media router by default
@@ -34,6 +34,3 @@ index 9d99f3fd9a..920b84975f 100644
  #if !defined(OS_ANDROID)
    registry->RegisterBooleanPref(prefs::kShowCastIconInToolbar, false);
  #endif  // !defined(OS_ANDROID)
--- 
-2.33.0.windows.1
-
