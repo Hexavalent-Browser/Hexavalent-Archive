@@ -1,4 +1,4 @@
-From 62375aff21542608eeee6c3f5b658f466a4183d1 Mon Sep 17 00:00:00 2001
+From 41da1ec2655101785c0bf44e6baadcc4406fadb9 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 23 Nov 2016 08:29:58 -0500
 Subject: [PATCH] disable navigation error correction by default
@@ -20,6 +20,3 @@ index ed132cbc13..a3e8253b7a 100644
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
    registry->RegisterBooleanPref(prefs::kQuicAllowed, true);
    registry->RegisterBooleanPref(prefs::kGloballyScopeHTTPAuthCacheEnabled,
--- 
-2.33.0.windows.1
-

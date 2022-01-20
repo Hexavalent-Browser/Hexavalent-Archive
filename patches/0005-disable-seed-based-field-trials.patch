@@ -1,4 +1,4 @@
-From a5ef49876b9f1ec3ad10b8e3b673f79045889ebd Mon Sep 17 00:00:00 2001
+From bd7893abceff50fb48e8f65b53c5cd06b4491402 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 25 Dec 2018 16:19:51 -0500
 Subject: [PATCH] disable seed-based field trials
@@ -22,6 +22,3 @@ index 9ee2078ba4..3ef2759196 100644
    }
  
    platform_field_trials->SetUpFeatureControllingFieldTrials(
--- 
-2.33.0.windows.1
-

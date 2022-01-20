@@ -1,4 +1,4 @@
-From b47d355337b3afafe7b0b9f24514f9d9b3206081 Mon Sep 17 00:00:00 2001
+From 8c4cee5bb8dd98d46ec87add55acf78ff1cbfe77 Mon Sep 17 00:00:00 2001
 From: loryeam <loryeam@gmail.com>
 Date: Wed, 1 Dec 2021 00:00:00 +0000
 Subject: [PATCH] Add licencing credits to about_credits
@@ -51,7 +51,7 @@ index 0000000000..01a4f8b447
 +OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 diff --git a/LICENCE.hexavalent b/LICENCE.hexavalent
 new file mode 100644
-index 0000000000..dfb27a7e68
+index 0000000000..aeb40ccc17
 --- /dev/null
 +++ b/LICENCE.hexavalent
 @@ -0,0 +1,32 @@
@@ -113,10 +113,10 @@ index 0000000000..43d63fe135
 +OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 +THE SOFTWARE.
 diff --git a/tools/licenses.py b/tools/licenses.py
-index 3ccf08452a..359ff09c98 100755
+index beac8b9ef1..c25a330c99 100755
 --- a/tools/licenses.py
 +++ b/tools/licenses.py
-@@ -136,6 +136,10 @@ ADDITIONAL_PATHS = (
+@@ -133,6 +133,10 @@ ADDITIONAL_PATHS = (
      # Fake directories to include the strongtalk and fdlibm licenses.
      os.path.join('v8', 'strongtalk'),
      os.path.join('v8', 'fdlibm'),
@@ -127,7 +127,7 @@ index 3ccf08452a..359ff09c98 100755
  )
  
  
-@@ -323,6 +327,24 @@ SPECIAL_CASES = {
+@@ -327,6 +331,24 @@ SPECIAL_CASES = {
          "License Android Compatible": "yes",
          "License File": "/third_party/swiftshader/LICENSE.txt",
      },

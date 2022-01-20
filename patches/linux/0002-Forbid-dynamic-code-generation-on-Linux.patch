@@ -1,4 +1,4 @@
-From 3f7d2e8622b883dc07a469fb5c63d28cd8b63b84 Mon Sep 17 00:00:00 2001
+From 9c5cff06a77913599dcc460b488ea04403cb879c Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Forbid dynamic code generation on Linux
@@ -20,7 +20,7 @@ code generation in the same processes on Linux via seccomp-bpf.
  10 files changed, 140 insertions(+), 4 deletions(-)
 
 diff --git a/sandbox/policy/linux/bpf_audio_policy_linux.cc b/sandbox/policy/linux/bpf_audio_policy_linux.cc
-index 1ca63de3862b..358839dbfc95 100644
+index 1ca63de386..358839dbfc 100644
 --- a/sandbox/policy/linux/bpf_audio_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_audio_policy_linux.cc
 @@ -118,6 +118,24 @@ ResultExpr AudioProcessPolicy::EvaluateSyscall(int system_call_number) const {
@@ -49,7 +49,7 @@ index 1ca63de3862b..358839dbfc95 100644
      default:
  #if defined(__x86_64__)
 diff --git a/sandbox/policy/linux/bpf_cdm_policy_linux.cc b/sandbox/policy/linux/bpf_cdm_policy_linux.cc
-index 1181e7291d7f..460e443d4ed3 100644
+index 1181e7291d..460e443d4e 100644
 --- a/sandbox/policy/linux/bpf_cdm_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_cdm_policy_linux.cc
 @@ -47,6 +47,18 @@ ResultExpr CdmProcessPolicy::EvaluateSyscall(int sysno) const {
@@ -72,7 +72,7 @@ index 1181e7291d7f..460e443d4ed3 100644
        // Default on the content baseline policy.
        return BPFBasePolicy::EvaluateSyscall(sysno);
 diff --git a/sandbox/policy/linux/bpf_ppapi_policy_linux.cc b/sandbox/policy/linux/bpf_ppapi_policy_linux.cc
-index 1465de67d7a5..ae3d240df336 100644
+index 1465de67d7..ae3d240df3 100644
 --- a/sandbox/policy/linux/bpf_ppapi_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_ppapi_policy_linux.cc
 @@ -40,6 +40,18 @@ ResultExpr PpapiProcessPolicy::EvaluateSyscall(int sysno) const {
@@ -95,7 +95,7 @@ index 1465de67d7a5..ae3d240df336 100644
        // Default on the baseline policy.
        return BPFBasePolicy::EvaluateSyscall(sysno);
 diff --git a/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc b/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
-index 4a234d79144f..73681bc353c3 100644
+index 4a234d7914..73681bc353 100644
 --- a/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
 @@ -45,6 +45,18 @@ ResultExpr PrintCompositorProcessPolicy::EvaluateSyscall(int sysno) const {
@@ -118,7 +118,7 @@ index 4a234d79144f..73681bc353c3 100644
        // Default on the content baseline policy.
        return BPFBasePolicy::EvaluateSyscall(sysno);
 diff --git a/sandbox/policy/linux/bpf_renderer_policy_linux.cc b/sandbox/policy/linux/bpf_renderer_policy_linux.cc
-index f789e92c37c1..1bc2d82e5098 100644
+index f789e92c37..1bc2d82e50 100644
 --- a/sandbox/policy/linux/bpf_renderer_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_renderer_policy_linux.cc
 @@ -48,10 +48,29 @@ ResultExpr RestrictIoctl() {
@@ -153,7 +153,7 @@ index f789e92c37c1..1bc2d82e5098 100644
      // The baseline policy allows __NR_clock_gettime. Allow
      // clock_getres() for V8. crbug.com/329053.
 diff --git a/sandbox/policy/linux/bpf_renderer_policy_linux.h b/sandbox/policy/linux/bpf_renderer_policy_linux.h
-index c05e3043d47d..f2a7a5b25652 100644
+index c05e3043d4..f2a7a5b256 100644
 --- a/sandbox/policy/linux/bpf_renderer_policy_linux.h
 +++ b/sandbox/policy/linux/bpf_renderer_policy_linux.h
 @@ -14,7 +14,7 @@ namespace policy {
@@ -176,7 +176,7 @@ index c05e3043d47d..f2a7a5b25652 100644
  
  }  // namespace policy
 diff --git a/sandbox/policy/linux/bpf_service_policy_linux.cc b/sandbox/policy/linux/bpf_service_policy_linux.cc
-index 3ddc8bfa79b0..9346ec199e10 100644
+index 3ddc8bfa79..9346ec199e 100644
 --- a/sandbox/policy/linux/bpf_service_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_service_policy_linux.cc
 @@ -36,6 +36,18 @@ ResultExpr ServiceProcessPolicy::EvaluateSyscall(int sysno) const {
@@ -199,7 +199,7 @@ index 3ddc8bfa79b0..9346ec199e10 100644
        // Default on the content baseline policy.
        return BPFBasePolicy::EvaluateSyscall(sysno);
 diff --git a/sandbox/policy/linux/bpf_speech_recognition_policy_linux.cc b/sandbox/policy/linux/bpf_speech_recognition_policy_linux.cc
-index 4e250f663ed6..d6a7694322d4 100644
+index 4e250f663e..d6a7694322 100644
 --- a/sandbox/policy/linux/bpf_speech_recognition_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_speech_recognition_policy_linux.cc
 @@ -37,6 +37,18 @@ ResultExpr SpeechRecognitionProcessPolicy::EvaluateSyscall(
@@ -222,7 +222,7 @@ index 4e250f663ed6..d6a7694322d4 100644
        auto* sandbox_linux = SandboxLinux::GetInstance();
        if (sandbox_linux->ShouldBrokerHandleSyscall(system_call_number))
 diff --git a/sandbox/policy/linux/bpf_utility_policy_linux.cc b/sandbox/policy/linux/bpf_utility_policy_linux.cc
-index dfe9e9c55a71..c3a9cc842fb5 100644
+index dfe9e9c55a..c3a9cc842f 100644
 --- a/sandbox/policy/linux/bpf_utility_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_utility_policy_linux.cc
 @@ -46,6 +46,18 @@ ResultExpr UtilityProcessPolicy::EvaluateSyscall(int sysno) const {
@@ -245,7 +245,7 @@ index dfe9e9c55a71..c3a9cc842fb5 100644
        // Default on the content baseline policy.
        return BPFBasePolicy::EvaluateSyscall(sysno);
 diff --git a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
-index e43ad8011966..56f9bc338b13 100644
+index e43ad80119..56f9bc338b 100644
 --- a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 +++ b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 @@ -31,6 +31,8 @@

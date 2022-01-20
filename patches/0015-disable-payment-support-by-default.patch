@@ -1,4 +1,4 @@
-From 7ebfdf2d72967874492c9375972c2524dda2caa6 Mon Sep 17 00:00:00 2001
+From 0891e59ef96eeb6a86248123b8c849e0b3b1ef69 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 18 Jun 2019 22:28:53 -0400
 Subject: [PATCH] disable payment support by default
@@ -20,6 +20,3 @@ index 9590d9494e..787ff68af1 100644
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  }
  
--- 
-2.33.0.windows.1
-
