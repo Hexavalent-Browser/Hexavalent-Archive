@@ -1,4 +1,4 @@
-From dce71e650edf8beed549a7476165f5a69df1f099 Mon Sep 17 00:00:00 2001
+From d91840d2ceb2c5ed39701eab84f80916daf7e0d4 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 4 Jul 2019 18:11:27 -0400
 Subject: [PATCH] disable media router media remoting by default
@@ -20,6 +20,3 @@ index 77c15d82fb..012c403391 100644
    registry->RegisterListPref(
        media_router::prefs::kMediaRouterTabMirroringSources);
  #endif
--- 
-2.33.0.windows.1
-

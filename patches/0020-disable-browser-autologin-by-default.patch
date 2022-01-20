@@ -1,4 +1,4 @@
-From 7081cfca91e9bb3bc4aea1f72621a13fd962c669 Mon Sep 17 00:00:00 2001
+From dbbdf463126086be907efbfedd749e2c70ae576c Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 22 Mar 2020 03:07:08 -0400
 Subject: [PATCH] disable browser autologin by default
@@ -20,6 +20,3 @@ index 160c453651..1c901546a9 100644
    registry->RegisterListPref(prefs::kReverseAutologinRejectedEmailList);
    registry->RegisterBooleanPref(prefs::kSigninAllowed, false);
    registry->RegisterBooleanPref(prefs::kSignedInWithCredentialProvider, false);
--- 
-2.33.0.windows.1
-
