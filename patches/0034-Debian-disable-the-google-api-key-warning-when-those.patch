@@ -1,18 +1,18 @@
-From 73cbb332413e8d783981e96f4612fb08a9fa0fd4 Mon Sep 17 00:00:00 2001
+From 27a98f0e04b399728051d76bd0d7b5ed803caaba Mon Sep 17 00:00:00 2001
 From: Michael Gilbert <mgilbert@debian.org>
 Date: Sun, 15 Aug 2021 05:08:49 +0100
 Subject: [PATCH] Debian: disable the google api key warning when those aren't
  found
 
 ---
- chrome/browser/ui/startup/startup_browser_creator_impl.cc | 3 ---
+ chrome/browser/ui/startup/infobar_utils.cc | 3 ---
  1 file changed, 3 deletions(-)
 
-diff --git a/chrome/browser/ui/startup/startup_browser_creator_impl.cc b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-index da1a68143b908..20134b9b8f528 100644
---- a/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-+++ b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-@@ -662,9 +662,6 @@ void StartupBrowserCreatorImpl::AddInfoBarsIfNecessary(
+diff --git a/chrome/browser/ui/startup/infobar_utils.cc b/chrome/browser/ui/startup/infobar_utils.cc
+index aeb1f881016b1..e2aa69af5976c 100644
+--- a/chrome/browser/ui/startup/infobar_utils.cc
++++ b/chrome/browser/ui/startup/infobar_utils.cc
+@@ -113,9 +113,6 @@ void AddInfoBarsIfNecessary(Browser* browser,
      infobars::ContentInfoBarManager* infobar_manager =
          infobars::ContentInfoBarManager::FromWebContents(web_contents);
  
