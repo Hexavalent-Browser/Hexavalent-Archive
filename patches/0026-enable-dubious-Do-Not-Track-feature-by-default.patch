@@ -1,4 +1,4 @@
-From ae02bb1d9840a134e550c088f2542a6d3b1d6773 Mon Sep 17 00:00:00 2001
+From 0a2764f073b59dbb96042d90e2c7799bd3182c9c Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 1 Aug 2017 11:16:11 -0400
 Subject: [PATCH] enable dubious Do Not Track feature by default
@@ -8,7 +8,7 @@ Subject: [PATCH] enable dubious Do Not Track feature by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
-index 914ad46bd5..7bbd3ba5f9 100644
+index 914ad46bd50fb..7bbd3ba5f9057 100644
 --- a/chrome/browser/ui/browser_ui_prefs.cc
 +++ b/chrome/browser/ui/browser_ui_prefs.cc
 @@ -86,7 +86,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {

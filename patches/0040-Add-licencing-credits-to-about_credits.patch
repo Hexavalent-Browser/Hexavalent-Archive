@@ -1,4 +1,4 @@
-From 8c4cee5bb8dd98d46ec87add55acf78ff1cbfe77 Mon Sep 17 00:00:00 2001
+From e93b8e55f910ee0f3cb725921a88f7cb29859a50 Mon Sep 17 00:00:00 2001
 From: loryeam <loryeam@gmail.com>
 Date: Wed, 1 Dec 2021 00:00:00 +0000
 Subject: [PATCH] Add licencing credits to about_credits
@@ -16,7 +16,7 @@ Issue: #68
 
 diff --git a/LICENCE.debian b/LICENCE.debian
 new file mode 100644
-index 0000000000..01a4f8b447
+index 0000000000000..01a4f8b447eb5
 --- /dev/null
 +++ b/LICENCE.debian
 @@ -0,0 +1,29 @@
@@ -51,7 +51,7 @@ index 0000000000..01a4f8b447
 +OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 diff --git a/LICENCE.hexavalent b/LICENCE.hexavalent
 new file mode 100644
-index 0000000000..aeb40ccc17
+index 0000000000000..aeb40ccc1762d
 --- /dev/null
 +++ b/LICENCE.hexavalent
 @@ -0,0 +1,32 @@
@@ -89,7 +89,7 @@ index 0000000000..aeb40ccc17
 +POSSIBILITY OF SUCH DAMAGE.
 diff --git a/LICENCE.vanadium b/LICENCE.vanadium
 new file mode 100644
-index 0000000000..43d63fe135
+index 0000000000000..43d63fe135ffc
 --- /dev/null
 +++ b/LICENCE.vanadium
 @@ -0,0 +1,19 @@
@@ -113,7 +113,7 @@ index 0000000000..43d63fe135
 +OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 +THE SOFTWARE.
 diff --git a/tools/licenses.py b/tools/licenses.py
-index beac8b9ef1..c25a330c99 100755
+index beac8b9ef1ef4..c25a330c99b71 100755
 --- a/tools/licenses.py
 +++ b/tools/licenses.py
 @@ -133,6 +133,10 @@ ADDITIONAL_PATHS = (

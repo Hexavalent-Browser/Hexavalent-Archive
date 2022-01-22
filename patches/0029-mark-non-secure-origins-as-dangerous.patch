@@ -1,4 +1,4 @@
-From 54e88b4a8fcd175f5ef04007f3c0c07d874e0e1b Mon Sep 17 00:00:00 2001
+From d9bd5ccf540f2a6e848a47c8729ca19e672fd2d6 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 20 Oct 2017 21:20:50 -0400
 Subject: [PATCH] mark non-secure origins as dangerous
@@ -8,7 +8,7 @@ Subject: [PATCH] mark non-secure origins as dangerous
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/security_state/core/security_state.cc b/components/security_state/core/security_state.cc
-index fdcdf57e45..569dbf037b 100644
+index fdcdf57e45abc..569dbf037bd2d 100644
 --- a/components/security_state/core/security_state.cc
 +++ b/components/security_state/core/security_state.cc
 @@ -176,7 +176,7 @@ SecurityLevel GetSecurityLevel(
