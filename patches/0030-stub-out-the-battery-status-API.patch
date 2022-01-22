@@ -1,4 +1,4 @@
-From 3798ae6598da2f6d4ecb9dad961e7731eaaa85b3 Mon Sep 17 00:00:00 2001
+From 6cfa87a8ec4dacc87a5bb2723922d266e9744500 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Mon, 17 Jun 2019 11:29:21 -0400
 Subject: [PATCH] stub out the battery status API
@@ -9,7 +9,7 @@ Pretend that the device is always plugged in and fully charged.
  1 file changed, 4 insertions(+), 22 deletions(-)
 
 diff --git a/third_party/blink/renderer/modules/battery/battery_manager.cc b/third_party/blink/renderer/modules/battery/battery_manager.cc
-index 840da4b66f..7879bdb4e0 100644
+index 840da4b66f623..7879bdb4e0c1e 100644
 --- a/third_party/blink/renderer/modules/battery/battery_manager.cc
 +++ b/third_party/blink/renderer/modules/battery/battery_manager.cc
 @@ -70,46 +70,28 @@ ScriptPromise BatteryManager::StartRequest(ScriptState* script_state) {

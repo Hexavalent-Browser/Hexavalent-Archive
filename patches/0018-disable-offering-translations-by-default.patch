@@ -1,4 +1,4 @@
-From 9e6278afa49f515bc6d0be4570a721c546271518 Mon Sep 17 00:00:00 2001
+From 2ce03b449a0e53614a793961003c0b7b4ea3018a Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 03:58:01 -0400
 Subject: [PATCH] disable offering translations by default
@@ -8,7 +8,7 @@ Subject: [PATCH] disable offering translations by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
-index 20bb8b5bd3..914ad46bd5 100644
+index 20bb8b5bd368b..914ad46bd50fb 100644
 --- a/chrome/browser/ui/browser_ui_prefs.cc
 +++ b/chrome/browser/ui/browser_ui_prefs.cc
 @@ -77,7 +77,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {

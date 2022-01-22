@@ -1,4 +1,4 @@
-From d483450e28a275cc88034fe8186565caa9fa90cc Mon Sep 17 00:00:00 2001
+From cbe5ec95ded04aa856dd555ca01a7def7a5e3724 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Fri, 22 Oct 2021 00:00:00 +0000
 Subject: [PATCH] Add WebRTC policy toggle to settings
@@ -19,7 +19,7 @@ This adds a user facing toggle for changing WebRTC IP handling policy.
  create mode 100644 chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.ts
 
 diff --git a/chrome/app/settings_strings.grdp b/chrome/app/settings_strings.grdp
-index 2d5610991f..23da512ef4 100644
+index 2d5610991fbba..23da512ef4b47 100644
 --- a/chrome/app/settings_strings.grdp
 +++ b/chrome/app/settings_strings.grdp
 @@ -1735,6 +1735,24 @@
@@ -48,7 +48,7 @@ index 2d5610991f..23da512ef4 100644
      Manage certificates
    </message>
 diff --git a/chrome/browser/extensions/api/settings_private/prefs_util.cc b/chrome/browser/extensions/api/settings_private/prefs_util.cc
-index 3747329d7b..6ebbcbe6de 100644
+index 3747329d7bd6e..6ebbcbe6dec6c 100644
 --- a/chrome/browser/extensions/api/settings_private/prefs_util.cc
 +++ b/chrome/browser/extensions/api/settings_private/prefs_util.cc
 @@ -299,6 +299,8 @@ const PrefsUtil::TypedPrefMap& PrefsUtil::GetAllowlistedKeys() {
@@ -61,7 +61,7 @@ index 3747329d7b..6ebbcbe6de 100644
    // Sync and personalization page.
    (*s_allowlist)[::prefs::kSearchSuggestEnabled] =
 diff --git a/chrome/browser/resources/settings/BUILD.gn b/chrome/browser/resources/settings/BUILD.gn
-index fb5ef473d4..a69db6fa7e 100644
+index fb5ef473d4ee1..a69db6fa7ed9c 100644
 --- a/chrome/browser/resources/settings/BUILD.gn
 +++ b/chrome/browser/resources/settings/BUILD.gn
 @@ -289,6 +289,7 @@ preprocess_if_expr("preprocess_generated") {
@@ -81,7 +81,7 @@ index fb5ef473d4..a69db6fa7e 100644
      "privacy_sandbox/privacy_sandbox_browser_proxy.ts",
      "reset_page/reset_browser_proxy.ts",
 diff --git a/chrome/browser/resources/settings/privacy_page/BUILD.gn b/chrome/browser/resources/settings/privacy_page/BUILD.gn
-index a3660432ff..74f0f92ad2 100644
+index a3660432ff920..74f0f92ad22c4 100644
 --- a/chrome/browser/resources/settings/privacy_page/BUILD.gn
 +++ b/chrome/browser/resources/settings/privacy_page/BUILD.gn
 @@ -22,5 +22,6 @@ html_to_js("polymer3_elements") {
@@ -92,7 +92,7 @@ index a3660432ff..74f0f92ad2 100644
    ]
  }
 diff --git a/chrome/browser/resources/settings/privacy_page/security_page.html b/chrome/browser/resources/settings/privacy_page/security_page.html
-index 534f5871a4..e534230fd5 100644
+index 534f5871a415d..e534230fd50ba 100644
 --- a/chrome/browser/resources/settings/privacy_page/security_page.html
 +++ b/chrome/browser/resources/settings/privacy_page/security_page.html
 @@ -8,6 +8,11 @@
@@ -118,7 +118,7 @@ index 534f5871a4..e534230fd5 100644
        <settings-toggle-button
          id="httpsOnlyModeToggle"
 diff --git a/chrome/browser/resources/settings/privacy_page/security_page.ts b/chrome/browser/resources/settings/privacy_page/security_page.ts
-index 5e0458b0d9..660f49ae24 100644
+index 5e0458b0d9595..660f49ae24ed8 100644
 --- a/chrome/browser/resources/settings/privacy_page/security_page.ts
 +++ b/chrome/browser/resources/settings/privacy_page/security_page.ts
 @@ -13,6 +13,7 @@ import '../icons.js';
@@ -131,7 +131,7 @@ index 5e0458b0d9..660f49ae24 100644
  import {focusWithoutInk} from 'chrome://resources/js/cr/ui/focus_without_ink.m.js';
 diff --git a/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html b/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html
 new file mode 100644
-index 0000000000..d7cd34a31d
+index 0000000000000..d7cd34a31dcda
 --- /dev/null
 +++ b/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html
 @@ -0,0 +1,66 @@
@@ -204,7 +204,7 @@ index 0000000000..d7cd34a31d
 \ No newline at end of file
 diff --git a/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.ts b/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.ts
 new file mode 100644
-index 0000000000..4b47c2bb93
+index 0000000000000..4b47c2bb936f7
 --- /dev/null
 +++ b/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.ts
 @@ -0,0 +1,45 @@
@@ -254,7 +254,7 @@ index 0000000000..4b47c2bb93
 +customElements.define(
 +    SettingsWebRtcPolicyMenuElement.is, SettingsWebRtcPolicyMenuElement);
 diff --git a/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc b/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
-index 14b31a7eda..618d7a872b 100644
+index 14b31a7edace8..618d7a872b21d 100644
 --- a/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
 +++ b/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
 @@ -1390,6 +1390,12 @@ void AddPrivacyStrings(content::WebUIDataSource* html_source,

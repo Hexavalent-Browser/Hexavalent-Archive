@@ -1,4 +1,4 @@
-From 9cf3df42717a19d89ca36b668f25bc1b74eb3ca3 Mon Sep 17 00:00:00 2001
+From 1feff78e8cfb6eee9e68b317c7bb6b3273312eae Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 21 Oct 2021 00:00:00 +0000
 Subject: [PATCH] Enable strict origin isolation by default
@@ -15,7 +15,7 @@ for more detail.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/content/public/common/content_features.cc b/content/public/common/content_features.cc
-index df26e2fce5..fa53776aa9 100644
+index df26e2fce572b..fa53776aa91ff 100644
 --- a/content/public/common/content_features.cc
 +++ b/content/public/common/content_features.cc
 @@ -842,7 +842,7 @@ const base::Feature kStorageServiceOutOfProcess{

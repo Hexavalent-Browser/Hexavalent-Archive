@@ -1,4 +1,4 @@
-From 3b206d80965edae9e52e55f69c7648a12e5a5579 Mon Sep 17 00:00:00 2001
+From b874e9f51210a0daa0171c8cd89cd480e362e35c Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 4 Aug 2021 03:29:04 -0400
 Subject: [PATCH] disable trials of privacy-aware analytics/advertising APIs
@@ -8,7 +8,7 @@ Subject: [PATCH] disable trials of privacy-aware analytics/advertising APIs
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/components/privacy_sandbox/privacy_sandbox_prefs.cc b/components/privacy_sandbox/privacy_sandbox_prefs.cc
-index f6094c3d70..6df947ac23 100644
+index f6094c3d70091..6df947ac2311a 100644
 --- a/components/privacy_sandbox/privacy_sandbox_prefs.cc
 +++ b/components/privacy_sandbox/privacy_sandbox_prefs.cc
 @@ -31,7 +31,7 @@ namespace privacy_sandbox {
