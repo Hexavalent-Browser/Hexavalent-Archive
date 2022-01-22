@@ -1,4 +1,4 @@
-From cbe5ec95ded04aa856dd555ca01a7def7a5e3724 Mon Sep 17 00:00:00 2001
+From dfab37082babc0378f50b975eb8be457fd6a4161 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Fri, 22 Oct 2021 00:00:00 +0000
 Subject: [PATCH] Add WebRTC policy toggle to settings
@@ -11,10 +11,10 @@ This adds a user facing toggle for changing WebRTC IP handling policy.
  .../resources/settings/privacy_page/BUILD.gn  |  1 +
  .../settings/privacy_page/security_page.html  |  8 +++
  .../settings/privacy_page/security_page.ts    |  1 +
- .../privacy_page/webrtc_policy_dropdown.html  | 66 +++++++++++++++++++
+ .../privacy_page/webrtc_policy_dropdown.html  | 67 +++++++++++++++++++
  .../privacy_page/webrtc_policy_dropdown.ts    | 45 +++++++++++++
  .../settings_localized_strings_provider.cc    |  6 ++
- 9 files changed, 149 insertions(+)
+ 9 files changed, 150 insertions(+)
  create mode 100644 chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html
  create mode 100644 chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.ts
 
@@ -131,10 +131,10 @@ index 5e0458b0d9595..660f49ae24ed8 100644
  import {focusWithoutInk} from 'chrome://resources/js/cr/ui/focus_without_ink.m.js';
 diff --git a/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html b/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html
 new file mode 100644
-index 0000000000000..d7cd34a31dcda
+index 0000000000000..03a312de67927
 --- /dev/null
 +++ b/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html
-@@ -0,0 +1,66 @@
+@@ -0,0 +1,67 @@
 +<style include="cr-actionable-row-style settings-shared iron-flex">
 +  :host {
 +    padding: 0 var(--cr-section-padding);
@@ -201,7 +201,7 @@ index 0000000000000..d7cd34a31dcda
 +    menu-options="[[webRtcPolicyOptions_]]">
 +  </settings-dropdown-menu>
 +</div>
-\ No newline at end of file
++
 diff --git a/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.ts b/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.ts
 new file mode 100644
 index 0000000000000..4b47c2bb936f7

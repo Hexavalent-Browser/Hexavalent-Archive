@@ -1,4 +1,4 @@
-From 3ba937474f160045197a2bdc077b714f5ee8b943 Mon Sep 17 00:00:00 2001
+From 0853ac54c61e00a16a9417d71ebdde9a49cc7f11 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 12 Jul 2019 04:10:21 -0400
 Subject: [PATCH] disable prefetching suggested pages by default
