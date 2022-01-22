@@ -1,4 +1,4 @@
-From dfab37082babc0378f50b975eb8be457fd6a4161 Mon Sep 17 00:00:00 2001
+From e4b28b8e1b930a418465e297d31537afc6f93479 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Fri, 22 Oct 2021 00:00:00 +0000
 Subject: [PATCH] Add WebRTC policy toggle to settings
@@ -11,18 +11,18 @@ This adds a user facing toggle for changing WebRTC IP handling policy.
  .../resources/settings/privacy_page/BUILD.gn  |  1 +
  .../settings/privacy_page/security_page.html  |  8 +++
  .../settings/privacy_page/security_page.ts    |  1 +
- .../privacy_page/webrtc_policy_dropdown.html  | 67 +++++++++++++++++++
+ .../privacy_page/webrtc_policy_dropdown.html  | 66 +++++++++++++++++++
  .../privacy_page/webrtc_policy_dropdown.ts    | 45 +++++++++++++
  .../settings_localized_strings_provider.cc    |  6 ++
- 9 files changed, 150 insertions(+)
+ 9 files changed, 149 insertions(+)
  create mode 100644 chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html
  create mode 100644 chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.ts
 
 diff --git a/chrome/app/settings_strings.grdp b/chrome/app/settings_strings.grdp
-index 2d5610991fbba..23da512ef4b47 100644
+index fcabde0b1f532..f7725bc74164b 100644
 --- a/chrome/app/settings_strings.grdp
 +++ b/chrome/app/settings_strings.grdp
-@@ -1735,6 +1735,24 @@
+@@ -1755,6 +1755,24 @@
    <message name="IDS_SETTINGS_HTTPS_ONLY_MODE_DESCRIPTION" desc="Secondary, continued explanation of HTTPS-Only Mode in Security settings">
      Upgrade navigations to HTTPS and warn you before loading sites that don't support it
    </message>
@@ -48,10 +48,10 @@ index 2d5610991fbba..23da512ef4b47 100644
      Manage certificates
    </message>
 diff --git a/chrome/browser/extensions/api/settings_private/prefs_util.cc b/chrome/browser/extensions/api/settings_private/prefs_util.cc
-index 3747329d7bd6e..6ebbcbe6dec6c 100644
+index 8ffb21ea519f7..d63b65274c78a 100644
 --- a/chrome/browser/extensions/api/settings_private/prefs_util.cc
 +++ b/chrome/browser/extensions/api/settings_private/prefs_util.cc
-@@ -299,6 +299,8 @@ const PrefsUtil::TypedPrefMap& PrefsUtil::GetAllowlistedKeys() {
+@@ -301,6 +301,8 @@ const PrefsUtil::TypedPrefMap& PrefsUtil::GetAllowlistedKeys() {
        settings_api::PrefType::PREF_TYPE_NUMBER;
    (*s_allowlist)[::prefs::kHttpsOnlyModeEnabled] =
        settings_api::PrefType::PREF_TYPE_BOOLEAN;
@@ -61,10 +61,10 @@ index 3747329d7bd6e..6ebbcbe6dec6c 100644
    // Sync and personalization page.
    (*s_allowlist)[::prefs::kSearchSuggestEnabled] =
 diff --git a/chrome/browser/resources/settings/BUILD.gn b/chrome/browser/resources/settings/BUILD.gn
-index fb5ef473d4ee1..a69db6fa7ed9c 100644
+index 744d9f818c11f..fc91291f5c7e1 100644
 --- a/chrome/browser/resources/settings/BUILD.gn
 +++ b/chrome/browser/resources/settings/BUILD.gn
-@@ -289,6 +289,7 @@ preprocess_if_expr("preprocess_generated") {
+@@ -309,6 +309,7 @@ preprocess_if_expr("preprocess_generated") {
      "privacy_page/security_keys_reset_dialog.ts",
      "privacy_page/security_keys_set_pin_dialog.ts",
      "privacy_page/security_keys_subpage.ts",
@@ -72,7 +72,7 @@ index fb5ef473d4ee1..a69db6fa7ed9c 100644
      "privacy_sandbox/app.ts",
      "reset_page/reset_page.ts",
      "reset_page/reset_profile_dialog.ts",
-@@ -654,6 +655,7 @@ ts_library("build_ts") {
+@@ -678,6 +679,7 @@ ts_library("build_ts") {
      "privacy_page/security_keys_set_pin_dialog.ts",
      "privacy_page/security_keys_subpage.ts",
      "privacy_page/security_page.ts",
@@ -118,7 +118,7 @@ index 534f5871a415d..e534230fd50ba 100644
        <settings-toggle-button
          id="httpsOnlyModeToggle"
 diff --git a/chrome/browser/resources/settings/privacy_page/security_page.ts b/chrome/browser/resources/settings/privacy_page/security_page.ts
-index 5e0458b0d9595..660f49ae24ed8 100644
+index 64efbc4bc5b65..9126b1d675519 100644
 --- a/chrome/browser/resources/settings/privacy_page/security_page.ts
 +++ b/chrome/browser/resources/settings/privacy_page/security_page.ts
 @@ -13,6 +13,7 @@ import '../icons.js';
@@ -131,10 +131,10 @@ index 5e0458b0d9595..660f49ae24ed8 100644
  import {focusWithoutInk} from 'chrome://resources/js/cr/ui/focus_without_ink.m.js';
 diff --git a/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html b/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html
 new file mode 100644
-index 0000000000000..03a312de67927
+index 0000000000000..bf0e16ae44fed
 --- /dev/null
 +++ b/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.html
-@@ -0,0 +1,67 @@
+@@ -0,0 +1,66 @@
 +<style include="cr-actionable-row-style settings-shared iron-flex">
 +  :host {
 +    padding: 0 var(--cr-section-padding);
@@ -201,7 +201,6 @@ index 0000000000000..03a312de67927
 +    menu-options="[[webRtcPolicyOptions_]]">
 +  </settings-dropdown-menu>
 +</div>
-+
 diff --git a/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.ts b/chrome/browser/resources/settings/privacy_page/webrtc_policy_dropdown.ts
 new file mode 100644
 index 0000000000000..4b47c2bb936f7
@@ -254,7 +253,7 @@ index 0000000000000..4b47c2bb936f7
 +customElements.define(
 +    SettingsWebRtcPolicyMenuElement.is, SettingsWebRtcPolicyMenuElement);
 diff --git a/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc b/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
-index 14b31a7edace8..618d7a872b21d 100644
+index 65b73f9145eab..891f93bcbd765 100644
 --- a/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
 +++ b/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
 @@ -1390,6 +1390,12 @@ void AddPrivacyStrings(content::WebUIDataSource* html_source,

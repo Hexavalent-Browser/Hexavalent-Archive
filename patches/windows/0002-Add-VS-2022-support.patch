@@ -1,4 +1,4 @@
-From 41acae3dd8d2f014b0ae06f6a8638d6332d5b29e Mon Sep 17 00:00:00 2001
+From ac937cb7215e495011573cf57c5761f4e0263c1c Mon Sep 17 00:00:00 2001
 From: flawedworld <flawedworld@flawed.world>
 Date: Fri, 12 Nov 2021 14:28:42 +0000
 Subject: [PATCH] Add VS 2022 support
@@ -8,7 +8,7 @@ Subject: [PATCH] Add VS 2022 support
  1 file changed, 2 insertions(+)
 
 diff --git a/build/vs_toolchain.py b/build/vs_toolchain.py
-index ecf0971ab1..50f37096b5 100755
+index ecf0971ab1349..50f37096b581c 100755
 --- a/build/vs_toolchain.py
 +++ b/build/vs_toolchain.py
 @@ -40,12 +40,14 @@ json_data_file = os.path.join(script_dir, 'win_toolchain.json')

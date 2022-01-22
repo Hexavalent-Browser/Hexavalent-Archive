@@ -1,4 +1,4 @@
-From a4f89ae216d6b8872014535bf85d89b68446ec3b Mon Sep 17 00:00:00 2001
+From 74c406b0f107282ca049015b541e83d555de56d8 Mon Sep 17 00:00:00 2001
 From: loryeam <loryeam@gmail.com>
 Date: Fri, 24 Dec 2021 10:50:29 +0000
 Subject: [PATCH] Enable system-level installation by default on Windows
@@ -14,10 +14,10 @@ disable user-level installation.
  1 file changed, 5 insertions(+)
 
 diff --git a/chrome/installer/util/initial_preferences.cc b/chrome/installer/util/initial_preferences.cc
-index daca0a3a4f..896f370c72 100644
+index 18b5c529a73d3..ee3504a0c8867 100644
 --- a/chrome/installer/util/initial_preferences.cc
 +++ b/chrome/installer/util/initial_preferences.cc
-@@ -153,6 +153,11 @@ void InitialPreferences::InitializeFromCommandLine(
+@@ -154,6 +154,11 @@ void InitialPreferences::InitializeFromCommandLine(
      }
    }
  
