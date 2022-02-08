@@ -1,4 +1,4 @@
-From 11225aba43a8f8fafbb0227ae22bd728bf38bb4d Mon Sep 17 00:00:00 2001
+From 92a0e0ee15b8ac309f3b0f09e99b983bd8f435cf Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 22 Mar 2020 03:07:08 -0400
 Subject: [PATCH] disable browser autologin by default

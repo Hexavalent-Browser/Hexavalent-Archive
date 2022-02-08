@@ -1,4 +1,4 @@
-From e4b28b8e1b930a418465e297d31537afc6f93479 Mon Sep 17 00:00:00 2001
+From 12506b7018e7a882cbd244ff719c7fd4a007fec3 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Fri, 22 Oct 2021 00:00:00 +0000
 Subject: [PATCH] Add WebRTC policy toggle to settings
@@ -253,10 +253,10 @@ index 0000000000000..4b47c2bb936f7
 +customElements.define(
 +    SettingsWebRtcPolicyMenuElement.is, SettingsWebRtcPolicyMenuElement);
 diff --git a/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc b/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
-index 65b73f9145eab..891f93bcbd765 100644
+index cb20c0d5e65a7..19981a09ce8e7 100644
 --- a/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
 +++ b/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
-@@ -1390,6 +1390,12 @@ void AddPrivacyStrings(content::WebUIDataSource* html_source,
+@@ -1391,6 +1391,12 @@ void AddPrivacyStrings(content::WebUIDataSource* html_source,
       IDS_SETTINGS_ADVANCED_PROTECTION_PROGRAM_DESC},
      {"httpsOnlyModeTitle", IDS_SETTINGS_HTTPS_ONLY_MODE},
      {"httpsOnlyModeDescription", IDS_SETTINGS_HTTPS_ONLY_MODE_DESCRIPTION},
