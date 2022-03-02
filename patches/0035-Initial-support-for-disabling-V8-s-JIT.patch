@@ -1,4 +1,4 @@
-From 7476bc42f66dcfcaea285a814e2908df5a9bc8c7 Mon Sep 17 00:00:00 2001
+From 4b6c52a407714531cfe8a1c7af23c7d0926bb3f8 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Tue, 19 Oct 2021 07:36:10 -0400
 Subject: [PATCH] Initial support for disabling V8's JIT
@@ -17,10 +17,10 @@ compiler; it is default disabled.
  8 files changed, 29 insertions(+)
 
 diff --git a/chrome/browser/about_flags.cc b/chrome/browser/about_flags.cc
-index d1b66475ef744..4310f7fde9e7f 100644
+index 2825190b68c3c..ce26fa36dcbd8 100644
 --- a/chrome/browser/about_flags.cc
 +++ b/chrome/browser/about_flags.cc
-@@ -159,6 +159,7 @@
+@@ -161,6 +161,7 @@
  #include "device/gamepad/public/cpp/gamepad_features.h"
  #include "device/vr/buildflags/buildflags.h"
  #include "extensions/buildflags/buildflags.h"
@@ -28,7 +28,7 @@ index d1b66475ef744..4310f7fde9e7f 100644
  #include "gpu/config/gpu_finch_features.h"
  #include "gpu/config/gpu_switches.h"
  #include "media/audio/audio_features.h"
-@@ -5271,6 +5272,10 @@ const FeatureEntry kFeatureEntries[] = {
+@@ -5303,6 +5304,10 @@ const FeatureEntry kFeatureEntries[] = {
       flag_descriptions::kDisableProcessReuseDescription, kOsDesktop,
       FEATURE_VALUE_TYPE(features::kDisableProcessReuse)},
  
@@ -36,14 +36,14 @@ index d1b66475ef744..4310f7fde9e7f 100644
 +     flag_descriptions::kV8NoJITDescription, kOsAll,
 +     FEATURE_VALUE_TYPE(features::kV8NoJIT)},
 +
- #if !defined(OS_ANDROID)
+ #if !BUILDFLAG(IS_ANDROID)
      {"enable-accessibility-live-caption",
       flag_descriptions::kEnableAccessibilityLiveCaptionName,
 diff --git a/chrome/browser/flag-metadata.json b/chrome/browser/flag-metadata.json
-index 1ed02b5111434..332c6cad8c0c3 100644
+index 2f92602940727..2544285e61bff 100644
 --- a/chrome/browser/flag-metadata.json
 +++ b/chrome/browser/flag-metadata.json
-@@ -1242,6 +1242,13 @@
+@@ -1260,6 +1260,13 @@
      // issues.
      "expiry_milestone": -1
    },
@@ -70,10 +70,10 @@ index 9f1d1941d21f3..9560f9ab1a9e3 100644
    "disable-webrtc-hw-encoding",
    "disallow-doc-written-script-loads",
 diff --git a/chrome/browser/flag_descriptions.cc b/chrome/browser/flag_descriptions.cc
-index e333a38ef3737..ec9d49f1ba8ef 100644
+index 51005256f59cd..df995f4a21fe0 100644
 --- a/chrome/browser/flag_descriptions.cc
 +++ b/chrome/browser/flag_descriptions.cc
-@@ -2613,6 +2613,11 @@ const char kUseSearchClickForRightClickDescription[] =
+@@ -2548,6 +2548,11 @@ const char kUseSearchClickForRightClickDescription[] =
      "webpages and apps to consume alt+click. When disabled the legacy "
      "behavior of remapping alt+click to right click will remain unchanged.";
  
@@ -86,10 +86,10 @@ index e333a38ef3737..ec9d49f1ba8ef 100644
  const char kV8VmFutureDescription[] =
      "This enables upcoming and experimental V8 VM features. "
 diff --git a/chrome/browser/flag_descriptions.h b/chrome/browser/flag_descriptions.h
-index d2eda3689e8f2..42dd9fb6b943e 100644
+index 68a28a9016a68..814c3c4512d4c 100644
 --- a/chrome/browser/flag_descriptions.h
 +++ b/chrome/browser/flag_descriptions.h
-@@ -1499,6 +1499,9 @@ extern const char kUseFirstPartySetDescription[];
+@@ -1455,6 +1455,9 @@ extern const char kUseFirstPartySetDescription[];
  extern const char kUseSearchClickForRightClickName[];
  extern const char kUseSearchClickForRightClickDescription[];
  
@@ -100,7 +100,7 @@ index d2eda3689e8f2..42dd9fb6b943e 100644
  extern const char kV8VmFutureDescription[];
  
 diff --git a/gin/gin_features.cc b/gin/gin_features.cc
-index ab83bb99fb3a1..e469e2521a549 100644
+index 84e4227976005..9250b91ddba25 100644
 --- a/gin/gin_features.cc
 +++ b/gin/gin_features.cc
 @@ -55,6 +55,9 @@ const base::Feature kV8ReduceConcurrentMarkingTasks{
@@ -126,10 +126,10 @@ index 834d9a0b934fa..d24beb8a6f7f2 100644
  GIN_EXPORT extern const base::Feature kV8OffThreadFinalization;
  GIN_EXPORT extern const base::Feature kV8OptimizeJavascript;
 diff --git a/gin/v8_initializer.cc b/gin/v8_initializer.cc
-index f576fc909eed4..1a126aaf133bb 100644
+index 1447b3828da1e..1b48dd878384c 100644
 --- a/gin/v8_initializer.cc
 +++ b/gin/v8_initializer.cc
-@@ -287,6 +287,10 @@ void SetFlags(IsolateHolder::ScriptMode mode,
+@@ -288,6 +288,10 @@ void SetFlags(IsolateHolder::ScriptMode mode,
    SetV8FlagsIfOverridden(features::kV8SlowHistograms, "--slow-histograms",
                           "--no-slow-histograms");
  

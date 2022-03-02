@@ -1,4 +1,4 @@
-From 1b5d323c24e698904db8bd8583b7aa6c137260ca Mon Sep 17 00:00:00 2001
+From 8f73a918d5612a38d0702eaec6290c2fe1d6f83e Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 20 Oct 2017 21:20:50 -0400
 Subject: [PATCH] mark non-secure origins as dangerous
@@ -8,13 +8,13 @@ Subject: [PATCH] mark non-secure origins as dangerous
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/security_state/core/security_state.cc b/components/security_state/core/security_state.cc
-index 143f294140eb7..eab08cbfaae4b 100644
+index db8be156f6daf..06e5371d69d3b 100644
 --- a/components/security_state/core/security_state.cc
 +++ b/components/security_state/core/security_state.cc
 @@ -173,7 +173,7 @@ SecurityLevel GetSecurityLevel(
          return NONE;
        }
- #endif  // !defined(OS_ANDROID)
+ #endif  // !BUILDFLAG(IS_ANDROID)
 -      return WARNING;
 +      return DANGEROUS;
      }
