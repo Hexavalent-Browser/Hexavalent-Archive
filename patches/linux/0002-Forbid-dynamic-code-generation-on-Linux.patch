@@ -1,4 +1,4 @@
-From 5b47043ac9e906496cf86ff63b94f8229ab85397 Mon Sep 17 00:00:00 2001
+From 0c4dd19bd608b5d9a90b9d0ab2079323b811240f Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Forbid dynamic code generation on Linux
@@ -245,7 +245,7 @@ index dfe9e9c55a718..c3a9cc842fb5f 100644
        // Default on the content baseline policy.
        return BPFBasePolicy::EvaluateSyscall(sysno);
 diff --git a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
-index 75ffefc2a720c..cc3fa82f448b7 100644
+index 62c4551fe403b..b55f43d92ccb9 100644
 --- a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 +++ b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 @@ -30,6 +30,8 @@

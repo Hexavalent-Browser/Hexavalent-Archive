@@ -1,4 +1,4 @@
-From b148e3d604f670c6a33bdcacb720cf22760e8338 Mon Sep 17 00:00:00 2001
+From 4ef79f9b5a56052e3a5ce69abef0cf14a85ecefb Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 22 Mar 2020 03:07:08 -0400
 Subject: [PATCH] disable browser autologin by default
@@ -8,7 +8,7 @@ Subject: [PATCH] disable browser autologin by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/signin/internal/identity_manager/primary_account_manager.cc b/components/signin/internal/identity_manager/primary_account_manager.cc
-index 160c45365126a..1c901546a9b9e 100644
+index 47429881852dd..49d3cecd8caf1 100644
 --- a/components/signin/internal/identity_manager/primary_account_manager.cc
 +++ b/components/signin/internal/identity_manager/primary_account_manager.cc
 @@ -53,7 +53,7 @@ void PrimaryAccountManager::RegisterProfilePrefs(PrefRegistrySimple* registry) {

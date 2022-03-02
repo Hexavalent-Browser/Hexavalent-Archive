@@ -1,4 +1,4 @@
-From f852da17000fed73ce4e48ea23c809cdd2a2fb3d Mon Sep 17 00:00:00 2001
+From 9a5146d40d561f0a5c458d8b6da24338edb5bcf9 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 21 May 2020 14:07:54 -0400
 Subject: [PATCH] disable broken warning for auto var init
@@ -8,7 +8,7 @@ Subject: [PATCH] disable broken warning for auto var init
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index 20dbb2fe58528..85342eb7d9f3a 100644
+index c19d1ecda4e06..5014e2121729d 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
 @@ -355,7 +355,7 @@ config("compiler") {
