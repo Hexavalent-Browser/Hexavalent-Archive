@@ -1,4 +1,4 @@
-From d7fa22cb76c09df2a781fb639c97d8105c18cf68 Mon Sep 17 00:00:00 2001
+From 2be9e6df23ddd7cfc271d2020da22f7f7bf6d4a8 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 4 Jul 2019 18:11:27 -0400
 Subject: [PATCH] disable media router media remoting by default
@@ -8,7 +8,7 @@ Subject: [PATCH] disable media router media remoting by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/profiles/profile.cc b/chrome/browser/profiles/profile.cc
-index a13f2fda30aac..0dc159f23aff9 100644
+index a3fadab7e4e6b..d7f0e395c8471 100644
 --- a/chrome/browser/profiles/profile.cc
 +++ b/chrome/browser/profiles/profile.cc
 @@ -359,7 +359,7 @@ void Profile::RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
