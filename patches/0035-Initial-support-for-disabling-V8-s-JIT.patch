@@ -1,4 +1,4 @@
-From 0033719a581f9a69cfc37dfa05611a8f8985b96f Mon Sep 17 00:00:00 2001
+From dd80d6beb0ea4ce4061d77798ac0dd3b936f622b Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Tue, 19 Oct 2021 07:36:10 -0400
 Subject: [PATCH] Initial support for disabling V8's JIT
@@ -17,10 +17,10 @@ compiler; it is default disabled.
  8 files changed, 29 insertions(+)
 
 diff --git a/chrome/browser/about_flags.cc b/chrome/browser/about_flags.cc
-index 2825190b68c3c..ce26fa36dcbd8 100644
+index 595b892c2553e..f46b23b114d9a 100644
 --- a/chrome/browser/about_flags.cc
 +++ b/chrome/browser/about_flags.cc
-@@ -161,6 +161,7 @@
+@@ -162,6 +162,7 @@
  #include "device/gamepad/public/cpp/gamepad_features.h"
  #include "device/vr/buildflags/buildflags.h"
  #include "extensions/buildflags/buildflags.h"
@@ -28,7 +28,7 @@ index 2825190b68c3c..ce26fa36dcbd8 100644
  #include "gpu/config/gpu_finch_features.h"
  #include "gpu/config/gpu_switches.h"
  #include "media/audio/audio_features.h"
-@@ -5303,6 +5304,10 @@ const FeatureEntry kFeatureEntries[] = {
+@@ -5583,6 +5584,10 @@ const FeatureEntry kFeatureEntries[] = {
       flag_descriptions::kDisableProcessReuseDescription, kOsDesktop,
       FEATURE_VALUE_TYPE(features::kDisableProcessReuse)},
  
@@ -40,10 +40,10 @@ index 2825190b68c3c..ce26fa36dcbd8 100644
      {"enable-accessibility-live-caption",
       flag_descriptions::kEnableAccessibilityLiveCaptionName,
 diff --git a/chrome/browser/flag-metadata.json b/chrome/browser/flag-metadata.json
-index 2f92602940727..2544285e61bff 100644
+index 5101fa4571f08..75619d2b59ab3 100644
 --- a/chrome/browser/flag-metadata.json
 +++ b/chrome/browser/flag-metadata.json
-@@ -1260,6 +1260,13 @@
+@@ -1278,6 +1278,13 @@
      // issues.
      "expiry_milestone": -1
    },
@@ -70,10 +70,10 @@ index 9f1d1941d21f3..9560f9ab1a9e3 100644
    "disable-webrtc-hw-encoding",
    "disallow-doc-written-script-loads",
 diff --git a/chrome/browser/flag_descriptions.cc b/chrome/browser/flag_descriptions.cc
-index 51005256f59cd..df995f4a21fe0 100644
+index 90fec30351c19..a3a79465e02e8 100644
 --- a/chrome/browser/flag_descriptions.cc
 +++ b/chrome/browser/flag_descriptions.cc
-@@ -2548,6 +2548,11 @@ const char kUseSearchClickForRightClickDescription[] =
+@@ -2681,6 +2681,11 @@ const char kUseSearchClickForRightClickDescription[] =
      "webpages and apps to consume alt+click. When disabled the legacy "
      "behavior of remapping alt+click to right click will remain unchanged.";
  
@@ -86,10 +86,10 @@ index 51005256f59cd..df995f4a21fe0 100644
  const char kV8VmFutureDescription[] =
      "This enables upcoming and experimental V8 VM features. "
 diff --git a/chrome/browser/flag_descriptions.h b/chrome/browser/flag_descriptions.h
-index 68a28a9016a68..814c3c4512d4c 100644
+index 8707f378a0903..e75bac41734e4 100644
 --- a/chrome/browser/flag_descriptions.h
 +++ b/chrome/browser/flag_descriptions.h
-@@ -1455,6 +1455,9 @@ extern const char kUseFirstPartySetDescription[];
+@@ -1523,6 +1523,9 @@ extern const char kUseFirstPartySetDescription[];
  extern const char kUseSearchClickForRightClickName[];
  extern const char kUseSearchClickForRightClickDescription[];
  
@@ -126,7 +126,7 @@ index 834d9a0b934fa..d24beb8a6f7f2 100644
  GIN_EXPORT extern const base::Feature kV8OffThreadFinalization;
  GIN_EXPORT extern const base::Feature kV8OptimizeJavascript;
 diff --git a/gin/v8_initializer.cc b/gin/v8_initializer.cc
-index 1447b3828da1e..1b48dd878384c 100644
+index f411bbde031d1..5092cfdc82a44 100644
 --- a/gin/v8_initializer.cc
 +++ b/gin/v8_initializer.cc
 @@ -288,6 +288,10 @@ void SetFlags(IsolateHolder::ScriptMode mode,

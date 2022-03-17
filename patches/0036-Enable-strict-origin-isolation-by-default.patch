@@ -1,4 +1,4 @@
-From 187c69aed5c7a1d9b7de0369265e4c826d63d44a Mon Sep 17 00:00:00 2001
+From c80b8e01c925b03a3965e89efba3b9e06c901249 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 21 Oct 2021 00:00:00 +0000
 Subject: [PATCH] Enable strict origin isolation by default
@@ -15,10 +15,10 @@ for more detail.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/content/public/common/content_features.cc b/content/public/common/content_features.cc
-index af938c71de45e..9cf01ff6c8e9e 100644
+index da8785d234366..9350850b278cd 100644
 --- a/content/public/common/content_features.cc
 +++ b/content/public/common/content_features.cc
-@@ -896,7 +896,7 @@ const base::Feature kStorageServiceOutOfProcess{
+@@ -936,7 +936,7 @@ const base::Feature kStorageServiceOutOfProcess{
  // Controls whether site isolation should use origins instead of scheme and
  // eTLD+1.
  const base::Feature kStrictOriginIsolation{"StrictOriginIsolation",

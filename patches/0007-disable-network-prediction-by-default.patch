@@ -1,4 +1,4 @@
-From f3624e8563e3b44d716c9b64ce14cf322e6ff04c Mon Sep 17 00:00:00 2001
+From 36882600f9f445ac3478cd819f9c71d9c7e1ceec Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 23 Nov 2016 08:31:44 -0500
 Subject: [PATCH] disable network prediction by default
@@ -22,10 +22,10 @@ index 77e3601c57cf2..a33eacc9ab679 100644
  
  // Enum representing possible values of the Preload Pages opt-in state.  Since
 diff --git a/chrome/browser/resources/settings/privacy_page/cookies_page.ts b/chrome/browser/resources/settings/privacy_page/cookies_page.ts
-index a9fea35ea8850..1044de164185d 100644
+index 88316900c50d7..45b0eb040c04e 100644
 --- a/chrome/browser/resources/settings/privacy_page/cookies_page.ts
 +++ b/chrome/browser/resources/settings/privacy_page/cookies_page.ts
-@@ -47,7 +47,7 @@ enum NetworkPredictionOptions {
+@@ -48,7 +48,7 @@ enum NetworkPredictionOptions {
    WIFI_ONLY_DEPRECATED = 1,
    DISABLED = 2,
    EXTENDED = 3,
