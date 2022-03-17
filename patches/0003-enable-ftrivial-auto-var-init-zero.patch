@@ -1,4 +1,4 @@
-From 5ecb86b043e30bcc734310696dc3598fd373c96c Mon Sep 17 00:00:00 2001
+From 877edfda77e4d6d5ba927ed90cc84d4b0d6390a2 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 8 Apr 2020 20:48:17 -0400
 Subject: [PATCH] enable -ftrivial-auto-var-init=zero
@@ -8,7 +8,7 @@ Subject: [PATCH] enable -ftrivial-auto-var-init=zero
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index d2beaac6123aa..c19d1ecda4e06 100644
+index 7b2c960e7392d..dd83c3f7276a6 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
 @@ -140,7 +140,7 @@ declare_args() {
