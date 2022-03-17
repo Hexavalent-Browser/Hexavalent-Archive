@@ -1,4 +1,4 @@
-From a759317aa2fd4a700cbeded255ef94fb7fedf036 Mon Sep 17 00:00:00 2001
+From 87790334e9898b909dc497402ab113d55af77b42 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 4 Jul 2019 18:11:27 -0400
 Subject: [PATCH] disable media router media remoting by default
@@ -8,12 +8,12 @@ Subject: [PATCH] disable media router media remoting by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/profiles/profile.cc b/chrome/browser/profiles/profile.cc
-index a3fadab7e4e6b..d7f0e395c8471 100644
+index 779971a744754..c196f5d2fe85a 100644
 --- a/chrome/browser/profiles/profile.cc
 +++ b/chrome/browser/profiles/profile.cc
-@@ -359,7 +359,7 @@ void Profile::RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
-       media_router::prefs::kMediaRouterEnableCloudServices, false,
-       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
+@@ -349,7 +349,7 @@ void Profile::RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
+ 
+ #if !BUILDFLAG(IS_ANDROID)
    registry->RegisterBooleanPref(
 -      media_router::prefs::kMediaRouterMediaRemotingEnabled, true);
 +      media_router::prefs::kMediaRouterMediaRemotingEnabled, false);
