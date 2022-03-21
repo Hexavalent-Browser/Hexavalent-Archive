@@ -1,4 +1,4 @@
-From 84cae628e116fd62a81ba1a719b1623f93b4812c Mon Sep 17 00:00:00 2001
+From 599701696ae9a9f56dec0bdafb0e08e42eb1d357 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 23 Nov 2016 08:29:58 -0500
 Subject: [PATCH] disable navigation error correction by default
