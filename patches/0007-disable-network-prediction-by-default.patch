@@ -1,4 +1,4 @@
-From f3624e8563e3b44d716c9b64ce14cf322e6ff04c Mon Sep 17 00:00:00 2001
+From 99b70e810ec9108ae808d8cf93021d6f95c9abdf Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Wed, 23 Nov 2016 08:31:44 -0500
 Subject: [PATCH] disable network prediction by default
