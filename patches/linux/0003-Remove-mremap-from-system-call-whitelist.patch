@@ -1,4 +1,4 @@
-From fcb7160ec7e80397c467fec4891143e067deb48b Mon Sep 17 00:00:00 2001
+From 5a752940778cbe64ec95ca3374663c5f5d6dbcf8 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Fri, 19 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Remove mremap from system call whitelist
