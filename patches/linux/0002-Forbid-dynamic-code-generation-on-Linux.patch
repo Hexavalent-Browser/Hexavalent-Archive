@@ -1,4 +1,4 @@
-From 81c0a921bb6c35821016d028ef1762364e07d2e2 Mon Sep 17 00:00:00 2001
+From f5ec6354827483ce5d17c7628040bb6fbc031053 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Forbid dynamic code generation on Linux
