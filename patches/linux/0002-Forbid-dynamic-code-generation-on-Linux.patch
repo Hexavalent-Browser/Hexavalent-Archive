@@ -1,4 +1,4 @@
-From 81c0a921bb6c35821016d028ef1762364e07d2e2 Mon Sep 17 00:00:00 2001
+From 51d17b6b3655ecd7d7d3520a003db03784817e83 Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Forbid dynamic code generation on Linux
@@ -7,18 +7,18 @@ The Windows sandbox prevents dynamic code generation via setting
 MITIGATION_DYNAMIC_CODE_DISABLE on certain processes; prevent dynamic
 code generation in the same processes on Linux via seccomp-bpf.
 ---
- .../policy/linux/bpf_audio_policy_linux.cc    | 18 +++++++++++
- sandbox/policy/linux/bpf_cdm_policy_linux.cc  | 12 +++++++
- .../policy/linux/bpf_ppapi_policy_linux.cc    | 12 +++++++
- .../bpf_print_compositor_policy_linux.cc      | 12 +++++++
- .../policy/linux/bpf_renderer_policy_linux.cc | 21 +++++++++++-
- .../policy/linux/bpf_renderer_policy_linux.h  |  5 ++-
- .../policy/linux/bpf_service_policy_linux.cc  | 21 ++++++++++++
- .../policy/linux/bpf_service_policy_linux.h   |  5 ++-
- .../bpf_speech_recognition_policy_linux.cc    | 12 +++++++
- .../policy/linux/bpf_utility_policy_linux.cc  | 12 +++++++
- .../policy/linux/sandbox_seccomp_bpf_linux.cc | 32 ++++++++++++++++---
- 11 files changed, 155 insertions(+), 7 deletions(-)
+ .../policy/linux/bpf_audio_policy_linux.cc    | 18 +++++++
+ sandbox/policy/linux/bpf_cdm_policy_linux.cc  | 12 +++++
+ .../policy/linux/bpf_ppapi_policy_linux.cc    | 12 +++++
+ .../bpf_print_compositor_policy_linux.cc      | 12 +++++
+ .../policy/linux/bpf_renderer_policy_linux.cc | 21 +++++++-
+ .../policy/linux/bpf_renderer_policy_linux.h  |  5 +-
+ .../policy/linux/bpf_service_policy_linux.cc  | 21 ++++++++
+ .../policy/linux/bpf_service_policy_linux.h   |  5 +-
+ .../bpf_speech_recognition_policy_linux.cc    | 12 +++++
+ .../policy/linux/bpf_utility_policy_linux.cc  | 12 +++++
+ .../policy/linux/sandbox_seccomp_bpf_linux.cc | 49 +++++++++++++++++--
+ 11 files changed, 171 insertions(+), 8 deletions(-)
 
 diff --git a/sandbox/policy/linux/bpf_audio_policy_linux.cc b/sandbox/policy/linux/bpf_audio_policy_linux.cc
 index 1ca63de3862b6..358839dbfc950 100644
@@ -278,7 +278,7 @@ index dfe9e9c55a718..c3a9cc842fb5f 100644
        // Default on the content baseline policy.
        return BPFBasePolicy::EvaluateSyscall(sysno);
 diff --git a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
-index 62c4551fe403b..dfd93bf02579a 100644
+index 62c4551fe403b..f230d5b79941f 100644
 --- a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 +++ b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 @@ -30,6 +30,8 @@
@@ -298,7 +298,7 @@ index 62c4551fe403b..dfd93bf02579a 100644
  
  #if BUILDFLAG(IS_CHROMEOS_ASH)
  #include "sandbox/policy/features.h"
-@@ -164,8 +167,29 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
+@@ -164,8 +167,26 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
    switch (sandbox_type) {
      case sandbox::mojom::Sandbox::kGpu:
        return GetGpuProcessSandbox(options.use_amd_specific_policies);
@@ -308,10 +308,7 @@ index 62c4551fe403b..dfd93bf02579a 100644
 +      const base::CommandLine& command_line =
 +          *base::CommandLine::ForCurrentProcess();
 +      bool dynamic_code_can_be_disabled = false;
-+      if (base::FeatureList::IsEnabled(features::kV8NoJIT)) {
-+        dynamic_code_can_be_disabled = true;
-+      }
-+      else if (command_line.HasSwitch(blink::switches::kJavaScriptFlags)) {
++      if (command_line.HasSwitch(blink::switches::kJavaScriptFlags)) {
 +        std::string js_flags =
 +            command_line.GetSwitchValueASCII(blink::switches::kJavaScriptFlags);
 +        std::vector<base::StringPiece> js_flag_list = base::SplitStringPiece(
@@ -330,15 +327,34 @@ index 62c4551fe403b..dfd93bf02579a 100644
  #if BUILDFLAG(ENABLE_PLUGINS)
      case sandbox::mojom::Sandbox::kPpapi:
        return std::make_unique<PpapiProcessPolicy>();
-@@ -185,9 +209,9 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
+@@ -185,9 +206,27 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
      case sandbox::mojom::Sandbox::kAudio:
        return std::make_unique<AudioProcessPolicy>();
      case sandbox::mojom::Sandbox::kService:
 -      return std::make_unique<ServiceProcessPolicy>();
-+      return std::make_unique<ServiceProcessPolicy>(true);
-     case sandbox::mojom::Sandbox::kServiceWithJit:
+-    case sandbox::mojom::Sandbox::kServiceWithJit:
 -      return std::make_unique<ServiceProcessPolicy>();
-+      return std::make_unique<ServiceProcessPolicy>(false);
++      return std::make_unique<ServiceProcessPolicy>(true);
++    case sandbox::mojom::Sandbox::kServiceWithJit: {
++      const base::CommandLine& command_line =
++          *base::CommandLine::ForCurrentProcess();
++      bool dynamic_code_can_be_disabled = false;
++      if (command_line.HasSwitch(blink::switches::kJavaScriptFlags)) {
++        std::string js_flags =
++            command_line.GetSwitchValueASCII(blink::switches::kJavaScriptFlags);
++        std::vector<base::StringPiece> js_flag_list = base::SplitStringPiece(
++            js_flags, ",", base::TRIM_WHITESPACE, base::SPLIT_WANT_NONEMPTY);
++        for (const auto& js_flag : js_flag_list) {
++          if (js_flag == "--jitless") {
++            // If v8 is running jitless then there is no need for the ability to
++            // mark writable pages as executable to be available to the process.
++            dynamic_code_can_be_disabled = true;
++            break;
++          }
++        }
++      }
++      return std::make_unique<ServiceProcessPolicy>(dynamic_code_can_be_disabled);
++    }
      case sandbox::mojom::Sandbox::kSpeechRecognition:
        return std::make_unique<SpeechRecognitionProcessPolicy>();
  #if BUILDFLAG(IS_CHROMEOS_ASH)
