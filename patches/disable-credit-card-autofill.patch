@@ -1,0 +1,67 @@
+diff --git a/components/autofill/core/common/autofill_payments_features.cc b/components/autofill/core/common/autofill_payments_features.cc
+index 0f77a3ababa11..f4944b2b445a3 100644
+--- a/components/autofill/core/common/autofill_payments_features.cc
++++ b/components/autofill/core/common/autofill_payments_features.cc
+@@ -42,7 +42,7 @@ const base::Feature kAutofillCreditCardAuthentication{
+   "AutofillCreditCardAuthentication",
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_ANDROID)
+       // Better Auth project is fully launched on Win/Mac/Clank.
+-      base::FEATURE_ENABLED_BY_DEFAULT
++      base::FEATURE_DISABLED_BY_DEFAULT
+ #else
+       base::FEATURE_DISABLED_BY_DEFAULT
+ #endif
+@@ -62,7 +62,7 @@ const base::Feature kAutofillEnableGoogleIssuedCard{
+ // interact with a payment form.
+ const base::Feature kAutofillEnableMerchantBoundVirtualCards{
+     "AutofillEnableMerchantBoundVirtualCards",
+-    base::FEATURE_ENABLED_BY_DEFAULT};
++    base::FEATURE_DISABLED_BY_DEFAULT};
+ 
+ // Controls whether to track the cross-tab-status of the offer notification
+ // bubble.
+@@ -103,7 +103,7 @@ const base::Feature kAutofillEnableToolbarStatusChip{
+ // field for non-legacy ID.
+ const base::Feature kAutofillEnableUnmaskCardRequestSetInstrumentId{
+     "AutofillEnableUnmaskCardRequestSetInstrumentId",
+-    base::FEATURE_ENABLED_BY_DEFAULT};
++    base::FEATURE_DISABLED_BY_DEFAULT};
+ 
+ // When enabled, the user will have the ability to update the virtual card
+ // enrollment of a credit card through their chrome browser after certain
+@@ -123,7 +123,7 @@ const base::Feature kAutofillEnableVirtualCard{
+ // card in virtual card.
+ const base::Feature kAutofillEnableVirtualCardManagementInDesktopSettingsPage{
+     "AutofillEnableVirtualCardManagementInDesktopSettingsPage",
+-    base::FEATURE_ENABLED_BY_DEFAULT};
++    base::FEATURE_DISABLED_BY_DEFAULT};
+ 
+ // When enabled, virtual card retrieval will pass an optional
+ // authentication based on risk level.
+@@ -159,7 +159,7 @@ const base::Feature kAutofillSaveCardDismissOnNavigation{
+ 
+ // When enabled, the Save Card infobar supports editing before submitting.
+ const base::Feature kAutofillSaveCardInfobarEditSupport{
+-    "AutofillSaveCardInfobarEditSupport", base::FEATURE_ENABLED_BY_DEFAULT};
++    "AutofillSaveCardInfobarEditSupport", base::FEATURE_DISABLED_BY_DEFAULT};
+ 
+ // When enabled, the entire PAN and the CVC details of the unmasked cached card
+ // will be shown in the manual filling view.
+@@ -170,7 +170,7 @@ const base::Feature kAutofillShowUnmaskedCachedCardInManualFillingView{
+ // When enabled, suggestions with offers will be shown at the top.
+ const base::Feature kAutofillSortSuggestionsBasedOnOfferPresence{
+     "AutofillSortSuggestionsBasedOnOfferPresence",
+-    base::FEATURE_ENABLED_BY_DEFAULT};
++    base::FEATURE_DISABLED_BY_DEFAULT};
+ 
+ // When enabled, merchant bound virtual cards will be suggested even if we don't
+ // detect all of the card number, exp date and CVC fields in the payment form.
+@@ -195,7 +195,7 @@ bool ShouldShowImprovedUserConsentForCreditCardSave() {
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_APPLE) || \
+     (BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS_LACROS))
+   // The new user consent UI is fully launched on MacOS, Windows and Linux.
+-  return true;
++  return false;
+ #else
+   // Chrome OS does not have the new UI.
+   return false;
