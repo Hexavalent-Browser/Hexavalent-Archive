@@ -1,4 +1,4 @@
-From 25d88f7ed0e4fc3275df848572554048e160918a Mon Sep 17 00:00:00 2001
+From 11edaa8ffd06207e98601a57e3496e76e5a3624f Mon Sep 17 00:00:00 2001
 From: qua3k <cliffmaceyak@gmail.com>
 Date: Tue, 19 Oct 2021 07:36:10 -0400
 Subject: [PATCH] Initial support for disabling V8's JIT
@@ -17,7 +17,7 @@ compiler; it is default disabled.
  8 files changed, 29 insertions(+)
 
 diff --git a/chrome/browser/about_flags.cc b/chrome/browser/about_flags.cc
-index 81876b3c1a157..fa9460619d0c4 100644
+index 7540a4823c30c..ea3a99afeb3d2 100644
 --- a/chrome/browser/about_flags.cc
 +++ b/chrome/browser/about_flags.cc
 @@ -162,6 +162,7 @@
@@ -28,7 +28,7 @@ index 81876b3c1a157..fa9460619d0c4 100644
  #include "gpu/config/gpu_finch_features.h"
  #include "gpu/config/gpu_switches.h"
  #include "media/audio/audio_features.h"
-@@ -5593,6 +5594,10 @@ const FeatureEntry kFeatureEntries[] = {
+@@ -5594,6 +5595,10 @@ const FeatureEntry kFeatureEntries[] = {
       flag_descriptions::kDisableProcessReuseDescription, kOsDesktop,
       FEATURE_VALUE_TYPE(features::kDisableProcessReuse)},
  
@@ -40,7 +40,7 @@ index 81876b3c1a157..fa9460619d0c4 100644
      {"enable-accessibility-live-caption",
       flag_descriptions::kEnableAccessibilityLiveCaptionName,
 diff --git a/chrome/browser/flag-metadata.json b/chrome/browser/flag-metadata.json
-index 7aedbb52fc49f..12d5eefdc3b62 100644
+index 3fbcb067d9e68..9af654ae402c2 100644
 --- a/chrome/browser/flag-metadata.json
 +++ b/chrome/browser/flag-metadata.json
 @@ -1278,6 +1278,13 @@
@@ -58,7 +58,7 @@ index 7aedbb52fc49f..12d5eefdc3b62 100644
      "name": "disable-virtual-keyboard",
      "owners": [ "myy", "essential-inputs-team@google.com" ],
 diff --git a/chrome/browser/flag-never-expire-list.json b/chrome/browser/flag-never-expire-list.json
-index 9f1d1941d21f3..9560f9ab1a9e3 100644
+index df66d92969306..1b03a009d2ff2 100644
 --- a/chrome/browser/flag-never-expire-list.json
 +++ b/chrome/browser/flag-never-expire-list.json
 @@ -29,6 +29,7 @@
