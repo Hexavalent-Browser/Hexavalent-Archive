@@ -1,4 +1,4 @@
-From 4c7965f22152c70454224717984b7bfb3328d056 Mon Sep 17 00:00:00 2001
+From c36026280ad88f478c5a0c0dc7323a00450974f5 Mon Sep 17 00:00:00 2001
 From: Zoraver Kang <Zoraver@users.noreply.github.com>
 Date: Sat, 15 Jan 2022 13:34:33 -0500
 Subject: [PATCH] disable appending variations header
