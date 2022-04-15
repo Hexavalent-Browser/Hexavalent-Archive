@@ -1,4 +1,4 @@
-From 2599e0811e346a99adfac1841c6ac21652469ba1 Mon Sep 17 00:00:00 2001
+From 448b2964148a9e7ad698f9e23bc64b61a20d2885 Mon Sep 17 00:00:00 2001
 From: qua3k <qua3kr@gmail.com>
 Date: Fri, 19 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Remove mremap from system call whitelist
@@ -13,7 +13,7 @@ It's not used in PartitionAlloc and should be removed.
  5 files changed, 5 deletions(-)
 
 diff --git a/sandbox/policy/linux/bpf_cdm_policy_linux.cc b/sandbox/policy/linux/bpf_cdm_policy_linux.cc
-index bb476c1f71178..baa196482331c 100644
+index f569def5b57da..78752b1b546ca 100644
 --- a/sandbox/policy/linux/bpf_cdm_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_cdm_policy_linux.cc
 @@ -39,7 +39,6 @@ ResultExpr CdmProcessPolicy::EvaluateSyscall(int sysno) const {
@@ -25,7 +25,7 @@ index bb476c1f71178..baa196482331c 100644
      case __NR_sysinfo:
      case __NR_times:
 diff --git a/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc b/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
-index 73681bc353c3d..e93e5e338a9c2 100644
+index 4a234d79144f9..5a35c7386d299 100644
 --- a/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
 @@ -39,7 +39,6 @@ ResultExpr PrintCompositorProcessPolicy::EvaluateSyscall(int sysno) const {
@@ -37,7 +37,7 @@ index 73681bc353c3d..e93e5e338a9c2 100644
      case __NR_sysinfo:
      case __NR_times:
 diff --git a/sandbox/policy/linux/bpf_renderer_policy_linux.cc b/sandbox/policy/linux/bpf_renderer_policy_linux.cc
-index 1bc2d82e5098b..8b19d0c75136f 100644
+index 029c067c07e55..c675f27027007 100644
 --- a/sandbox/policy/linux/bpf_renderer_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_renderer_policy_linux.cc
 @@ -109,7 +109,6 @@ ResultExpr RendererProcessPolicy::EvaluateSyscall(int sysno) const {
@@ -49,7 +49,7 @@ index 1bc2d82e5098b..8b19d0c75136f 100644
      case __NR_sched_get_priority_max:
      case __NR_sched_get_priority_min:
 diff --git a/sandbox/policy/linux/bpf_service_policy_linux.cc b/sandbox/policy/linux/bpf_service_policy_linux.cc
-index aeafcab0339d9..c83991417de52 100644
+index a4cebc8ae78d1..133824a8a3ebb 100644
 --- a/sandbox/policy/linux/bpf_service_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_service_policy_linux.cc
 @@ -53,7 +53,6 @@ ResultExpr ServiceProcessPolicy::EvaluateSyscall(int sysno) const {
@@ -61,7 +61,7 @@ index aeafcab0339d9..c83991417de52 100644
      case __NR_times:
        return Allow();
 diff --git a/sandbox/policy/linux/bpf_utility_policy_linux.cc b/sandbox/policy/linux/bpf_utility_policy_linux.cc
-index c3a9cc842fb5f..9a0e0850545e0 100644
+index dfe9e9c55a718..8d8cf924edaaf 100644
 --- a/sandbox/policy/linux/bpf_utility_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_utility_policy_linux.cc
 @@ -40,7 +40,6 @@ ResultExpr UtilityProcessPolicy::EvaluateSyscall(int sysno) const {

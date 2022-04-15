@@ -1,4 +1,4 @@
-From 51d17b6b3655ecd7d7d3520a003db03784817e83 Mon Sep 17 00:00:00 2001
+From 4fbf24473f7f7307b4f5b576bb20d51a27287210 Mon Sep 17 00:00:00 2001
 From: qua3k <qua3kr@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Forbid dynamic code generation on Linux
@@ -7,119 +7,58 @@ The Windows sandbox prevents dynamic code generation via setting
 MITIGATION_DYNAMIC_CODE_DISABLE on certain processes; prevent dynamic
 code generation in the same processes on Linux via seccomp-bpf.
 ---
- .../policy/linux/bpf_audio_policy_linux.cc    | 18 +++++++
- sandbox/policy/linux/bpf_cdm_policy_linux.cc  | 12 +++++
- .../policy/linux/bpf_ppapi_policy_linux.cc    | 12 +++++
- .../bpf_print_compositor_policy_linux.cc      | 12 +++++
+ .../seccomp-bpf-helpers/baseline_policy.cc    |  6 +--
+ .../policy/linux/bpf_audio_policy_linux.cc    |  3 ++
  .../policy/linux/bpf_renderer_policy_linux.cc | 21 +++++++-
  .../policy/linux/bpf_renderer_policy_linux.h  |  5 +-
  .../policy/linux/bpf_service_policy_linux.cc  | 21 ++++++++
  .../policy/linux/bpf_service_policy_linux.h   |  5 +-
- .../bpf_speech_recognition_policy_linux.cc    | 12 +++++
- .../policy/linux/bpf_utility_policy_linux.cc  | 12 +++++
  .../policy/linux/sandbox_seccomp_bpf_linux.cc | 49 +++++++++++++++++--
- 11 files changed, 171 insertions(+), 8 deletions(-)
+ 7 files changed, 99 insertions(+), 11 deletions(-)
 
+diff --git a/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc b/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+index 74ce4c75d4d8a..7eb885a85a449 100644
+--- a/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
++++ b/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+@@ -248,19 +248,19 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
+ #if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
+     defined(__aarch64__)
+   if (sysno == __NR_mmap)
+-    return RestrictMmapFlags();
++    return RestrictMmapFlagsNoWX();
+ #endif
+ 
+ #if defined(__i386__) || defined(__arm__) || \
+     (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
+   if (sysno == __NR_mmap2)
+-    return RestrictMmapFlags();
++    return RestrictMmapFlagsNoWX();
+ #endif
+ 
+   if (sysno == __NR_mprotect || sysno == __NR_pkey_mprotect) {
+     // pkey_mprotect is identical to mprotect except for the additional (last)
+     // parameter, which can be ignored here.
+-    return RestrictMprotectFlags();
++    return RestrictMprotectFlagsNoWX();
+   }
+ 
+   if (sysno == __NR_prctl)
 diff --git a/sandbox/policy/linux/bpf_audio_policy_linux.cc b/sandbox/policy/linux/bpf_audio_policy_linux.cc
-index 1ca63de3862b6..358839dbfc950 100644
+index 1ca63de3862b6..8b8fbf87f0220 100644
 --- a/sandbox/policy/linux/bpf_audio_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_audio_policy_linux.cc
-@@ -118,6 +118,24 @@ ResultExpr AudioProcessPolicy::EvaluateSyscall(int system_call_number) const {
-       const Arg<int> domain(0);
-       return If(domain == AF_UNIX, Allow()).Else(Error(EPERM));
-     }
-+#endif
-+#if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
-+    defined(__aarch64__)
-+    case __NR_mmap:
-+#endif
-+#if defined(__i386__) || defined(__arm__) || \
-+    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
-+    case __NR_mmap2:
-+#endif
-+      return RestrictMmapFlagsNoWX();
-+    case __NR_mprotect:
-+    case __NR_pkey_mprotect:
-+      return RestrictMprotectFlagsNoWX();
-+#if defined(__i386__) || defined(__x86_64__) || defined(__arm__) || \
-+    defined(__aarch64__) ||                                         \
-+    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_64_BITS))
-+    case __NR_shmat:
-+      return RestrictShmatFlags();
+@@ -121,6 +121,9 @@ ResultExpr AudioProcessPolicy::EvaluateSyscall(int system_call_number) const {
  #endif
      default:
  #if defined(__x86_64__)
-diff --git a/sandbox/policy/linux/bpf_cdm_policy_linux.cc b/sandbox/policy/linux/bpf_cdm_policy_linux.cc
-index f569def5b57da..bb476c1f71178 100644
---- a/sandbox/policy/linux/bpf_cdm_policy_linux.cc
-+++ b/sandbox/policy/linux/bpf_cdm_policy_linux.cc
-@@ -49,6 +49,18 @@ ResultExpr CdmProcessPolicy::EvaluateSyscall(int sysno) const {
-       return RestrictSchedTarget(GetPolicyPid(), sysno);
-     case __NR_prlimit64:
-       return RestrictPrlimitToGetrlimit(GetPolicyPid());
-+#if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
-+    defined(__aarch64__)
-+    case __NR_mmap:
-+#endif
-+#if defined(__i386__) || defined(__arm__) || \
-+    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
-+    case __NR_mmap2:
-+#endif
-+      return RestrictMmapFlagsNoWX();
-+    case __NR_mprotect:
-+    case __NR_pkey_mprotect:
-+      return RestrictMprotectFlagsNoWX();
-     default:
-       // Default on the content baseline policy.
-       return BPFBasePolicy::EvaluateSyscall(sysno);
-diff --git a/sandbox/policy/linux/bpf_ppapi_policy_linux.cc b/sandbox/policy/linux/bpf_ppapi_policy_linux.cc
-index 1465de67d7a50..ae3d240df3363 100644
---- a/sandbox/policy/linux/bpf_ppapi_policy_linux.cc
-+++ b/sandbox/policy/linux/bpf_ppapi_policy_linux.cc
-@@ -40,6 +40,18 @@ ResultExpr PpapiProcessPolicy::EvaluateSyscall(int sysno) const {
-       return RestrictSchedTarget(GetPolicyPid(), sysno);
-     case __NR_ioctl:
-       return Error(ENOTTY);  // Flash Access.
-+#if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
-+    defined(__aarch64__)
-+    case __NR_mmap:
-+#endif
-+#if defined(__i386__) || defined(__arm__) || \
-+    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
-+    case __NR_mmap2:
-+#endif
-+      return RestrictMmapFlagsNoWX();
-+    case __NR_mprotect:
-+    case __NR_pkey_mprotect:
-+      return RestrictMprotectFlagsNoWX();
-     default:
-       // Default on the baseline policy.
-       return BPFBasePolicy::EvaluateSyscall(sysno);
-diff --git a/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc b/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
-index 4a234d79144f9..73681bc353c3d 100644
---- a/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
-+++ b/sandbox/policy/linux/bpf_print_compositor_policy_linux.cc
-@@ -45,6 +45,18 @@ ResultExpr PrintCompositorProcessPolicy::EvaluateSyscall(int sysno) const {
-     case __NR_times:
-     case __NR_uname:
-       return Allow();
-+#if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
-+    defined(__aarch64__)
-+    case __NR_mmap:
-+#endif
-+#if defined(__i386__) || defined(__arm__) || \
-+    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
-+    case __NR_mmap2:
-+#endif
-+      return RestrictMmapFlagsNoWX();
-+    case __NR_mprotect:
-+    case __NR_pkey_mprotect:
-+      return RestrictMprotectFlagsNoWX();
-     default:
-       // Default on the content baseline policy.
-       return BPFBasePolicy::EvaluateSyscall(sysno);
++      if (system_call_number == __NR_shmat)
++        return RestrictShmatFlags();
++
+       if (SyscallSets::IsSystemVSemaphores(system_call_number) ||
+           SyscallSets::IsSystemVSharedMemory(system_call_number)) {
+         return Allow();
 diff --git a/sandbox/policy/linux/bpf_renderer_policy_linux.cc b/sandbox/policy/linux/bpf_renderer_policy_linux.cc
-index f789e92c37c1b..1bc2d82e5098b 100644
+index f789e92c37c1b..029c067c07e55 100644
 --- a/sandbox/policy/linux/bpf_renderer_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_renderer_policy_linux.cc
 @@ -48,10 +48,29 @@ ResultExpr RestrictIoctl() {
@@ -133,7 +72,7 @@ index f789e92c37c1b..1bc2d82e5098b 100644
  
  ResultExpr RendererProcessPolicy::EvaluateSyscall(int sysno) const {
 +
-+  if (is_jit_disabled_) {
++  if (!is_jit_disabled_) {
 +    switch (sysno) {
 +#if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
 +    defined(__aarch64__)
@@ -143,10 +82,10 @@ index f789e92c37c1b..1bc2d82e5098b 100644
 +    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
 +      case __NR_mmap2:
 +#endif
-+        return RestrictMmapFlagsNoWX();
++        return RestrictMmapFlags();
 +      case __NR_mprotect:
 +      case __NR_pkey_mprotect:
-+        return RestrictMprotectFlagsNoWX();
++        return RestrictMprotectFlags();
 +    }
 +  }
 +
@@ -177,7 +116,7 @@ index 6db8ad264bb8b..71568fc2fd41d 100644
  
  }  // namespace policy
 diff --git a/sandbox/policy/linux/bpf_service_policy_linux.cc b/sandbox/policy/linux/bpf_service_policy_linux.cc
-index 3ddc8bfa79b08..aeafcab0339d9 100644
+index 3ddc8bfa79b08..a4cebc8ae78d1 100644
 --- a/sandbox/policy/linux/bpf_service_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_service_policy_linux.cc
 @@ -20,7 +20,28 @@ using sandbox::bpf_dsl::ResultExpr;
@@ -189,7 +128,7 @@ index 3ddc8bfa79b08..aeafcab0339d9 100644
 +
  ResultExpr ServiceProcessPolicy::EvaluateSyscall(int sysno) const {
 +
-+  if (is_jit_disabled_) {
++  if (!is_jit_disabled_) {
 +    switch (sysno) {
 +#if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
 +    defined(__aarch64__)
@@ -199,10 +138,10 @@ index 3ddc8bfa79b08..aeafcab0339d9 100644
 +    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
 +      case __NR_mmap2:
 +#endif
-+        return RestrictMmapFlagsNoWX();
++        return RestrictMmapFlags();
 +      case __NR_mprotect:
 +      case __NR_pkey_mprotect:
-+        return RestrictMprotectFlagsNoWX();
++        return RestrictMprotectFlags();
 +    }
 +  }
 +
@@ -231,52 +170,6 @@ index 5c44fdadeb1bc..7ff58983b6e81 100644
  };
  
  }  // namespace policy
-diff --git a/sandbox/policy/linux/bpf_speech_recognition_policy_linux.cc b/sandbox/policy/linux/bpf_speech_recognition_policy_linux.cc
-index 4e250f663ed6d..d6a7694322d4c 100644
---- a/sandbox/policy/linux/bpf_speech_recognition_policy_linux.cc
-+++ b/sandbox/policy/linux/bpf_speech_recognition_policy_linux.cc
-@@ -37,6 +37,18 @@ ResultExpr SpeechRecognitionProcessPolicy::EvaluateSyscall(
-     case __NR_sched_setscheduler:
-       // Used for starting an AudioStream when recognizing microphone data.
-       return RestrictSchedTarget(GetPolicyPid(), system_call_number);
-+#if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
-+    defined(__aarch64__)
-+    case __NR_mmap:
-+#endif
-+#if defined(__i386__) || defined(__arm__) || \
-+    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
-+    case __NR_mmap2:
-+#endif
-+      return RestrictMmapFlagsNoWX();
-+    case __NR_mprotect:
-+    case __NR_pkey_mprotect:
-+      return RestrictMprotectFlagsNoWX();
-     default:
-       auto* sandbox_linux = SandboxLinux::GetInstance();
-       if (sandbox_linux->ShouldBrokerHandleSyscall(system_call_number))
-diff --git a/sandbox/policy/linux/bpf_utility_policy_linux.cc b/sandbox/policy/linux/bpf_utility_policy_linux.cc
-index dfe9e9c55a718..c3a9cc842fb5f 100644
---- a/sandbox/policy/linux/bpf_utility_policy_linux.cc
-+++ b/sandbox/policy/linux/bpf_utility_policy_linux.cc
-@@ -46,6 +46,18 @@ ResultExpr UtilityProcessPolicy::EvaluateSyscall(int sysno) const {
-     case __NR_times:
-     case __NR_uname:
-       return Allow();
-+#if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
-+    defined(__aarch64__)
-+    case __NR_mmap:
-+#endif
-+#if defined(__i386__) || defined(__arm__) || \
-+    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
-+    case __NR_mmap2:
-+#endif
-+      return RestrictMmapFlagsNoWX();
-+    case __NR_mprotect:
-+    case __NR_pkey_mprotect:
-+      return RestrictMprotectFlagsNoWX();
-     default:
-       // Default on the content baseline policy.
-       return BPFBasePolicy::EvaluateSyscall(sysno);
 diff --git a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 index 62c4551fe403b..f230d5b79941f 100644
 --- a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
