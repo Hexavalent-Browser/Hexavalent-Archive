@@ -1,4 +1,4 @@
-From 7b792574228bc77059cea30f86c39bc60e7dda75 Mon Sep 17 00:00:00 2001
+From bcb8d575c01cf2bd998adf616a718723d11c5ff5 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sun, 22 Mar 2020 03:07:08 -0400
 Subject: [PATCH] disable browser autologin by default
@@ -8,10 +8,10 @@ Subject: [PATCH] disable browser autologin by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/signin/internal/identity_manager/primary_account_manager.cc b/components/signin/internal/identity_manager/primary_account_manager.cc
-index 47429881852dd..49d3cecd8caf1 100644
+index 0c34ecd781499..db19cce11a8aa 100644
 --- a/components/signin/internal/identity_manager/primary_account_manager.cc
 +++ b/components/signin/internal/identity_manager/primary_account_manager.cc
-@@ -53,7 +53,7 @@ void PrimaryAccountManager::RegisterProfilePrefs(PrefRegistrySimple* registry) {
+@@ -54,7 +54,7 @@ void PrimaryAccountManager::RegisterProfilePrefs(PrefRegistrySimple* registry) {
                                 std::string());
    registry->RegisterStringPref(prefs::kGoogleServicesAccountId, std::string());
    registry->RegisterBooleanPref(prefs::kGoogleServicesConsentedToSync, false);

@@ -1,4 +1,4 @@
-From 69b1a2360aad7c8ca46f50aa396c53dbedae7523 Mon Sep 17 00:00:00 2001
+From 035aca04b8f238fd986924c9dfa00bd4becda2e0 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Fri, 23 Oct 2020 23:59:13 -0400
 Subject: [PATCH] enable prefetch privacy changes by default
@@ -8,10 +8,10 @@ Subject: [PATCH] enable prefetch privacy changes by default
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/third_party/blink/common/features.cc b/third_party/blink/common/features.cc
-index c6f0e882c467c..7ce83d822a3dd 100644
+index c9232540af3b5..508e0c0ceaea6 100644
 --- a/third_party/blink/common/features.cc
 +++ b/third_party/blink/common/features.cc
-@@ -468,7 +468,7 @@ const base::Feature kComputePressure{"ComputePressure",
+@@ -491,7 +491,7 @@ const base::Feature kComputePressure{"ComputePressure",
  // Prefetch request properties are updated to be privacy-preserving. See
  // crbug.com/988956.
  const base::Feature kPrefetchPrivacyChanges{"PrefetchPrivacyChanges",
