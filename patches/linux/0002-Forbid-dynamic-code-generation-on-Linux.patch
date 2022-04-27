@@ -1,4 +1,4 @@
-From d955318e37e7d463d49cf39a2533ccc89b278f38 Mon Sep 17 00:00:00 2001
+From 6b24c1275e4302133ff202b885927f1c105cf3a1 Mon Sep 17 00:00:00 2001
 From: qua3k <qua3kr@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Forbid dynamic code generation on Linux
@@ -17,10 +17,10 @@ code generation in the same processes on Linux via seccomp-bpf.
  7 files changed, 99 insertions(+), 11 deletions(-)
 
 diff --git a/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc b/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
-index 74ce4c75d4d8a..7eb885a85a449 100644
+index 30c15cccb5c1f..8dab617c758a9 100644
 --- a/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
 +++ b/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
-@@ -248,19 +248,19 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
+@@ -255,19 +255,19 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
  #if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
      defined(__aarch64__)
    if (sysno == __NR_mmap)
@@ -116,7 +116,7 @@ index 6db8ad264bb8b..71568fc2fd41d 100644
  
  }  // namespace policy
 diff --git a/sandbox/policy/linux/bpf_service_policy_linux.cc b/sandbox/policy/linux/bpf_service_policy_linux.cc
-index 3ddc8bfa79b08..a4cebc8ae78d1 100644
+index 81a82378cea71..b90101544de1e 100644
 --- a/sandbox/policy/linux/bpf_service_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_service_policy_linux.cc
 @@ -20,7 +20,28 @@ using sandbox::bpf_dsl::ResultExpr;
@@ -171,7 +171,7 @@ index 5c44fdadeb1bc..7ff58983b6e81 100644
  
  }  // namespace policy
 diff --git a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
-index 62c4551fe403b..f230d5b79941f 100644
+index 11819b56dc349..5e05ff0c5bb38 100644
 --- a/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 +++ b/sandbox/policy/linux/sandbox_seccomp_bpf_linux.cc
 @@ -30,6 +30,8 @@
@@ -183,7 +183,7 @@ index 62c4551fe403b..f230d5b79941f 100644
  #include "sandbox/linux/seccomp-bpf-helpers/baseline_policy.h"
  #include "sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.h"
  #include "sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h"
-@@ -51,6 +53,7 @@
+@@ -52,6 +54,7 @@
  #include "sandbox/policy/linux/bpf_service_policy_linux.h"
  #include "sandbox/policy/linux/bpf_speech_recognition_policy_linux.h"
  #include "sandbox/policy/linux/bpf_utility_policy_linux.h"
@@ -191,7 +191,7 @@ index 62c4551fe403b..f230d5b79941f 100644
  
  #if BUILDFLAG(IS_CHROMEOS_ASH)
  #include "sandbox/policy/features.h"
-@@ -164,8 +167,26 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
+@@ -165,8 +168,26 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
    switch (sandbox_type) {
      case sandbox::mojom::Sandbox::kGpu:
        return GetGpuProcessSandbox(options.use_amd_specific_policies);
@@ -220,7 +220,7 @@ index 62c4551fe403b..f230d5b79941f 100644
  #if BUILDFLAG(ENABLE_PLUGINS)
      case sandbox::mojom::Sandbox::kPpapi:
        return std::make_unique<PpapiProcessPolicy>();
-@@ -185,9 +206,27 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
+@@ -186,9 +207,27 @@ std::unique_ptr<BPFBasePolicy> SandboxSeccompBPF::PolicyForSandboxType(
      case sandbox::mojom::Sandbox::kAudio:
        return std::make_unique<AudioProcessPolicy>();
      case sandbox::mojom::Sandbox::kService:
@@ -250,4 +250,4 @@ index 62c4551fe403b..f230d5b79941f 100644
 +    }
      case sandbox::mojom::Sandbox::kSpeechRecognition:
        return std::make_unique<SpeechRecognitionProcessPolicy>();
- #if BUILDFLAG(IS_CHROMEOS_ASH)
+     case sandbox::mojom::Sandbox::kScreenAI:
