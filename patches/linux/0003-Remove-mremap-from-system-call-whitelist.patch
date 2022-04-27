@@ -1,4 +1,4 @@
-From 3bef14b943adb953b31ec894b8773d48523e5ce2 Mon Sep 17 00:00:00 2001
+From ac13fde1208c0d082c84a0323e84f08198ae6ef7 Mon Sep 17 00:00:00 2001
 From: qua3k <qua3kr@gmail.com>
 Date: Fri, 19 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Remove mremap from system call whitelist
@@ -49,10 +49,10 @@ index 029c067c07e55..c675f27027007 100644
      case __NR_sched_get_priority_max:
      case __NR_sched_get_priority_min:
 diff --git a/sandbox/policy/linux/bpf_service_policy_linux.cc b/sandbox/policy/linux/bpf_service_policy_linux.cc
-index a4cebc8ae78d1..133824a8a3ebb 100644
+index b90101544de1e..38df514d3b35c 100644
 --- a/sandbox/policy/linux/bpf_service_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_service_policy_linux.cc
-@@ -53,7 +53,6 @@ ResultExpr ServiceProcessPolicy::EvaluateSyscall(int sysno) const {
+@@ -57,7 +57,6 @@ ResultExpr ServiceProcessPolicy::EvaluateSyscall(int sysno) const {
  #if defined(__i386__) || defined(__arm__)
      case __NR_ugetrlimit:
  #endif
@@ -61,10 +61,10 @@ index a4cebc8ae78d1..133824a8a3ebb 100644
      case __NR_times:
        return Allow();
 diff --git a/sandbox/policy/linux/bpf_utility_policy_linux.cc b/sandbox/policy/linux/bpf_utility_policy_linux.cc
-index dfe9e9c55a718..8d8cf924edaaf 100644
+index b9f0aa7aad57b..d61211c7602b6 100644
 --- a/sandbox/policy/linux/bpf_utility_policy_linux.cc
 +++ b/sandbox/policy/linux/bpf_utility_policy_linux.cc
-@@ -40,7 +40,6 @@ ResultExpr UtilityProcessPolicy::EvaluateSyscall(int sysno) const {
+@@ -44,7 +44,6 @@ ResultExpr UtilityProcessPolicy::EvaluateSyscall(int sysno) const {
  #if defined(__i386__) || defined(__arm__)
      case __NR_ugetrlimit:
  #endif

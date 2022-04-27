@@ -1,4 +1,4 @@
-From abba666eebb4391e9e118e71c81024fed781e0ed Mon Sep 17 00:00:00 2001
+From e083bccdf79879d5b7d70eb795df7f7e23261b9b Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 8 Mar 2018 22:43:12 -0500
 Subject: [PATCH] disable article suggestions feature by default
@@ -24,10 +24,10 @@ index 57a65895fbded..511f7a2b500e1 100644
  }
  
 diff --git a/components/ntp_snippets/features.cc b/components/ntp_snippets/features.cc
-index afd397161e1a7..c33aa1cd4680c 100644
+index 5bb7995bc5bdf..243afdbd79bae 100644
 --- a/components/ntp_snippets/features.cc
 +++ b/components/ntp_snippets/features.cc
-@@ -39,7 +39,7 @@ const base::Feature* const kAllFeatures[] = {
+@@ -38,7 +38,7 @@ const base::Feature* const kAllFeatures[] = {
      &kOptionalImagesEnabledFeature};
  
  const base::Feature kArticleSuggestionsFeature{
