@@ -1,4 +1,4 @@
-From 4cb11e632aa7ced162b60660ef95dc2c88f8806f Mon Sep 17 00:00:00 2001
+From 07629aa0ce74a4dcf0dc76b2163b4d22ed7e00b8 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Sat, 26 Nov 2016 14:57:22 -0500
 Subject: [PATCH] disable hyperlink auditing by default
