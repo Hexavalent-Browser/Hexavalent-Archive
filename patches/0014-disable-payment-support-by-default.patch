@@ -1,4 +1,4 @@
-From d32514f4c18bae38177daf213b2f4aa97f08ac84 Mon Sep 17 00:00:00 2001
+From 4b2b386d9fda0f43ec165897a1dfeb138a784ace Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Tue, 18 Jun 2019 22:28:53 -0400
 Subject: [PATCH] disable payment support by default
