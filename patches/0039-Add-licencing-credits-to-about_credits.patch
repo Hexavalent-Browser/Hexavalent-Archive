@@ -1,4 +1,4 @@
-From 41340453dacb589a5a2d658f8c3337a5f2080076 Mon Sep 17 00:00:00 2001
+From eb647d409e1b2367c574948c603e3a3d62b29fd8 Mon Sep 17 00:00:00 2001
 From: loryeam <loryeam@gmail.com>
 Date: Wed, 1 Dec 2021 00:00:00 +0000
 Subject: [PATCH] Add licencing credits to about_credits
@@ -113,7 +113,7 @@ index 0000000000000..43d63fe135ffc
 +OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 +THE SOFTWARE.
 diff --git a/tools/licenses.py b/tools/licenses.py
-index d64eccd2c64d0..7e9cbf3266e76 100755
+index b083d3509433a..741644f728f25 100755
 --- a/tools/licenses.py
 +++ b/tools/licenses.py
 @@ -140,6 +140,10 @@ ADDITIONAL_PATHS = (
@@ -127,9 +127,9 @@ index d64eccd2c64d0..7e9cbf3266e76 100755
  )
  
  
-@@ -327,6 +331,24 @@ SPECIAL_CASES = {
-         "License Android Compatible": "yes",
-         "License File": "/third_party/swiftshader/LICENSE.txt",
+@@ -340,6 +344,24 @@ SPECIAL_CASES = {
+         "License File":
+         "/third_party/swiftshader/third_party/SPIRV-Tools/LICENSE",
      },
 +    os.path.join('debian'): {
 +      "Name": "Debian",

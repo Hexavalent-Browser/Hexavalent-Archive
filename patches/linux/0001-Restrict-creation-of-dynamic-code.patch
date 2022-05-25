@@ -1,4 +1,4 @@
-From e41ac3e7e1b0a84d8ed9a3d760eaefe4bb298d46 Mon Sep 17 00:00:00 2001
+From f96e71d405b577c6ec6aec74eca3a76b02b6d513 Mon Sep 17 00:00:00 2001
 From: qua3k <qua3kr@gmail.com>
 Date: Thu, 4 Nov 2021 00:00:00 +0000
 Subject: [PATCH] Restrict creation of dynamic code
@@ -16,7 +16,7 @@ It's inspired by PaX MPROTECT restrictions.
  2 files changed, 73 insertions(+)
 
 diff --git a/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc b/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
-index 9728d0b52e68c..b0f0b7bc8bdbc 100644
+index 7feff3f49323a..30d2081d9e19e 100644
 --- a/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
 +++ b/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
 @@ -15,6 +15,7 @@
@@ -84,7 +84,7 @@ index 9728d0b52e68c..b0f0b7bc8bdbc 100644
  ResultExpr RestrictFcntlCommands() {
    // We also restrict the flags in F_SETFL. We don't want to permit flags with
    // a history of trouble such as O_DIRECT. The flags you see are actually the
-@@ -283,6 +327,17 @@ ResultExpr RestrictFcntlCommands() {
+@@ -288,6 +332,17 @@ ResultExpr RestrictFcntlCommands() {
    // clang-format on
  }
  
