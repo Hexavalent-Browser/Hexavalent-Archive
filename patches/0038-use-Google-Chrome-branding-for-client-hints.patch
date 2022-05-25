@@ -1,4 +1,4 @@
-From ef9e107230c4612673c8f9b501556fe9d9b23caa Mon Sep 17 00:00:00 2001
+From 476fda712fa2ce69a956049c8f5a95fedcbd6eba Mon Sep 17 00:00:00 2001
 From: Zoraver Kang <Zoraver@users.noreply.github.com>
 Date: Sun, 10 Oct 2021 21:59:16 -0400
 Subject: [PATCH] use Google Chrome branding for client hints
@@ -8,12 +8,12 @@ Subject: [PATCH] use Google Chrome branding for client hints
  1 file changed, 1 insertion(+)
 
 diff --git a/components/embedder_support/user_agent_utils.cc b/components/embedder_support/user_agent_utils.cc
-index 1df65185bdd1e..564a2c1d022b4 100644
+index 16bc7f1bc774a..568f791b0c296 100644
 --- a/components/embedder_support/user_agent_utils.cc
 +++ b/components/embedder_support/user_agent_utils.cc
-@@ -225,6 +225,7 @@ const blink::UserAgentBrandList GetUserAgentBrandList(
-   int major_version_number = 0;
-   DCHECK(base::StringToInt(major_version, &major_version_number));
+@@ -226,6 +226,7 @@ const blink::UserAgentBrandList GetUserAgentBrandList(
+   bool parse_result = base::StringToInt(major_version, &major_version_number);
+   DCHECK(parse_result);
    absl::optional<std::string> brand;
 +  brand = "Google Chrome";
  #if !BUILDFLAG(CHROMIUM_BRANDING)
