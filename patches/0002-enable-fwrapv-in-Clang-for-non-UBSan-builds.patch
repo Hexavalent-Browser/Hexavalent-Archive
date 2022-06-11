@@ -1,4 +1,4 @@
-From b22b62e962dc221a55ddafc2106fa5e1cb5f86d4 Mon Sep 17 00:00:00 2001
+From aa9ee687ab98c810c3bbc045428896ba41bb9dc2 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 22 Dec 2016 07:15:34 -0500
 Subject: [PATCH] enable -fwrapv in Clang for non-UBSan builds
