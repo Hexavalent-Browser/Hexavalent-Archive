@@ -1,4 +1,4 @@
-From f6f0108a2f4c95da317ca14754ddd1c00a8d9065 Mon Sep 17 00:00:00 2001
+From 242e2d28e4448bc9658a82aa3e9996c717bccc18 Mon Sep 17 00:00:00 2001
 From: Daniel Micay <danielmicay@gmail.com>
 Date: Thu, 4 Jul 2019 19:08:52 -0400
 Subject: [PATCH] disable media router by default
@@ -22,10 +22,10 @@ index 2029e21ad71cf..a15cf4899c875 100644
  
  #if !BUILDFLAG(IS_ANDROID)
 diff --git a/chrome/browser/profiles/profile_impl.cc b/chrome/browser/profiles/profile_impl.cc
-index bf169b652ef30..c406647468139 100644
+index 2e1d353a1e34b..f8fb7647b4f59 100644
 --- a/chrome/browser/profiles/profile_impl.cc
 +++ b/chrome/browser/profiles/profile_impl.cc
-@@ -417,7 +417,7 @@ void ProfileImpl::RegisterProfilePrefs(
+@@ -412,7 +412,7 @@ void ProfileImpl::RegisterProfilePrefs(
  #endif
  
    registry->RegisterBooleanPref(prefs::kForceEphemeralProfiles, false);
